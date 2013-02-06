@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.loopj.android.http.AsyncHttpClient"/>
+<fullyQualifiedTypeName name="org.apache.http.HttpException"/>
+<fullyQualifiedTypeName name="com.loopj.android.http.RequestParams"/>
+<fullyQualifiedTypeName name="com.loopj.android.http.AsyncHttpResponseHandler"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="com.example.client.R.id"/>
+<fullyQualifiedTypeName name="android.os.Message"/>
+<fullyQualifiedTypeName name="android.os.Handler"/>
+<fullyQualifiedTypeName name="com.example.http.MyHttpClientUsage"/>
+</qualifiedTypeNameHistroy>

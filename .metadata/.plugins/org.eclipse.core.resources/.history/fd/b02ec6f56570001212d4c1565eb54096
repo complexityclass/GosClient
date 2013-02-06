@@ -1,0 +1,36 @@
+package com.example.http;
+
+import org.apache.http.HttpException;
+
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+public class MyHttpClientUsage {
+	
+	//public String response;
+	public int tester;
+	
+	
+	public MyHttpClientUsage(){
+	//	response = "";
+	}
+	
+	public void getInfoAbout() throws HttpException{
+		
+		RequestParams params = new RequestParams();
+		params.put("a", "Static");
+		params.put("content", "47");
+	
+		MyHttpClient.get("", params, new AsyncHttpResponseHandler(){
+			 @Override
+			    public void onSuccess(String response) {
+			          System.out.println(response);
+			          MyHttpClientUsage.this.response = response;
+			    }
+				 	
+		});
+	}
+
+
+	
+}

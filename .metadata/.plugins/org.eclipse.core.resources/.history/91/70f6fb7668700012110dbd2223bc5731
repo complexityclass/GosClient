@@ -1,0 +1,42 @@
+package com.example.client;
+
+import org.apache.http.HttpException;
+
+import com.example.http.MyHttpClientUsage;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+	
+	Handler h;
+	TextView largeText;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        h = new Handler(){
+        	
+        };
+        
+        MyHttpClientUsage connect = new MyHttpClientUsage();
+        try {
+			connect.getInfoAbout();
+		} catch (HttpException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+}
