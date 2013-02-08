@@ -38,5 +38,25 @@ public class MyHttpClientUsage {
 		});
 	}
 	
+	
+	public void gethtml(RequestParams parametrs) throws HttpException{
+		
+		MyHttpClient.get("", parametrs, new AsyncHttpResponseHandler(){
+			 @Override
+			    public void onSuccess(String response) {
+			          System.out.println(response);
+			          Bundle b = new Bundle();
+			          b.putString("html", response);
+			          Message msg = new Message();
+			          msg.setData(b);
+			          MyHttpClientUsage.this.h.sendMessage(msg);   
+			    }
+		});
+	
+	}
+		
+		
+		
+	
 }
 				 	

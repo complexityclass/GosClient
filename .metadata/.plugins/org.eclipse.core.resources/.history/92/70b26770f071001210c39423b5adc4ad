@@ -1,0 +1,11 @@
+package com.example.parser;
+
+import org.htmlcleaner.TagNode;
+import org.htmlcleaner.TagNode.TagAllCondition;
+
+public class HtmlParser {
+	
+	TagNode rootNode;
+	
+
+}
