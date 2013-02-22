@@ -27,7 +27,7 @@ public class MainActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		String[] values = new String[] { "О проекте", "Новости"};
+		String[] values = new String[] { "О проекте", "Новости","Гражданам","Ведомства"};
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.rowlayout, R.id.label,values);
 		setListAdapter(adapter);
 	}
@@ -45,6 +45,14 @@ public class MainActivity extends ListActivity {
       if("Новости".equals(pen)){
     	  Intent newsIntent = new Intent(v.getContext(),NewsActivity.class);
     	  startActivity(newsIntent);
+      }
+      if("Гражданам".equals(pen)){
+    	  Intent citizensRegIntent = new Intent(v.getContext(),CitizenRegActivity.class);
+    	  startActivity(citizensRegIntent);
+      }
+      if("Ведомства".equals(pen)){
+    	  Intent agenciesIntent = new Intent(v.getContext(),AgenciesActivity.class);
+    	  startActivity(agenciesIntent);
       }
       
     }

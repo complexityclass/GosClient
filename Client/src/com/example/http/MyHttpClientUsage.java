@@ -33,10 +33,30 @@ public class MyHttpClientUsage {
 			          b.putString("html", response);
 			          Message msg = new Message();
 			          msg.setData(b);
-			          MyHttpClientUsage.this.h.sendMessage(msg);   //Simplify sending int to TextView
+			          MyHttpClientUsage.this.h.sendMessage(msg);   
 			    }
 		});
 	}
+	
+	public void agencies() throws HttpException{
+		
+		RequestParams params = new RequestParams();
+		params.put("a","Departments");
+		params.put("category", "Regional");
+		
+		MyHttpClient.get("", params, new AsyncHttpResponseHandler(){
+			 @Override
+			    public void onSuccess(String response) {
+			          System.out.println(response);
+			          Bundle b = new Bundle();
+			          b.putString("html", response);
+			          Message msg = new Message();
+			          msg.setData(b);
+			          MyHttpClientUsage.this.h.sendMessage(msg);   
+			    }
+		});
+	}
+	
 	
 	
 	public void gethtml(RequestParams parametrs) throws HttpException{

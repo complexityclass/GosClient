@@ -1,0 +1,73 @@
+public class AboutUsActivity extends Activity {
+
+	Handler h;
+
+	TextView largeText;
+
+	List<String> stringLinks;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_main);
+
+		stringLinks = new ArrayList<String>();
+
+		largeText = (TextView) findViewById(R.id.textView1);
+
+		h = new Handler() {
+
+			public void handleMessage(android.os.Message msg) {
+
+				HtmlParser parser;
+
+				StringBuilder result = new StringBuilder();
+
+				try {
+
+					parser = new HtmlParser(String.valueOf(msg.getData()));
+
+					List<TagNode> links = parser.getContentByClassName("ab");
+
+					for (Iterator<TagNode> iterator = stringLinks.iterator(); iterator
+
+					.hasNext();) {
+
+						TagNode divElement = (TagNode) iterator.next();
+
+						result.append(divElement.getText().toString());
+
+					}
+
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+				}
+
+				largeText.setText(newhtml); // Работает, отображается текст
+
+				stringLinks.add(newhtml); // Компилируется без ошибок, но в
+											// список ничего не добавляется
+
+			}
+
+		};
+
+		MyHttpClientUsage connect = new MyHttpClientUsage(h);
+
+		try {
+
+			connect.getInfoAbout();
+
+		} catch (HttpException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+
+}

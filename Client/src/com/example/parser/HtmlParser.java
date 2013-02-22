@@ -29,17 +29,32 @@ public class HtmlParser {
 			if (classType != null && classType.equals(CSSClassName)) {
 
 				linklist.add(contentElements[i]);
-
 			}
 
 		}
 
 		return linklist;
 	}
-	
-	
-	public void getLinks(){
+
+	public List<TagNode> getLinks(String CSSClassName){
+		
+		List<TagNode> linkList = new ArrayList<TagNode>();
+		
+		TagNode linkElements[] = rootNode.getElementsByName("a",true);
+		
+		for(int i = 0; i < linkElements.length && linkElements != null; i++){
+			
+			String classType = linkElements[i].getAttributeByName("class");
+			if(classType != null && classType.equals(CSSClassName)){
+				
+				linkList.add(linkElements[i]);
+				
+			}
+			
+			
+		}
+		
+		return linkList;
 		
 	}
-
 }

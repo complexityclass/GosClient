@@ -1,0 +1,18 @@
+package com.example.http;
+
+public class NetworkStats {
+	
+	static boolean isNetworkAvailable(){
+		
+		ConnectivityManager connectManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectManager.getActiveNetworkInfo();
+
+		if (networkInfo != null && networkInfo.isAvailable()) {
+			availabel = true;
+		}
+
+		return availabel;
+		
+	}
+
+}
