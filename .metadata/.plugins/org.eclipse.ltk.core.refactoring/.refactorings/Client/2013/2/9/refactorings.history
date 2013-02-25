@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Client/res/drawable-mdpi/gray-circle.png&apos; to &apos;gray.png&apos;" description="Rename resource &apos;gray-circle.png&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/drawable-mdpi/gray-circle.png" name="gray.png" stamp="1361793346086" updateReferences="true"/>
+</session>

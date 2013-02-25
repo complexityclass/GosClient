@@ -36,25 +36,24 @@ public class HtmlParser {
 		return linklist;
 	}
 
+	
 	public List<TagNode> getLinks(String CSSClassName){
 		
 		List<TagNode> linkList = new ArrayList<TagNode>();
+		TagNode usageClass[] = rootNode.getElementsByName("a", true);
 		
-		TagNode linkElements[] = rootNode.getElementsByName("a",true);
-		
-		for(int i = 0; i < linkElements.length && linkElements != null; i++){
-			
-			String classType = linkElements[i].getAttributeByName("class");
+		for(int i = 0; i < usageClass.length && usageClass != null; i++){
+			String classType = usageClass[i].getAttributeByName("class");
 			if(classType != null && classType.equals(CSSClassName)){
-				
-				linkList.add(linkElements[i]);
-				
+				linkList.add(usageClass[i]);
 			}
-			
-			
 		}
+		
+		
 		
 		return linkList;
 		
 	}
+	
+	
 }
