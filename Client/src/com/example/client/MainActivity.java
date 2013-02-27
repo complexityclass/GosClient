@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.newslayout);
 
+		//MainActivity has static content
 		News[] newsData = new News[] {
 				new News(R.drawable.banana, "Ведомства"),
 				new News(R.drawable.banana, "О проекте"),
@@ -58,6 +59,7 @@ public class MainActivity extends Activity {
 		currentlistView.addHeaderView(header);
 		currentlistView.setAdapter(adapter);
 
+		/**Click method on Item. Each item is instance of News.class*/
 		currentlistView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v,
