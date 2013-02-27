@@ -47,9 +47,8 @@ r.metadata/.plugins/org.eclipse.core.resources/.projects/Client/.indexes/a0/de
 r.metadata/.plugins/org.eclipse.core.resources/.projects/Client/.indexes/af
 m.metadata/.plugins/org.eclipse.core.resources/.projects/Client/.indexes/e4/81/96/35
 m.metadata/.plugins/org.eclipse.core.resources/.projects/Client/.indexes/e4/81/96/88
-m.metadata/.plugins/org.eclipse.core.resources/.projects/Client/org.eclipse.jdt.core
+r.metadata/.plugins/org.eclipse.core.resources/.projects/Client/org.eclipse.jdt.core
 r.metadata/.plugins/org.eclipse.core.resources/.root
-m.metadata/.plugins/org.eclipse.core.resources/.root/.indexes
 m.metadata/.plugins/org.eclipse.core.resources/.safetable
 m.metadata/.plugins/org.eclipse.core.runtime/.settings
 m.metadata/.plugins/org.eclipse.debug.ui

@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.http.HttpException;
 import org.htmlcleaner.TagNode;
 
+import com.example.adapters.News;
+import com.example.adapters.NewsAdapter;
 import com.example.http.MyHttpClientUsage;
 import com.example.parser.HtmlParser;
 
@@ -17,44 +19,76 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MainActivity extends ListActivity {
+/**
+ * @author complexityclass First activity manage app directions
+ * 
+ */
+public class MainActivity extends Activity {
+
+	private ListView currentlistView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		String[] values = new String[] { "О проекте", "Новости","Гражданам","Ведомства"};
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.rowlayout, R.id.label,values);
-		setListAdapter(adapter);
-	}
-	
-	@Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-      String item = (String) getListAdapter().getItem(position);
-      ArrayAdapter<String> adapter = (ArrayAdapter<String>) getListAdapter();
-      
-      String pen = adapter.getItem(position);
-      if("О проекте".equals(pen)){
-    	  Intent myIntent = new Intent(v.getContext(),AboutUsActivity.class);
-    	  startActivity(myIntent);
-      }
-      if("Новости".equals(pen)){
-    	  Intent newsIntent = new Intent(v.getContext(),NewsActivity.class);
-    	  startActivity(newsIntent);
-      }
-      if("Гражданам".equals(pen)){
-    	  Intent citizensRegIntent = new Intent(v.getContext(),CitizenRegActivity.class);
-    	  startActivity(citizensRegIntent);
-      }
-      if("Ведомства".equals(pen)){
-    	  Intent agenciesIntent = new Intent(v.getContext(),AgenciesActivity.class);
-    	  startActivity(agenciesIntent);
-      }
-      
-    }
+		setContentView(R.layout.newslayout);
 
+		News[] newsData = new News[] {
+				new News(R.drawable.banana, "Ведомства"),
+				new News(R.drawable.banana, "О проекте"),
+				new News(R.drawable.banana, "Гражданам"),
+				new News(R.drawable.banana, "Организациям"),
+				new News(R.drawable.banana, "Электронные услуги"),
+				new News(R.drawable.banana, "Жизненные ситуации"),
+				new News(R.drawable.banana, "Направления деятельности"),
+				new News(R.drawable.banana, "Информация"),
+				new News(R.drawable.banana, "Статистика посещений") };
+
+		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, newsData);
+
+		currentlistView = (ListView) findViewById(R.id.listView1);
+
+		View header = (View) getLayoutInflater().inflate(
+				R.layout.list_header_row_main, null);
+		currentlistView.addHeaderView(header);
+		currentlistView.setAdapter(adapter);
+
+		currentlistView.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
+
+				String pen = parent.getItemAtPosition(position).toString();
+
+				if ("О проекте".equals(pen)) {
+					Intent myIntent = new Intent(v.getContext(),
+							AboutUsActivity.class);
+					startActivity(myIntent);
+
+				}
+				if ("Новости".equals(pen)) {
+					Intent newsIntent = new Intent(v.getContext(),
+							NewsActivity.class);
+					startActivity(newsIntent);
+				}
+				if ("Гражданам".equals(pen)) {
+					Intent citizensRegIntent = new Intent(v.getContext(),
+							CitizenRegActivity.class);
+					startActivity(citizensRegIntent);
+				}
+				if ("Ведомства".equals(pen)) {
+					Intent agenciesIntent = new Intent(v.getContext(),
+							AgenciesActivity.class);
+					startActivity(agenciesIntent);
+				}
+
+			}
+		});
+
+	}
 }
