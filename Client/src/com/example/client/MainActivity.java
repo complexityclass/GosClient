@@ -42,11 +42,11 @@ public class MainActivity extends Activity {
 		News[] newsData = new News[] {
 				new News(R.drawable.banana, "Ведомства"),
 				new News(R.drawable.banana, "О проекте"),
+				new News(R.drawable.banana, "Направления деятельности"),
 				new News(R.drawable.banana, "Гражданам"),
 				new News(R.drawable.banana, "Организациям"),
 				new News(R.drawable.banana, "Электронные услуги"),
 				new News(R.drawable.banana, "Жизненные ситуации"),
-				new News(R.drawable.banana, "Направления деятельности"),
 				new News(R.drawable.banana, "Информация"),
 				new News(R.drawable.banana, "Статистика посещений") };
 
@@ -88,9 +88,16 @@ public class MainActivity extends Activity {
 							AgenciesActivity.class);
 					startActivity(agenciesIntent);
 				}
-
+				
+				if("Направления деятельности".equals(pen)){
+					Intent areasIntent = new Intent(v.getContext(),
+							AreasOfActivity.class);
+					startActivity(areasIntent);
+				}
 			}
 		});
-
+		
 	}
 }
+					
+

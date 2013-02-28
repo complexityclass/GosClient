@@ -20,7 +20,12 @@ import android.net.NetworkInfo;
  */
 public class NetworkStats {
 
-	/** Return false when network connection is disabled */
+	/**
+	 * Return false when network connection is disabled
+	 * 
+	 * @param Context
+	 *            context : app stable
+	 * */
 	public static boolean isNetworkAvailable(Context context) {
 		boolean availabel = false;
 
@@ -35,7 +40,12 @@ public class NetworkStats {
 		return availabel;
 	}
 
-	/** Write the GET response from server to InputStream */
+	/**
+	 * Write the GET response from server to InputStream
+	 * 
+	 * @param String
+	 *            strUrl : url of web resourse
+	 */
 	public static InputStream getHttpConnection(String strUrl)
 			throws IOException {
 		InputStream iStream = null;

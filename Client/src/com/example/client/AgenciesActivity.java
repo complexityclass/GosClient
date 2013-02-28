@@ -69,25 +69,22 @@ public class AgenciesActivity extends ListActivity {
 		}
 
 		String values[] = new String[linksText.size()];
-		
-		int i = 0; 
+
+		int i = 0;
 		for (Iterator<String> iterator = linksText.iterator(); iterator
 				.hasNext();) {
 			values[i] = iterator.next().toString();
 			i++;
 		}
-		
-		
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.rowlayout,R.id.label, values);
-		setListAdapter(adapter);
 
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				R.layout.rowlayout, R.id.label, values);
+		setListAdapter(adapter);
 
 	}
 
 	/** Send request in separate thread using AsyncTask */
-	
-	
+
 	private class DownloadHtml extends AsyncTask<String, Integer, List<String>> {
 
 		List<String> resultList = new ArrayList<String>();
@@ -100,7 +97,8 @@ public class AgenciesActivity extends ListActivity {
 				HtmlParser parser;
 				try {
 					parser = new HtmlParser(result);
-					List<TagNode> links = parser.getLinks("category-menu__link");
+					List<TagNode> links = parser
+							.getLinks("category-menu__link");
 					for (Iterator<TagNode> iterator = links.iterator(); iterator
 							.hasNext();) {
 						TagNode linkElement = (TagNode) iterator.next();
@@ -115,7 +113,6 @@ public class AgenciesActivity extends ListActivity {
 			}
 			return resultList;
 		}
-		
 
 		@Override
 		protected void onPostExecute(List<String> resultList) {
@@ -123,5 +120,5 @@ public class AgenciesActivity extends ListActivity {
 		}
 
 	}
-	
+
 }
