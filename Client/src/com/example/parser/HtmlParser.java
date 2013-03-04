@@ -81,5 +81,19 @@ public class HtmlParser {
 
 		return spanList;
 	}
+	
+	public List <TagNode> getNews(String CSSClassName){
+		List<TagNode> liList = new ArrayList<TagNode>();
+		TagNode[] usageClass = rootNode.getElementsByName("p", true);
+		
+		for(int i = 0; i < usageClass.length && usageClass != null; i++){
+			String classType = usageClass[i].getAttributeByName("class");
+			if(classType != null && classType.equals(CSSClassName)){
+				liList.add(usageClass[i]);
+			}
+		}
+		
+		return liList;
+	}
 
 }

@@ -1,6 +1,7 @@
 package com.example.client;
 
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -11,6 +12,8 @@ import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 
+import com.example.adapters.News;
+import com.example.adapters.NewsAdapter;
 import com.example.http.GetDataListener;
 import com.example.http.MyHttpClientUsage;
 import com.example.http.NetworkStats;
@@ -23,6 +26,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -31,7 +35,7 @@ import android.widget.SimpleAdapter;
 /**
  * @author complexityclass Activity "Ведомства"
  */
-public class AgenciesActivity extends ListActivity {
+public class AgenciesActivity extends Activity {
 
 	public List<String> linksText;
 	public List<Integer> pics;
@@ -39,10 +43,13 @@ public class AgenciesActivity extends ListActivity {
 	/** URL for GET request */
 	private static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=Departments&category=Regional";
 
+	private ListView currentListView;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.listview_layout);
 
 		linksText = new ArrayList<String>();
 		pics = new ArrayList<Integer>();
@@ -68,19 +75,23 @@ public class AgenciesActivity extends ListActivity {
 			System.out.println(iterator.next().toString());
 		}
 
-		String values[] = new String[linksText.size()];
+		News values[] = new News[linksText.size()];
 
 		int i = 0;
 		for (Iterator<String> iterator = linksText.iterator(); iterator
 				.hasNext();) {
-			values[i] = iterator.next().toString();
+			String temp = iterator.next().toString();
+			values[i] = new News(R.drawable.banana, temp);
 			i++;
 		}
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				R.layout.rowlayout, R.id.label, values);
-		setListAdapter(adapter);
+		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, values);
 
+		currentListView = (ListView) findViewById(R.id.listView1);
+		View header = (View) getLayoutInflater().inflate(
+				R.layout.list_header_row_areas, null);
+		currentListView.addHeaderView(header);
+		currentListView.setAdapter(adapter);
 	}
 
 	/** Send request in separate thread using AsyncTask */

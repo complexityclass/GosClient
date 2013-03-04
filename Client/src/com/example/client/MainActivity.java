@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.newslayout);
+		setContentView(R.layout.listview_layout);
 
 		//MainActivity has static content
 		News[] newsData = new News[] {
@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
 				new News(R.drawable.banana, "О проекте"),
 				new News(R.drawable.banana, "Направления деятельности"),
 				new News(R.drawable.banana, "Гражданам"),
+				new News(R.drawable.banana, "Новости"),
 				new News(R.drawable.banana, "Организациям"),
 				new News(R.drawable.banana, "Электронные услуги"),
 				new News(R.drawable.banana, "Жизненные ситуации"),
