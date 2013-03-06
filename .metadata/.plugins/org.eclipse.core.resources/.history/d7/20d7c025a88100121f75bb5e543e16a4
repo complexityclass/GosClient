@@ -1,0 +1,94 @@
+package com.example.client;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import org.htmlcleaner.TagNode;
+
+import com.example.http.NetworkStats;
+import com.example.parser.HtmlParser;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+
+public class AreasOfActivity extends Activity {
+
+	public List<String> linksText;
+	public List<Integer> pics;
+	public static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=Work&category=Regional";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		linksText = new ArrayList<String>();
+		pics = new ArrayList<Integer>();
+
+		if (NetworkStats.isNetworkAvailable(this)) {
+			DownloadHtml downloadHtml = new DownloadHtml();
+			downloadHtml.execute(PAGE_URL);
+			try {
+				linksText = downloadHtml.get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (Iterator<String> iterator = linksText.iterator(); iterator
+				.hasNext();) {
+			System.out.println(iterator.next().toString());
+		}
+
+		String[] values = new String[] { "ok", "no", "ooookay" };
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.rowlayout,R.id.label, values);
+		setListAdapter(adapter);
+
+	}
+
+	private class DownloadHtml extends AsyncTask<String, Integer, List<String>> {
+
+		List<String> resultList = new ArrayList<String>();
+
+		@Override
+		protected List<String> doInBackground(String... urls) {
+			try {
+				String result = NetworkStats.getOutputFromURL(urls[0]);
+
+				HtmlParser parser;
+				try {
+					parser = new HtmlParser(result);
+					List<TagNode> links = parser
+							.getSpanText("category-menu__text");
+					for (Iterator<TagNode> iterator = links.iterator(); iterator
+							.hasNext();) {
+						TagNode linkElement = (TagNode) iterator.next();
+						resultList.add(linkElement.getText().toString());
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} catch (Exception e) {
+				Log.d("Background Task", e.toString());
+			}
+			return resultList;
+		}
+
+		@Override
+		protected void onPostExecute(List<String> resultList) {
+
+		}
+
+	}
+
+}

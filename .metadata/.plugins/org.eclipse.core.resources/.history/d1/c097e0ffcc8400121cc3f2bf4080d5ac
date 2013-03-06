@@ -1,0 +1,94 @@
+package com.example.client;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.http.HttpException;
+import org.htmlcleaner.TagNode;
+
+import com.example.adapters.News;
+import com.example.adapters.NewsAdapter;
+import com.example.http.MyHttpClientUsage;
+import com.example.http.NetworkStats;
+import com.example.parser.HtmlParser;
+import com.loopj.android.http.RequestParams;
+
+import android.app.Activity;
+import android.app.ListActivity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class NewsActivity extends Activity {
+
+	private ListView currentlistView;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.listview_layout);
+
+		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row,
+				news_data);
+
+		currentlistView = (ListView) findViewById(R.id.listView1);
+
+		View header = (View) getLayoutInflater().inflate(
+				R.layout.list_header_row, null);
+		currentlistView.addHeaderView(header);
+		currentlistView.setAdapter(adapter);
+	}
+
+	private class DownloadHtml extends AsyncTask<String, Integer, Map<Integer,String>> {
+
+		//List<String> resultList = new ArrayList<String>();
+		Map<Integer,String> resultMap = new HashMap<Integer, String>();
+
+		@Override
+		protected Map<Integer,String> doInBackground(String... urls) {
+			try {
+				String result = NetworkStats.getOutputFromURL(urls[0]);
+
+				HtmlParser parser;
+				try {
+					parser = new HtmlParser(result);
+					
+					List<TagNode> data = parser.getNews("news-group__date");
+					List<TagNode> title = parser.getNews("news-group__title");
+					
+					Iterator<TagNode> iterator2 = title.iterator();
+					Integer count = 0;
+					for (Iterator<TagNode> iterator1 = data.iterator(); iterator1
+							.hasNext();) {
+						TagNode dataElement = (TagNode) iterator1.next();
+						TagNode titleElement = (TagNode) iterator2.next();
+
+						if (dataElement != null && titleElement != null) {
+							
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} catch (Exception e) {
+				Log.d("Background Task", e.toString());
+			}
+			return resultList;
+		}
+
+		@Override
+		protected void onPostExecute(List<String> resultList) {
+
+		}
+
+	}
+
+}
