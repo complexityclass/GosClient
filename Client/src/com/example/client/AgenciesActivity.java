@@ -81,7 +81,7 @@ public class AgenciesActivity extends Activity {
 		for (Iterator<String> iterator = linksText.iterator(); iterator
 				.hasNext();) {
 			String temp = iterator.next().toString();
-			values[i] = new News(R.drawable.banana, temp);
+			values[i] = new News(R.drawable.arrow, temp);
 			i++;
 		}
 

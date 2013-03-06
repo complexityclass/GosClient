@@ -1,7 +1,10 @@
 package com.example.client;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.http.HttpException;
 import org.htmlcleaner.TagNode;
@@ -9,6 +12,7 @@ import org.htmlcleaner.TagNode;
 import com.example.adapters.News;
 import com.example.adapters.NewsAdapter;
 import com.example.http.MyHttpClientUsage;
+import com.example.http.NetworkStats;
 import com.example.parser.HtmlParser;
 
 import android.os.AsyncTask;
@@ -17,11 +21,15 @@ import android.os.Handler;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,11 +40,15 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
 	private ListView currentlistView;
+	private ImageButton searchButton;
+	private EditText queryText;
+	
+	private static final String SEARCH_URL = "http://pgu.khv.gov.ru/?a=Search&query=";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.listview_layout);
+		setContentView(R.layout.listview_searchbar_layout);
 
 		// MainActivity has static content
 		News[] newsData = new News[] {
@@ -96,7 +108,7 @@ public class MainActivity extends Activity {
 							AreasOfActivity.class);
 					startActivity(areasIntent);
 				}
-				
+
 				if ("Поиск по новостям".equals(pen)) {
 					Intent searchIntent = new Intent(v.getContext(),
 							SearchActivity.class);
@@ -104,6 +116,65 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+
+		searchButton = (ImageButton) findViewById(R.id.ImageButton01);
+		queryText = (EditText) findViewById(R.id.editText1);
+
+		searchButton.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+
+				String html = "obtaining";
+
+				try {
+					String encodeQuery = URLEncoder.encode(queryText.getText()
+							.toString(), "UTF-8");
+
+					if (NetworkStats.isNetworkAvailable(MainActivity.this)) {
+						DownloadHtml downloadHtml = new DownloadHtml();
+						downloadHtml.execute(SEARCH_URL + encodeQuery);
+						try {
+							html = downloadHtml.get();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (ExecutionException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				System.out.println(html);
+
+			}
+		});
+
+	}
+
+	private class DownloadHtml extends AsyncTask<String, Integer, String> {
+
+		String result;
+
+		@Override
+		protected String doInBackground(String... urls) {
+			try {
+				result = NetworkStats.getOutputFromURL(urls[0]);
+
+			} catch (Exception e) {
+				Log.d("Background Task", e.toString());
+			}
+			return result;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+
+		}
 
 	}
 }
