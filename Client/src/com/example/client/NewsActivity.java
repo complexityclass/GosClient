@@ -55,20 +55,20 @@ public class NewsActivity extends Activity {
 		}
 
 		for (Map.Entry<Integer, String> entry : news.entrySet()) {
-		//	System.out.println("KEY : " + entry.getKey() + " VALUE :"
-			//		+ entry.getValue());
+			System.out.println("KEY : " + entry.getKey() + " VALUE :"
+					+ entry.getValue());
 		}
 
 		News[] values = new News[news.size() / 2];
 		int i = 0;
 
 		Iterator<Map.Entry<Integer, String>> itr = news.entrySet().iterator();
-		while(itr.hasNext()){
+		while (itr.hasNext()) {
 			String tmp1 = itr.next().toString();
 			String tmp2 = itr.next().toString();
 			String tmp = tmp1 + "\n" + tmp2;
 			System.out.println(tmp);
-			values[i] = new News(R.drawable.arrow,tmp);
+			values[i] = new News(R.drawable.arrow, tmp);
 		}
 
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, values);
@@ -79,7 +79,6 @@ public class NewsActivity extends Activity {
 				R.layout.list_header_row_areas, null);
 		currentlistView.addHeaderView(header);
 		currentlistView.setAdapter(adapter);
-
 	}
 
 	private class DownloadHtml extends
@@ -134,7 +133,7 @@ public class NewsActivity extends Activity {
 		protected void onPostExecute(Map<Integer, String> resultMap) {
 
 		}
-
 	}
-
 }
+
+

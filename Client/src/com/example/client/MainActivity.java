@@ -38,18 +38,19 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listview_layout);
 
-		//MainActivity has static content
+		// MainActivity has static content
 		News[] newsData = new News[] {
-				new News(R.drawable.banana, "Ведомства"),
-				new News(R.drawable.banana, "О проекте"),
-				new News(R.drawable.banana, "Направления деятельности"),
-				new News(R.drawable.banana, "Гражданам"),
-				new News(R.drawable.banana, "Новости"),
-				new News(R.drawable.banana, "Организациям"),
-				new News(R.drawable.banana, "Электронные услуги"),
-				new News(R.drawable.banana, "Жизненные ситуации"),
-				new News(R.drawable.banana, "Информация"),
-				new News(R.drawable.banana, "Статистика посещений") };
+				new News(R.drawable.arrow, "Поиск по новостям"),
+				new News(R.drawable.arrow, "Ведомства"),
+				new News(R.drawable.arrow, "О проекте"),
+				new News(R.drawable.arrow, "Направления деятельности"),
+				new News(R.drawable.arrow, "Гражданам"),
+				new News(R.drawable.arrow, "Новости"),
+				new News(R.drawable.arrow, "Организациям"),
+				new News(R.drawable.arrow, "Электронные услуги"),
+				new News(R.drawable.arrow, "Жизненные ситуации"),
+				new News(R.drawable.arrow, "Информация"),
+				new News(R.drawable.arrow, "Статистика посещений") };
 
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, newsData);
 
@@ -60,7 +61,7 @@ public class MainActivity extends Activity {
 		currentlistView.addHeaderView(header);
 		currentlistView.setAdapter(adapter);
 
-		/**Click method on Item. Each item is instance of News.class*/
+		/** Click method on Item. Each item is instance of News.class */
 		currentlistView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v,
@@ -89,16 +90,20 @@ public class MainActivity extends Activity {
 							AgenciesActivity.class);
 					startActivity(agenciesIntent);
 				}
-				
-				if("Направления деятельности".equals(pen)){
+
+				if ("Направления деятельности".equals(pen)) {
 					Intent areasIntent = new Intent(v.getContext(),
 							AreasOfActivity.class);
 					startActivity(areasIntent);
 				}
+				
+				if ("Поиск по новостям".equals(pen)) {
+					Intent searchIntent = new Intent(v.getContext(),
+							SearchActivity.class);
+					startActivity(searchIntent);
+				}
 			}
 		});
-		
+
 	}
 }
-					
-
