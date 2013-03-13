@@ -40,7 +40,8 @@ public class AboutUsActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		largeText = (TextView) findViewById(R.id.textView1);
-
+		
+		/*Check network connection*/
 		if (NetworkStats.isNetworkAvailable(this)) {
 
 			DownloadHtml downloadHtml = new DownloadHtml();

@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -158,12 +159,22 @@ public class MainActivity extends Activity {
 
 			}
 		});
-
 	}
 
 	private class DownloadHtml extends AsyncTask<String, Integer, String> {
 
 		String result;
+		ProgressDialog pd;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pd = new ProgressDialog(MainActivity.this);
+			pd.setTitle("Load");
+			pd.setMessage("Loading...");
+			pd.show();
+
+		}
 
 		@Override
 		protected String doInBackground(String... urls) {
@@ -178,7 +189,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-
+			pd.dismiss();
 		}
 
 	}
