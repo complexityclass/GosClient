@@ -11,6 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * @author complexityclass Class for mange ListView rows
+ * 
+ */
 public class NewsAdapter extends ArrayAdapter<News> {
 
 	Context context;
@@ -25,9 +29,11 @@ public class NewsAdapter extends ArrayAdapter<News> {
 	}
 
 	/**
-	 * @param int position in ListView 
-	 * @param View convertView current view
-	 * @param ViewGroup parent 
+	 * @param int position in ListView
+	 * @param View
+	 *            convertView current view
+	 * @param ViewGroup
+	 *            parent
 	 * */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -57,6 +63,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
 	}
 
+	/** Class holder for News */
 	static class NewsHolder {
 		ImageView imgIcon;
 		TextView txtTitle;

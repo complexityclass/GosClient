@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 	private ListView currentlistView;
 	private ImageButton searchButton;
 	private EditText queryText;
-	
+
 	private static final String SEARCH_URL = "http://pgu.khv.gov.ru/?a=Search&query=";
 
 	@Override
@@ -79,8 +79,13 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 
-				String pen = parent.getItemAtPosition(position).toString();
+				String pen;
 
+				try {
+					pen = parent.getItemAtPosition(position).toString();
+				} catch (NullPointerException e) {
+					pen = "mainMenu";
+				}
 				if ("О проекте".equals(pen)) {
 					Intent myIntent = new Intent(v.getContext(),
 							AboutUsActivity.class);
