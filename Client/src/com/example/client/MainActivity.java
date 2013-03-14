@@ -131,6 +131,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 
 				String html = "obtaining";
+				queryText.setText("портал");
 
 				try {
 					String encodeQuery = URLEncoder.encode(queryText.getText()
@@ -142,16 +143,20 @@ public class MainActivity extends Activity {
 						try {
 							html = downloadHtml.get();
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (ExecutionException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+
+						Intent searchIntent = new Intent(v.getContext(),
+								SearchActivity.class);
+						searchIntent.putExtra("html", html);
+						searchIntent.putExtra("query", queryText.getText().toString());
+						startActivity(searchIntent);
+
 					}
 
 				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 

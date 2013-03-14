@@ -32,6 +32,21 @@ public class HtmlParser {
 		rootNode = cleaner.clean(html);
 	}
 
+	public List<TagNode> getObjectByTagAndClass(String tag, String CSSClassName) {
+
+		List<TagNode> linkList = new ArrayList<TagNode>();
+		TagNode contentElements[] = rootNode.getElementsByName(tag, true);
+
+		for (int i = 0; contentElements != null && i < contentElements.length; i++) {
+			String classType = contentElements[i].getAttributeByName("class");
+			if (classType != null && classType.equals(CSSClassName)) {
+				linkList.add(contentElements[i]);
+			}
+		}
+		return linkList;
+
+	}
+
 	/**
 	 * Get List of tags by class name Use in {@link AboutUsActivity}
 	 * 
@@ -81,18 +96,18 @@ public class HtmlParser {
 
 		return spanList;
 	}
-	
-	public List <TagNode> getNews(String CSSClassName){
+
+	public List<TagNode> getNews(String CSSClassName) {
 		List<TagNode> liList = new ArrayList<TagNode>();
 		TagNode[] usageClass = rootNode.getElementsByName("p", true);
-		
-		for(int i = 0; i < usageClass.length && usageClass != null; i++){
+
+		for (int i = 0; i < usageClass.length && usageClass != null; i++) {
 			String classType = usageClass[i].getAttributeByName("class");
-			if(classType != null && classType.equals(CSSClassName)){
+			if (classType != null && classType.equals(CSSClassName)) {
 				liList.add(usageClass[i]);
 			}
 		}
-		
+
 		return liList;
 	}
 
