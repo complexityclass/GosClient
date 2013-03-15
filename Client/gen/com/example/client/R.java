@@ -45,21 +45,24 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int list_header_row=0x7f030001;
-        public static final int list_header_row_areas=0x7f030002;
-        public static final int list_header_row_main=0x7f030003;
-        public static final int list_header_search=0x7f030004;
-        public static final int list_row=0x7f030005;
-        public static final int list_view_text_text=0x7f030006;
-        public static final int listview_layout=0x7f030007;
-        public static final int listview_searchbar_layout=0x7f030008;
-        public static final int main=0x7f030009;
-        public static final int newsrowlayout=0x7f03000a;
-        public static final int rowlayout=0x7f03000b;
-        public static final int search_activity=0x7f03000c;
+        public static final int activity_test=0x7f030001;
+        public static final int list_header_row=0x7f030002;
+        public static final int list_header_row_areas=0x7f030003;
+        public static final int list_header_row_information=0x7f030004;
+        public static final int list_header_row_main=0x7f030005;
+        public static final int list_header_search=0x7f030006;
+        public static final int list_row=0x7f030007;
+        public static final int list_view_text_text=0x7f030008;
+        public static final int listview_layout=0x7f030009;
+        public static final int listview_searchbar_layout=0x7f03000a;
+        public static final int main=0x7f03000b;
+        public static final int newsrowlayout=0x7f03000c;
+        public static final int rowlayout=0x7f03000d;
+        public static final int search_activity=0x7f03000e;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
+        public static final int activity_test=0x7f060001;
     }
     public static final class string {
         public static final int about_project_ru=0x7f04000a;
@@ -68,6 +71,7 @@ public final class R {
         public static final int areas_of_ru=0x7f04000b;
         public static final int citizens_ru=0x7f040013;
         public static final int electronic_services_ru=0x7f04000e;
+        public static final int faq_ru=0x7f040017;
         public static final int hello_world=0x7f040001;
         public static final int information_ru=0x7f040010;
         public static final int life_situations_ru=0x7f04000f;
@@ -75,12 +79,16 @@ public final class R {
         public static final int news_ru=0x7f04000c;
         public static final int organizations_ru=0x7f04000d;
         public static final int search_news_ru=0x7f040012;
+        public static final int spots_treatment_ru=0x7f040014;
         public static final int title_activity_about_us=0x7f040004;
         public static final int title_activity_agencies=0x7f040007;
         public static final int title_activity_areas_of=0x7f040008;
         public static final int title_activity_citizen_reg=0x7f040006;
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_news=0x7f040005;
+        public static final int title_activity_test=0x7f040018;
+        public static final int universal_card_ru=0x7f040016;
+        public static final int useful_links_ru=0x7f040015;
         public static final int visitor_statistics_ru=0x7f040011;
     }
     public static final class style {

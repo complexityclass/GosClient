@@ -20,5 +20,10 @@
     <string name="visitor_statistics_ru">Статистика посещений</string>
     <string name="search_news_ru">Поиск по новостям</string>
     <string name="citizens_ru">Гражданам</string>
+    <string name="spots_treatment_ru">Места обращения</string>
+    <string name="useful_links_ru">Полезные ссылки</string>
+    <string name="universal_card_ru">Развитие универсальной электронной карты</string>
+    <string name="faq_ru">Часто задаваемые вопросы</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>

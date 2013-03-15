@@ -1,0 +1,15 @@
+package com.example.client;
+
+import android.app.Activity;
+
+/**
+ * @author complexityc
+ * Class for information about Portal
+ * Handle links for: 
+ *  AboutUsActivity
+ *  
+ * 
+ */
+public class InformationActivity extends Activity {
+
+}

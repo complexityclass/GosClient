@@ -96,8 +96,10 @@ public class MainActivity extends Activity {
 				final String agencies = getString(R.string.agencies_ru);
 				final String areas_of = getString(R.string.areas_of_ru);
 				final String searchByNews = getString(R.string.search_news_ru);
+				final String information = getString(R.string.information_ru);
 
 				// Open new activities by click
+				// Change to CASE !!!
 				try {
 					pen = parent.getItemAtPosition(position).toString();
 				} catch (NullPointerException e) {
@@ -141,6 +143,13 @@ public class MainActivity extends Activity {
 							SearchActivity.class);
 					startActivity(searchIntent);
 				}
+
+				if (information.equals(pen)) {
+					Intent informationIntent = new Intent(v.getContext(),
+							InformationActivity.class);
+					startActivity(informationIntent);
+				}
+
 			}
 		});
 
@@ -170,7 +179,7 @@ public class MainActivity extends Activity {
 							e.printStackTrace();
 						}
 
-						/**Open Search activity {SearchActivity.java}*/
+						/** Open Search activity {SearchActivity.java} */
 						Intent searchIntent = new Intent(v.getContext(),
 								SearchActivity.class);
 						searchIntent.putExtra("html", html);
