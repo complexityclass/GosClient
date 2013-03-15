@@ -62,15 +62,26 @@ public final class R {
         public static final int activity_main=0x7f060000;
     }
     public static final class string {
+        public static final int about_project_ru=0x7f04000a;
+        public static final int agencies_ru=0x7f040009;
         public static final int app_name=0x7f040000;
+        public static final int areas_of_ru=0x7f04000b;
+        public static final int citizens_ru=0x7f040013;
+        public static final int electronic_services_ru=0x7f04000e;
         public static final int hello_world=0x7f040001;
+        public static final int information_ru=0x7f040010;
+        public static final int life_situations_ru=0x7f04000f;
         public static final int menu_settings=0x7f040002;
+        public static final int news_ru=0x7f04000c;
+        public static final int organizations_ru=0x7f04000d;
+        public static final int search_news_ru=0x7f040012;
         public static final int title_activity_about_us=0x7f040004;
         public static final int title_activity_agencies=0x7f040007;
         public static final int title_activity_areas_of=0x7f040008;
         public static final int title_activity_citizen_reg=0x7f040006;
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_news=0x7f040005;
+        public static final int visitor_statistics_ru=0x7f040011;
     }
     public static final class style {
         public static final int AppTheme=0x7f050000;

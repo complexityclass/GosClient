@@ -35,7 +35,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * @author complexityclass First activity manage app directions
+ * @author complexityclass First activity manage app directions First screen of
+ *         the App. Show Main menu and service search bar.
  * 
  */
 public class MainActivity extends Activity {
@@ -43,6 +44,8 @@ public class MainActivity extends Activity {
 	private ListView currentlistView;
 	private ImageButton searchButton;
 	private EditText queryText;
+
+	private ProgressDialog progressDialog;
 
 	private static final String SEARCH_URL = "http://pgu.khv.gov.ru/?a=Search&query=";
 
@@ -53,28 +56,33 @@ public class MainActivity extends Activity {
 
 		// MainActivity has static content
 		News[] newsData = new News[] {
-				new News(R.drawable.arrow, "Поиск по новостям"),
-				new News(R.drawable.arrow, "Ведомства"),
-				new News(R.drawable.arrow, "О проекте"),
-				new News(R.drawable.arrow, "Направления деятельности"),
-				new News(R.drawable.arrow, "Гражданам"),
-				new News(R.drawable.arrow, "Новости"),
-				new News(R.drawable.arrow, "Организациям"),
-				new News(R.drawable.arrow, "Электронные услуги"),
-				new News(R.drawable.arrow, "Жизненные ситуации"),
-				new News(R.drawable.arrow, "Информация"),
-				new News(R.drawable.arrow, "Статистика посещений") };
+				new News(R.drawable.arrow, getString(R.string.agencies_ru)),
+				new News(R.drawable.arrow, getString(R.string.about_project_ru)),
+				new News(R.drawable.arrow, getString(R.string.areas_of_ru)),
+				new News(R.drawable.arrow, getString(R.string.citizens_ru)),
+				new News(R.drawable.arrow, getString(R.string.news_ru)),
+				new News(R.drawable.arrow, getString(R.string.organizations_ru)),
+				new News(R.drawable.arrow,
+						getString(R.string.electronic_services_ru)),
+				new News(R.drawable.arrow,
+						getString(R.string.life_situations_ru)),
+				new News(R.drawable.arrow, getString(R.string.information_ru)),
+				new News(R.drawable.arrow,
+						getString(R.string.visitor_statistics_ru)),
+				new News(R.drawable.arrow, getString(R.string.search_news_ru)) };
 
+		// set custom adapter
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, newsData);
 
 		currentlistView = (ListView) findViewById(R.id.listView1);
-
 		View header = (View) getLayoutInflater().inflate(
 				R.layout.list_header_row_main, null);
 		currentlistView.addHeaderView(header);
 		currentlistView.setAdapter(adapter);
 
-		/** Click method on Item. Each item is instance of News.class */
+		/**
+		 * Click method on Item. Each item is instance of News.class
+		 */
 		currentlistView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v,
@@ -82,40 +90,53 @@ public class MainActivity extends Activity {
 
 				String pen;
 
+				final String about_project = getString(R.string.about_project_ru);
+				final String news = getString(R.string.news_ru);
+				final String citizens = getString(R.string.citizens_ru);
+				final String agencies = getString(R.string.agencies_ru);
+				final String areas_of = getString(R.string.areas_of_ru);
+				final String searchByNews = getString(R.string.search_news_ru);
+
+				// Open new activities by click
 				try {
 					pen = parent.getItemAtPosition(position).toString();
 				} catch (NullPointerException e) {
 					pen = "mainMenu";
 				}
-				if ("О проекте".equals(pen)) {
+				if (about_project.equals(pen)) {
 					Intent myIntent = new Intent(v.getContext(),
 							AboutUsActivity.class);
+
+					// progressDialog = new ProgressDialog(this);
+					progressDialog
+							.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
 					startActivity(myIntent);
 
 				}
-				if ("Новости".equals(pen)) {
+				if (news.equals(pen)) {
 					Intent newsIntent = new Intent(v.getContext(),
 							NewsActivity.class);
 					startActivity(newsIntent);
 				}
-				if ("Гражданам".equals(pen)) {
+				if (citizens.equals(pen)) {
 					Intent citizensRegIntent = new Intent(v.getContext(),
 							CitizenRegActivity.class);
 					startActivity(citizensRegIntent);
 				}
-				if ("Ведомства".equals(pen)) {
+				if (agencies.equals(pen)) {
 					Intent agenciesIntent = new Intent(v.getContext(),
 							AgenciesActivity.class);
 					startActivity(agenciesIntent);
 				}
 
-				if ("Направления деятельности".equals(pen)) {
+				if (areas_of.equals(pen)) {
 					Intent areasIntent = new Intent(v.getContext(),
 							AreasOfActivity.class);
 					startActivity(areasIntent);
 				}
 
-				if ("Поиск по новостям".equals(pen)) {
+				if (searchByNews.equals(pen)) {
 					Intent searchIntent = new Intent(v.getContext(),
 							SearchActivity.class);
 					startActivity(searchIntent);
@@ -127,7 +148,7 @@ public class MainActivity extends Activity {
 		queryText = (EditText) findViewById(R.id.editText1);
 
 		searchButton.setOnClickListener(new OnClickListener() {
-
+			/** Check network connection ang GET html */
 			public void onClick(View v) {
 
 				String html = "obtaining";
@@ -138,7 +159,8 @@ public class MainActivity extends Activity {
 							.toString(), "UTF-8");
 
 					if (NetworkStats.isNetworkAvailable(MainActivity.this)) {
-						DownloadHtml downloadHtml = new DownloadHtml();
+						DownloadHtml downloadHtml = new DownloadHtml(
+								MainActivity.this);
 						downloadHtml.execute(SEARCH_URL + encodeQuery);
 						try {
 							html = downloadHtml.get();
@@ -148,10 +170,12 @@ public class MainActivity extends Activity {
 							e.printStackTrace();
 						}
 
+						/**Open Search activity {SearchActivity.java}*/
 						Intent searchIntent = new Intent(v.getContext(),
 								SearchActivity.class);
 						searchIntent.putExtra("html", html);
-						searchIntent.putExtra("query", queryText.getText().toString());
+						searchIntent.putExtra("query", queryText.getText()
+								.toString());
 						startActivity(searchIntent);
 
 					}
@@ -166,19 +190,29 @@ public class MainActivity extends Activity {
 		});
 	}
 
+	public void turnOnProgressDialog(ProgressDialog progressDialog) {
+		progressDialog = new ProgressDialog(this);
+		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		progressDialog.show();
+	}
+
 	private class DownloadHtml extends AsyncTask<String, Integer, String> {
 
 		String result;
-		ProgressDialog pd;
+		Activity parent;
+
+		DownloadHtml(Activity parent) {
+			this.parent = parent;
+		}
 
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pd = new ProgressDialog(MainActivity.this);
-			pd.setTitle("Load");
-			pd.setMessage("Loading...");
-			pd.show();
-
+			progressDialog = new ProgressDialog(parent);
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			progressDialog.setMessage("Loading..."); // //!!!!! add to
+														// strings.xml
+			progressDialog.setProgress(0);
 		}
 
 		@Override
@@ -193,8 +227,15 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
+		protected void onProgressUpdate(Integer... values) {
+			super.onProgressUpdate(values);
+			progressDialog.setProgress(50);
+		}
+
+		@Override
 		protected void onPostExecute(String result) {
-			pd.dismiss();
+			progressDialog.setProgress(100);
+			progressDialog.dismiss();
 		}
 
 	}
