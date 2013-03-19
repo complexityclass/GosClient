@@ -1,0 +1,27 @@
+package com.example.client;
+import android.app.Activity;
+import android.os.Bundle;
+
+/**
+ * @author complexity
+ * Activity  shows useful links and redirected to WebView
+ *
+ */
+public class UsefulLinksActivity extends Activity {
+	
+	private static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=Static&content=51"
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		
+		
+	}
+	
+	
+	
+
+}

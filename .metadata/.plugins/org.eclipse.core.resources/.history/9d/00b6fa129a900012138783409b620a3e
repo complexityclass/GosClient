@@ -1,0 +1,54 @@
+package com.example.client;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.widget.ListView;
+
+/**
+ * @author complexity
+ * Activity  shows useful links and redirected to WebView
+ *
+ */
+public class UsefulLinksActivity extends Activity {
+	
+	private static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=Static&content=51";
+	private ListView currentListView;
+	
+	private List<String> linksText;
+	private List<Integer> pics;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+	}
+	
+	
+	private class DownloadHtml extends AsyncTask<String, Integer, List<String>>{
+		
+		List<String> resultList = new ArrayList<String>();
+
+		@Override
+		protected List<String> doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(List<String> result) {
+			super.onPostExecute(result);
+		}
+		
+		
+		
+	}
+	
+	
+	
+
+}

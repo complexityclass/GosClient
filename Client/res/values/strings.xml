@@ -25,5 +25,6 @@
     <string name="universal_card_ru">Развитие универсальной электронной карты</string>
     <string name="faq_ru">Часто задаваемые вопросы</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
 
 </resources>

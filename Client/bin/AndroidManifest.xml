@@ -33,7 +33,7 @@
                 <category android:name="android.intent.category.OPENABLE" />
             </intent-filter>
         </activity>
-         <activity
+        <activity
             android:name=".SpotsTreatmentActivity"
             android:label="@string/title_activity_about_us" >
             <intent-filter>
@@ -99,6 +99,24 @@
         <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UsefulLinksActivity"
+            android:label="@string/title_activity_test" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:label="@string/title_activity_web_view" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

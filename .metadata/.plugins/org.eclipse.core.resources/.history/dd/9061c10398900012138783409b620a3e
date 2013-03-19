@@ -1,0 +1,14 @@
+package com.example.client;
+import android.app.Activity;
+
+/**
+ * @author complexity
+ * Activity  shows useful links and redirected to WebView
+ *
+ */
+public class UsefulLinksActivity extends Activity {
+	
+	
+	
+
+}

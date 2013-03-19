@@ -23,6 +23,7 @@ import android.widget.Toast;
 public class InformationActivity extends Activity {
 
 	private ListView currentlistView;
+	private static final String UN_CARD_URL = "http://services.khv.ru/uek.aspx";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +75,17 @@ public class InformationActivity extends Activity {
 					startActivity(aboutIntent);
 
 				} else if (spots_treatment.equals(pen)) {
-					Intent spotsIntent = new Intent(v.getContext(),SpotsTreatmentActivity.class);
+					Intent spotsIntent = new Intent(v.getContext(),
+							SpotsTreatmentActivity.class);
 					startActivity(spotsIntent);
+				} else if (useful_links.equals(pen)) {
+					Intent usefulLinksIntent = new Intent(v.getContext(),
+							UsefulLinksActivity.class);
+					startActivity(usefulLinksIntent);
+				} else if (universal_card.equals(pen)) {
+					Intent unCardIntent = new Intent(v.getContext(),
+							WebViewActivity.class);
+					unCardIntent.putExtra("url", UN_CARD_URL);
 				}
 
 			}
