@@ -1,5 +1,6 @@
 package com.example.parser;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import com.example.client.AboutUsActivity;
  */
 public class HtmlParser {
 
-	TagNode rootNode;
+	TagNode rootNode;	
 
 	/**
 	 * Constructor

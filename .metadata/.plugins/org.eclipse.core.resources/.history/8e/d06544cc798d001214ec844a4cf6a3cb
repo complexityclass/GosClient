@@ -1,7 +1,0 @@
-package com.example.enums;
-
-public enum MenuFields {
-	
-	ABOUT_PROJECT(getS)
-	
-}

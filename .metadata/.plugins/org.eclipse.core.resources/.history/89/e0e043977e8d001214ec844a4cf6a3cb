@@ -1,7 +1,0 @@
-package com.example.client;
-
-import Activity;
-
-public class SpotsTreatmentActivity extends Activity {
-
-}

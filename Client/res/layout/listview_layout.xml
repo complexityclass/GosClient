@@ -4,12 +4,13 @@
     android:orientation="vertical" 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/slide_"> 
-    
+    android:background="@drawable/back"> 
+    
+
      <ListView
          android:id="@+id/listView1"
          android:layout_width="fill_parent"
          android:layout_height="fill_parent"
-         android:background="@drawable/simple" />
+         android:background="@drawable/back" />
      
 </LinearLayout>

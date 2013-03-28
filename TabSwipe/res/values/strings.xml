@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Swipe Views</string>
+    <string name="body1">one</string>
+    <string name="body2">two</string>
+    <string name="body3">three</string>
+    <string name="label1">Tab 1</string>
+    <string name="label2">Tab 2</string>
+    <string name="label3">Tab 3</string>
+</resources>

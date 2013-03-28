@@ -86,7 +86,11 @@ public class InformationActivity extends Activity {
 					Intent unCardIntent = new Intent(v.getContext(),
 							WebViewActivity.class);
 					unCardIntent.putExtra("url", UN_CARD_URL);
-				}
+					startActivity(unCardIntent);
+				} else if (faq.equals(pen)) {
+					Intent swiper = new Intent(v.getContext(),
+							SwipeActivity.class);
+					startActivity(swiper);				}
 
 			}
 		});

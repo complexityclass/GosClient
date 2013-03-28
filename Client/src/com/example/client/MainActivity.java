@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 		// MainActivity has static content
 		News[] newsData = new News[] {
 				new News(R.drawable.arrow, getString(R.string.agencies_ru)),
-				new News(R.drawable.arrow, getString(R.string.about_project_ru)),
+				//new News(R.drawable.arrow, getString(R.string.about_project_ru)),
 				new News(R.drawable.arrow, getString(R.string.areas_of_ru)),
 				new News(R.drawable.arrow, getString(R.string.citizens_ru)),
 				new News(R.drawable.arrow, getString(R.string.news_ru)),
@@ -97,6 +97,7 @@ public class MainActivity extends Activity {
 				final String areas_of = getString(R.string.areas_of_ru);
 				final String searchByNews = getString(R.string.search_news_ru);
 				final String information = getString(R.string.information_ru);
+				final String lifeSituations = getString(R.string.life_situations_ru);
 
 				// Open new activities by click
 				// Change to CASE !!!
@@ -148,6 +149,12 @@ public class MainActivity extends Activity {
 					Intent informationIntent = new Intent(v.getContext(),
 							InformationActivity.class);
 					startActivity(informationIntent);
+				}
+
+				if (lifeSituations.equals(pen)) {
+					Intent lifeSitIntent = new Intent(v.getContext(),
+							LifeSituationsActivity.class);
+					startActivity(lifeSitIntent);
 				}
 
 			}
