@@ -104,6 +104,7 @@ public final class R {
         public static final int citizens_ru=0x7f050013;
         public static final int electronic_services_ru=0x7f05000e;
         public static final int faq_ru=0x7f050017;
+        public static final int federational=0x7f050023;
         public static final int hello_world=0x7f050001;
         public static final int information_ru=0x7f050010;
         public static final int label1=0x7f050020;
@@ -111,8 +112,10 @@ public final class R {
         public static final int label3=0x7f050022;
         public static final int life_situations_ru=0x7f05000f;
         public static final int menu_settings=0x7f050002;
+        public static final int munitipal=0x7f050024;
         public static final int news_ru=0x7f05000c;
         public static final int organizations_ru=0x7f05000d;
+        public static final int regional=0x7f050025;
         public static final int search_news_ru=0x7f050012;
         public static final int spots_treatment_ru=0x7f050014;
         public static final int title_activity_about_us=0x7f050004;

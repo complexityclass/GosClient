@@ -36,5 +36,8 @@
     <string name="label1">Tab 1</string>
     <string name="label2">Tab 2</string>
     <string name="label3">Tab 3</string>
+    <string name="federational">Федеральные</string>
+    <string name="munitipal">Муниципальные</string>
+    <string name="regional">Региональные</string>
 
 </resources>

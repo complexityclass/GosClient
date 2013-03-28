@@ -1,7 +1,20 @@
 package com.example.client;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import org.htmlcleaner.TagNode;
+
+import com.example.adapters.News;
+import com.example.adapters.NewsAdapter;
+import com.example.http.NetworkStats;
+import com.example.parser.HtmlParser;
+
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,9 +22,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TabWidget;
+import android.widget.TextView;
 
 public class LifeSituationsActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -137,13 +155,13 @@ public class LifeSituationsActivity extends FragmentActivity implements
 			String tabLabel = null;
 			switch (position) {
 			case 0:
-				tabLabel = getString(R.string.label1);
+				tabLabel = getString(R.string.federational);
 				break;
 			case 1:
-				tabLabel = getString(R.string.label2);
+				tabLabel = getString(R.string.regional);
 				break;
 			case 2:
-				tabLabel = getString(R.string.label3);
+				tabLabel = getString(R.string.munitipal);
 				break;
 			}
 
@@ -157,6 +175,23 @@ public class LifeSituationsActivity extends FragmentActivity implements
 	public static class TabFragment extends Fragment {
 
 		public static final String ARG_OBJECT = "object";
+		public static final String REGIONAL_URL = "http://pgu.khv.gov.ru/?a=Organizations&category=Regional";
+		public static final String MUNICIPAL_URL = "http://pgu.khv.gov.ru/?a=Organizations&category=Municipal";
+		public static final String FEDERAL_URL = "http://pgu.khv.gov.ru/?a=Organizations&category=Federal";
+		
+		private static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=Departments&category=Regional";
+		private static final String PAGE_URL2 = "http://pgu.khv.gov.ru/?a=Departments&category=Federal";
+		private static final String PAGE_URL3 = "http://pgu.khv.gov.ru/?a=Departments&category=Municipal";
+		
+		public String currentUrl;
+		
+		public List<String> linksText;
+		public List<Integer> pics;
+		public String myHTML = "";
+		
+		String[] values=new String[]{"India", "java", "c++","Ad.Java", "Linux", "Unix"};
+		
+		private ListView currentListView;
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,23 +199,107 @@ public class LifeSituationsActivity extends FragmentActivity implements
 
 			Bundle args = getArguments();
 			int position = args.getInt(ARG_OBJECT);
+			
+			String url = "http://pgu.khv.gov.ru/?a=Organizations&category=Regional";
 
 			int tabLayout = 0;
 			switch (position) {
 			case 0:
-				tabLayout = R.layout.tab1;
+				tabLayout = R.layout.listview_layout;
+				currentUrl = PAGE_URL;
 				break;
 			case 1:
-				tabLayout = R.layout.tab2;
+				tabLayout = R.layout.listview_layout;
+				currentUrl = PAGE_URL2;
 				break;
 			case 2:
-				tabLayout = R.layout.tab3;
+				tabLayout = R.layout.listview_layout;
+				currentUrl = PAGE_URL3;
 				break;
 			}
-
+			
 			View rootView = inflater.inflate(tabLayout, container, false);
-
+			perform(rootView);
 			return rootView;
+		}
+		
+		public void perform(View v){
+			
+			currentListView = (ListView) v.findViewById(R.id.listView1);
+			//ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,values);
+		    //currentListView.setAdapter(adapter);
+			
+			linksText = new ArrayList<String>();
+			pics = new ArrayList<Integer>();
+			
+			DownloadHtml downloadHtml = new DownloadHtml();
+			downloadHtml.execute(currentUrl);
+			
+			try {
+				linksText = downloadHtml.get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			for (Iterator<String> iterator = linksText.iterator(); iterator
+					.hasNext();) {
+				System.out.println(iterator.next().toString());
+			}
+			
+			News values[] = new News[linksText.size()];
+			
+			int i = 0;
+			for (Iterator<String> iterator = linksText.iterator(); iterator
+					.hasNext();) {
+				String temp = iterator.next().toString();
+				values[i] = new News(R.drawable.arrow, temp);
+				i++;
+			}
+			
+			NewsAdapter adapter = new NewsAdapter(getActivity(), R.layout.list_row, values);
+			currentListView.setAdapter(adapter);
+			
+			
+		} 
+		
+		private class DownloadHtml extends AsyncTask<String, Integer, List<String>> {
+
+			List<String> resultList = new ArrayList<String>();
+
+			@Override
+			protected List<String> doInBackground(String... urls) {
+				try {
+					String result = NetworkStats.getOutputFromURL(urls[0]);
+
+					HtmlParser parser;
+					try {
+						parser = new HtmlParser(result);
+						List<TagNode> links = parser
+								.getLinks("category-menu__link");
+						for (Iterator<TagNode> iterator = links.iterator(); iterator
+								.hasNext();) {
+							TagNode linkElement = (TagNode) iterator.next();
+							resultList.add(linkElement.getText().toString());
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				} catch (Exception e) {
+					Log.d("Background Task", e.toString());
+				}
+				return resultList;
+			}
+
+			@Override
+			protected void onPostExecute(List<String> resultList) {
+
+			}
+
 		}
 	}
 

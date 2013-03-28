@@ -1,8 +1,10 @@
 package com.example.adapters;
 
 import com.example.client.R;
+import com.example.client.LifeSituationsActivity.TabFragment;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,14 @@ public class NewsAdapter extends ArrayAdapter<News> {
 		this.layoutResourceId = layoutResourceId;
 		this.data = data;
 	}
+	
+	public NewsAdapter(TabFragment fragment, int layoutResourceId, News[] data) {
+		super(fragment.getActivity(), layoutResourceId, data);
+		this.context = fragment.getActivity();
+		this.layoutResourceId = layoutResourceId;
+		this.data = data;
+	}
+	
 
 	/**
 	 * @param int position in ListView
