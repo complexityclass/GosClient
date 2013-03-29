@@ -1,0 +1,131 @@
+package com.example.client;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import org.htmlcleaner.TagNode;
+
+import com.example.adapters.News;
+import com.example.adapters.NewsAdapter;
+import com.example.http.NetworkStats;
+import com.example.parser.HtmlParser;
+
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
+import android.net.wifi.p2p.WifiP2pManager.ActionListener;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TabWidget;
+import android.widget.TextView;
+import java.util.HashMap;
+import java.util.List;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+public class CitizenRegActivity extends FragmentActivity implements
+		ActionBar.TabListener {
+
+	CollectionPagerAdapter mCollectionPagerAdapter;
+	ViewPager mViewPager;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.tain);
+
+		mCollectionPagerAdapter = new CollectionPagerAdapter(
+				getSupportFragmentManager());
+
+	}
+
+	public void onTabUnselected(ActionBar.Tab tab,
+			FragmentTransaction fragmentTransaction) {
+	}
+
+	public void onTabSelected(ActionBar.Tab tab,
+			FragmentTransaction fragmentTransaction) {
+		mViewPager.setCurrentItem(tab.getPosition());
+	}
+
+	public void onTabReselected(ActionBar.Tab tab,
+			FragmentTransaction fragmentTransaction) {
+	}
+
+	public class CollectionPagerAdapter extends FragmentPagerAdapter {
+
+		final int NUM_ITEMS = 3; // number of tabs
+
+		public CollectionPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int i) {
+			Fragment fragment = new TabFragment();
+			Bundle args = new Bundle();
+			args.putInt(TabFragment.ARG_OBJECT, i);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		@Override
+		public int getCount() {
+			return NUM_ITEMS;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			String tabLabel = null;
+			switch (position) {
+			case 0:
+				tabLabel = getString(R.string.federational);
+				break;
+			case 1:
+				tabLabel = getString(R.string.regional);
+				break;
+			case 2:
+				tabLabel = getString(R.string.munitipal);
+				break;
+			}
+
+			return tabLabel;
+		}
+
+	}
+	
+	public static class TabFragment extends Fragment{
+		
+		public static final String ARG_OBJECT = "object";
+		public static final String REGIONAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional";
+		public static final String MUNICIPAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Municipal";
+		public static final String FEDERAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Federal";
+		
+		public String currentUrl;
+		
+		public List<String> linksText;
+		public List<Integer> pics;
+		public String myHTML = "";
+		
+		private ListView currentListView;
+		
+		
+	}
+
+}

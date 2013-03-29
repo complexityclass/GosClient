@@ -5,10 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.http.impl.client.TunnelRefusedException;
 import org.htmlcleaner.TagNode;
 
 import com.example.adapters.News;
 import com.example.adapters.NewsAdapter;
+import com.example.adapters.TupleAB;
 import com.example.http.NetworkStats;
 import com.example.parser.HtmlParser;
 
@@ -27,6 +29,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabWidget;
@@ -35,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -73,6 +78,21 @@ public class CitizenRegActivity extends FragmentActivity implements
 					.setText(mCollectionPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
+
+		actionBar.getTabAt(0).setCustomView(R.layout.tab_layout);
+		TextView txt1 = (TextView) actionBar.getTabAt(0).getCustomView()
+				.findViewById(R.id.textView1);
+		txt1.setText(R.string.federational);
+
+		actionBar.getTabAt(1).setCustomView(R.layout.tab_layout);
+		TextView txt2 = (TextView) actionBar.getTabAt(1).getCustomView()
+				.findViewById(R.id.textView1);
+		txt2.setText(R.string.regional);
+
+		actionBar.getTabAt(2).setCustomView(R.layout.tab_layout);
+		TextView txt3 = (TextView) actionBar.getTabAt(2).getCustomView()
+				.findViewById(R.id.textView1);
+		txt3.setText(R.string.munitipal);
 
 	}
 
@@ -138,9 +158,11 @@ public class CitizenRegActivity extends FragmentActivity implements
 		public static final String MUNICIPAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Municipal";
 		public static final String FEDERAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Federal";
 
+		public static final String DOMAIN = "http://pgu.khv.gov.ru/";
+
 		public String currentUrl;
 
-		public List<String> linksText;
+		public List<TupleAB<String, String>> linksText;
 		public List<Integer> pics;
 		public String myHTML = "";
 
@@ -180,7 +202,7 @@ public class CitizenRegActivity extends FragmentActivity implements
 
 			currentListView = (ListView) v.findViewById(R.id.listView1);
 
-			linksText = new ArrayList<String>();
+			linksText = new ArrayList<TupleAB<String, String>>();
 			pics = new ArrayList<Integer>();
 
 			DownloadHtml downloadHtml = new DownloadHtml();
@@ -196,47 +218,83 @@ public class CitizenRegActivity extends FragmentActivity implements
 				e.printStackTrace();
 			}
 
-			for (Iterator<String> iterator = linksText.iterator(); iterator
-					.hasNext();) {
-				System.out.println(iterator.next().toString());
-			}
-
 			News values[] = new News[linksText.size()];
 
-			int i = 0;
-			for (Iterator<String> iterator = linksText.iterator(); iterator
-					.hasNext();) {
-				String temp = iterator.next().toString();
+			for (int i = 0; i < linksText.size(); i++) {
+				String temp = linksText.get(i).getA();
+				System.out.println(linksText.get(i).getB());
 				values[i] = new News(R.drawable.arrow, temp);
-				i++;
 			}
 
 			NewsAdapter adapter = new NewsAdapter(getActivity(),
 					R.layout.list_row, values);
 			currentListView.setAdapter(adapter);
 
+			currentListView.setOnItemClickListener(new OnItemClickListener() {
+
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+
+					System.out.println(DOMAIN + linksText.get(position).getB());
+					Intent newIntent = new Intent(view.getContext(),
+							WebViewActivity.class);
+					newIntent.putExtra("url", DOMAIN
+							+ linksText.get(position).getB());
+					startActivity(newIntent);
+
+				}
+
+			});
+
 		}
 
 		private class DownloadHtml extends
-				AsyncTask<String, Integer, List<String>> {
+				AsyncTask<String, Integer, List<TupleAB<String, String>>> {
 
 			List<String> resultList = new ArrayList<String>();
+			List<String> hrefers = new ArrayList<String>();
+
+			List<TupleAB<String, String>> resultTuple = new ArrayList<TupleAB<String, String>>();
 
 			@Override
-			protected List<String> doInBackground(String... urls) {
+			protected List<TupleAB<String, String>> doInBackground(
+					String... urls) {
 				try {
 					String result = NetworkStats.getOutputFromURL(urls[0]);
 
 					HtmlParser parser;
 					try {
 						parser = new HtmlParser(result);
+
 						List<TagNode> links = parser.getObjectByTagAndClass(
 								"span", "category-menu__text");
+						List<TagNode> hrefLinks = parser
+								.getObjectByTagAndClass("a",
+										"category-menu__link");
+
 						for (Iterator<TagNode> iterator = links.iterator(); iterator
 								.hasNext();) {
 							TagNode linkElement = (TagNode) iterator.next();
 							resultList.add(linkElement.getText().toString());
 						}
+
+						for (Iterator<TagNode> iterator = hrefLinks.iterator(); iterator
+								.hasNext();) {
+							TagNode hrefer = (TagNode) iterator.next();
+							// System.out.println(hrefer.getAttributeByName("href").toString());
+							hrefers.add(hrefer.getAttributeByName("href")
+									.toString());
+						}
+
+						for (int i = 0; i < Math.min(resultList.size() - 1,
+								hrefers.size() - 1); i++) {
+							String s1 = resultList.get(i);
+							String s2 = hrefers.get(i);
+							TupleAB<String, String> temp = new TupleAB<String, String>(
+									s1, s2);
+							resultTuple.add(temp);
+						}
+
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -244,11 +302,12 @@ public class CitizenRegActivity extends FragmentActivity implements
 				} catch (Exception e) {
 					Log.d("Background Task", e.toString());
 				}
-				return resultList;
+				return resultTuple;
 			}
 
 			@Override
-			protected void onPostExecute(List<String> resultList) {
+			protected void onPostExecute(
+					List<TupleAB<String, String>> resultList) {
 
 			}
 
