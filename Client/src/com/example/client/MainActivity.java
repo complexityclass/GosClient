@@ -57,26 +57,24 @@ public class MainActivity extends Activity {
 		// MainActivity has static content
 		News[] newsData = new News[] {
 				new News(R.drawable.arrow, getString(R.string.agencies_ru)),
-				//new News(R.drawable.arrow, getString(R.string.about_project_ru)),
+				// new News(R.drawable.arrow,
+				// getString(R.string.about_project_ru)),
 				new News(R.drawable.arrow, getString(R.string.areas_of_ru)),
 				new News(R.drawable.arrow, getString(R.string.citizens_ru)),
 				new News(R.drawable.arrow, getString(R.string.news_ru)),
 				new News(R.drawable.arrow, getString(R.string.organizations_ru)),
-				new News(R.drawable.arrow,
-						getString(R.string.electronic_services_ru)),
-				new News(R.drawable.arrow,
-						getString(R.string.life_situations_ru)),
+				new News(R.drawable.arrow, getString(R.string.electronic_services_ru)),
+				new News(R.drawable.arrow, getString(R.string.life_situations_ru)),
 				new News(R.drawable.arrow, getString(R.string.information_ru)),
-				new News(R.drawable.arrow,
-						getString(R.string.visitor_statistics_ru)),
-				new News(R.drawable.arrow, getString(R.string.search_news_ru)) };
+				new News(R.drawable.arrow, getString(R.string.visitor_statistics_ru)),
+				new News(R.drawable.arrow, getString(R.string.search_news_ru)),
+				new News(R.drawable.arrow, "ExpandableListView") };
 
 		// set custom adapter
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, newsData);
 
 		currentlistView = (ListView) findViewById(R.id.listView1);
-		View header = (View) getLayoutInflater().inflate(
-				R.layout.list_header_row_main, null);
+		View header = (View) getLayoutInflater().inflate(R.layout.list_header_row_main, null);
 		currentlistView.addHeaderView(header);
 		currentlistView.setAdapter(adapter);
 
@@ -85,8 +83,7 @@ public class MainActivity extends Activity {
 		 */
 		currentlistView.setOnItemClickListener(new OnItemClickListener() {
 
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
 				String pen;
 
@@ -98,6 +95,7 @@ public class MainActivity extends Activity {
 				final String searchByNews = getString(R.string.search_news_ru);
 				final String information = getString(R.string.information_ru);
 				final String lifeSituations = getString(R.string.life_situations_ru);
+				final String expListView = "ExpandableListView";
 
 				// Open new activities by click
 				// Change to CASE !!!
@@ -107,54 +105,50 @@ public class MainActivity extends Activity {
 					pen = "mainMenu";
 				}
 				if (about_project.equals(pen)) {
-					Intent myIntent = new Intent(v.getContext(),
-							AboutUsActivity.class);
+					Intent myIntent = new Intent(v.getContext(), AboutUsActivity.class);
 
 					// progressDialog = new ProgressDialog(this);
-					progressDialog
-							.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+					progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 					startActivity(myIntent);
 
 				}
 				if (news.equals(pen)) {
-					Intent newsIntent = new Intent(v.getContext(),
-							NewsActivity.class);
+					Intent newsIntent = new Intent(v.getContext(), NewsActivity.class);
 					startActivity(newsIntent);
 				}
 				if (citizens.equals(pen)) {
-					Intent citizensRegIntent = new Intent(v.getContext(),
-							CitizenRegActivity.class);
+					Intent citizensRegIntent = new Intent(v.getContext(), CitizenRegActivity.class);
 					startActivity(citizensRegIntent);
 				}
 				if (agencies.equals(pen)) {
-					Intent agenciesIntent = new Intent(v.getContext(),
-							AgenciesActivity.class);
+					Intent agenciesIntent = new Intent(v.getContext(), AgenciesActivity.class);
 					startActivity(agenciesIntent);
 				}
 
 				if (areas_of.equals(pen)) {
-					Intent areasIntent = new Intent(v.getContext(),
-							AreasOfActivity.class);
+					Intent areasIntent = new Intent(v.getContext(), AreasOfActivity.class);
 					startActivity(areasIntent);
 				}
 
 				if (searchByNews.equals(pen)) {
-					Intent searchIntent = new Intent(v.getContext(),
-							SearchActivity.class);
+					Intent searchIntent = new Intent(v.getContext(), SearchActivity.class);
 					startActivity(searchIntent);
 				}
 
 				if (information.equals(pen)) {
-					Intent informationIntent = new Intent(v.getContext(),
-							InformationActivity.class);
+					Intent informationIntent = new Intent(v.getContext(), InformationActivity.class);
 					startActivity(informationIntent);
 				}
 
 				if (lifeSituations.equals(pen)) {
-					Intent lifeSitIntent = new Intent(v.getContext(),
-							LifeSituationsActivity.class);
+					Intent lifeSitIntent = new Intent(v.getContext(), LifeSituationsActivity.class);
 					startActivity(lifeSitIntent);
+				}
+
+				if (expListView.equals(pen)) {
+					Intent expListViewIntent = new Intent(v.getContext(), ExpandableListActivity.class);
+					startActivity(expListViewIntent);
 				}
 
 			}
@@ -171,12 +165,10 @@ public class MainActivity extends Activity {
 				queryText.setText("портал");
 
 				try {
-					String encodeQuery = URLEncoder.encode(queryText.getText()
-							.toString(), "UTF-8");
+					String encodeQuery = URLEncoder.encode(queryText.getText().toString(), "UTF-8");
 
 					if (NetworkStats.isNetworkAvailable(MainActivity.this)) {
-						DownloadHtml downloadHtml = new DownloadHtml(
-								MainActivity.this);
+						DownloadHtml downloadHtml = new DownloadHtml(MainActivity.this);
 						downloadHtml.execute(SEARCH_URL + encodeQuery);
 						try {
 							html = downloadHtml.get();
@@ -187,11 +179,9 @@ public class MainActivity extends Activity {
 						}
 
 						/** Open Search activity {SearchActivity.java} */
-						Intent searchIntent = new Intent(v.getContext(),
-								SearchActivity.class);
+						Intent searchIntent = new Intent(v.getContext(), SearchActivity.class);
 						searchIntent.putExtra("html", html);
-						searchIntent.putExtra("query", queryText.getText()
-								.toString());
+						searchIntent.putExtra("query", queryText.getText().toString());
 						startActivity(searchIntent);
 
 					}

@@ -17,7 +17,7 @@ import com.example.client.AboutUsActivity;
  */
 public class HtmlParser {
 
-	TagNode rootNode;	
+	public TagNode rootNode;	
 
 	/**
 	 * Constructor

@@ -29,14 +29,13 @@ public class NewsAdapter extends ArrayAdapter<News> {
 		this.layoutResourceId = layoutResourceId;
 		this.data = data;
 	}
-	
+
 	public NewsAdapter(TabFragment fragment, int layoutResourceId, News[] data) {
 		super(fragment.getActivity(), layoutResourceId, data);
 		this.context = fragment.getActivity();
 		this.layoutResourceId = layoutResourceId;
 		this.data = data;
 	}
-	
 
 	/**
 	 * @param int position in ListView

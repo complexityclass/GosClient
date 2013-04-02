@@ -31,8 +31,7 @@ import android.widget.ListView;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
-public class LifeSituationsActivity extends FragmentActivity implements
-		ActionBar.TabListener {
+public class LifeSituationsActivity extends FragmentActivity implements ActionBar.TabListener {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -61,8 +60,7 @@ public class LifeSituationsActivity extends FragmentActivity implements
 		// ViewPager and its adapters use support library fragments, so we must
 		// use
 		// getSupportFragmentManager.
-		mCollectionPagerAdapter = new CollectionPagerAdapter(
-				getSupportFragmentManager());
+		mCollectionPagerAdapter = new CollectionPagerAdapter(getSupportFragmentManager());
 
 		// Set up action bar.
 
@@ -82,18 +80,17 @@ public class LifeSituationsActivity extends FragmentActivity implements
 		// user swipes between sections.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mCollectionPagerAdapter);
-		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						// When swiping between different app sections, select
-						// the corresponding tab.
-						// We can also use ActionBar.Tab#select() to do this if
-						// we have a reference to the
-						// Tab.
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
+		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				// When swiping between different app sections, select
+				// the corresponding tab.
+				// We can also use ActionBar.Tab#select() to do this if
+				// we have a reference to the
+				// Tab.
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mCollectionPagerAdapter.getCount(); i++) {
@@ -102,26 +99,21 @@ public class LifeSituationsActivity extends FragmentActivity implements
 			// Also specify this Activity object, which implements the
 			// TabListener interface, as the
 			// listener for when this tab is selected.
-			actionBar.addTab(actionBar.newTab()
-					.setText(mCollectionPagerAdapter.getPageTitle(i))
-					.setTabListener(this));
+			actionBar.addTab(actionBar.newTab().setText(mCollectionPagerAdapter.getPageTitle(i)).setTabListener(this));
 		}
 
 	}
 
-	public void onTabUnselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
+	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 	}
 
-	public void onTabSelected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
+	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
-	public void onTabReselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
+	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 	}
 
 	/**
@@ -178,28 +170,27 @@ public class LifeSituationsActivity extends FragmentActivity implements
 		public static final String REGIONAL_URL = "http://pgu.khv.gov.ru/?a=Organizations&category=Regional";
 		public static final String MUNICIPAL_URL = "http://pgu.khv.gov.ru/?a=Organizations&category=Municipal";
 		public static final String FEDERAL_URL = "http://pgu.khv.gov.ru/?a=Organizations&category=Federal";
-		
+
 		private static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=Departments&category=Regional";
 		private static final String PAGE_URL2 = "http://pgu.khv.gov.ru/?a=Departments&category=Federal";
 		private static final String PAGE_URL3 = "http://pgu.khv.gov.ru/?a=Departments&category=Municipal";
-		
+
 		public String currentUrl;
-		
+
 		public List<String> linksText;
 		public List<Integer> pics;
 		public String myHTML = "";
-		
-		String[] values=new String[]{"India", "java", "c++","Ad.Java", "Linux", "Unix"};
-		
+
+		String[] values = new String[] { "India", "java", "c++", "Ad.Java", "Linux", "Unix" };
+
 		private ListView currentListView;
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 			Bundle args = getArguments();
 			int position = args.getInt(ARG_OBJECT);
-			
+
 			String url = "http://pgu.khv.gov.ru/?a=Organizations&category=Regional";
 
 			int tabLayout = 0;
@@ -217,24 +208,25 @@ public class LifeSituationsActivity extends FragmentActivity implements
 				currentUrl = PAGE_URL3;
 				break;
 			}
-			
+
 			View rootView = inflater.inflate(tabLayout, container, false);
 			perform(rootView);
 			return rootView;
 		}
-		
-		public void perform(View v){
-			
+
+		public void perform(View v) {
+
 			currentListView = (ListView) v.findViewById(R.id.listView1);
-			//ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,values);
-		    //currentListView.setAdapter(adapter);
-			
+			// ArrayAdapter<String> adapter=new
+			// ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,values);
+			// currentListView.setAdapter(adapter);
+
 			linksText = new ArrayList<String>();
 			pics = new ArrayList<Integer>();
-			
+
 			DownloadHtml downloadHtml = new DownloadHtml();
 			downloadHtml.execute(currentUrl);
-			
+
 			try {
 				linksText = downloadHtml.get();
 			} catch (InterruptedException e) {
@@ -244,28 +236,25 @@ public class LifeSituationsActivity extends FragmentActivity implements
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			for (Iterator<String> iterator = linksText.iterator(); iterator
-					.hasNext();) {
+
+			for (Iterator<String> iterator = linksText.iterator(); iterator.hasNext();) {
 				System.out.println(iterator.next().toString());
 			}
-			
+
 			News values[] = new News[linksText.size()];
-			
+
 			int i = 0;
-			for (Iterator<String> iterator = linksText.iterator(); iterator
-					.hasNext();) {
+			for (Iterator<String> iterator = linksText.iterator(); iterator.hasNext();) {
 				String temp = iterator.next().toString();
 				values[i] = new News(R.drawable.arrow, temp);
 				i++;
 			}
-			
+
 			NewsAdapter adapter = new NewsAdapter(getActivity(), R.layout.list_row, values);
 			currentListView.setAdapter(adapter);
-			
-			
-		} 
-		
+
+		}
+
 		private class DownloadHtml extends AsyncTask<String, Integer, List<String>> {
 
 			List<String> resultList = new ArrayList<String>();
@@ -278,10 +267,8 @@ public class LifeSituationsActivity extends FragmentActivity implements
 					HtmlParser parser;
 					try {
 						parser = new HtmlParser(result);
-						List<TagNode> links = parser
-								.getLinks("category-menu__link");
-						for (Iterator<TagNode> iterator = links.iterator(); iterator
-								.hasNext();) {
+						List<TagNode> links = parser.getLinks("category-menu__link");
+						for (Iterator<TagNode> iterator = links.iterator(); iterator.hasNext();) {
 							TagNode linkElement = (TagNode) iterator.next();
 							resultList.add(linkElement.getText().toString());
 						}

@@ -39,5 +39,7 @@
     <string name="federational">Федеральные</string>
     <string name="munitipal">Муниципальные</string>
     <string name="regional">Региональные</string>
+    <string name="title_activity_expandable_list_view_test">ExpandableListViewTest</string>
+    <string name="title_activity_expandable_list">ExpandableListActivity</string>
 
 </resources>
