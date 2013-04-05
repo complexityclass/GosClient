@@ -1,5 +1,6 @@
 package com.example.client;
 
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,6 +12,7 @@ import org.htmlcleaner.TagNode;
 
 import com.example.adapters.CustomExpandableListAdapter;
 import com.example.adapters.ExpandableListAdapter;
+import com.example.adapters.ExpandableListChildsParentsAdapter;
 import com.example.adapters.TupleAB;
 import com.example.http.NetworkStats;
 import com.example.parser.HtmlParser;
@@ -18,6 +20,7 @@ import com.example.parser.HtmlParser;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.ExpandableListView;
@@ -27,11 +30,16 @@ public class ExpandableListActivity extends Activity {
 	String url = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional&catalog=770";
 	ArrayList<ArrayList<String>> listChilds;
 	ArrayList<String> listGroups;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.exp_list_view_layout);
+		
+		Intent urlIntent = getIntent();
+		url = urlIntent.getStringExtra("url");
 
 		DownloadListChilds downloadListChilds = new DownloadListChilds();
 		downloadListChilds.execute(url);
@@ -45,6 +53,24 @@ public class ExpandableListActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		DownLoadListParents downloadlistParents = new DownLoadListParents();
+		downloadlistParents.execute(url);
+		
+		try {
+			listGroups = downloadlistParents.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(Iterator<String> iterator = listGroups.iterator(); iterator.hasNext();){
+			System.out.println(iterator.next().toString() + "!!!!");
+		}
+		
 
 		for (Iterator<ArrayList<String>> iter = listChilds.iterator(); iter.hasNext();) {
 			for (Iterator<String> iterIn = iter.next().iterator(); iterIn.hasNext();) {
@@ -65,7 +91,8 @@ public class ExpandableListActivity extends Activity {
 		groups.add(children2);
 
 		ExpandableListView listView = (ExpandableListView) findViewById(R.id.exListView);
-		ExpandableListAdapter adapter = new ExpandableListAdapter(getApplicationContext(), listChilds);
+		//ExpandableListAdapter adapter = new ExpandableListAdapter(getApplicationContext(), listChilds);
+		ExpandableListChildsParentsAdapter adapter = new ExpandableListChildsParentsAdapter(getApplicationContext(), listChilds, listGroups);
 		listView.setAdapter(adapter);
 	}
 
@@ -123,6 +150,36 @@ public class ExpandableListActivity extends Activity {
 		@Override
 		protected void onPostExecute(ArrayList<ArrayList<String>> lister) {
 
+		}
+
+	}
+
+	private class DownLoadListParents extends AsyncTask<String, Integer, ArrayList<String>> {
+		ArrayList<String> parentList;
+
+		@Override
+		protected ArrayList<String> doInBackground(String... urls) {
+
+			parentList = new ArrayList<String>();
+
+			String result = NetworkStats.getOutputFromURL(urls[0]);
+			HtmlParser parser2;
+
+			try {
+				parser2 = new HtmlParser(result);
+
+				List<TagNode> lister = parser2.getObjectByTagAndClass("h2", "slide-tabs__title");
+				for (Iterator<TagNode> iterator = lister.iterator(); iterator.hasNext();) {
+					TagNode noder = (TagNode) iterator.next();
+					parentList.add(noder.getText().toString());
+				}
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return parentList;
 		}
 
 	}

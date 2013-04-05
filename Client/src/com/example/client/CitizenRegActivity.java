@@ -236,10 +236,14 @@ public class CitizenRegActivity extends FragmentActivity implements
 						int position, long id) {
 
 					System.out.println(DOMAIN + linksText.get(position).getB());
-					Intent newIntent = new Intent(view.getContext(),
+					/*Intent newIntent = new Intent(view.getContext(),
 							WebViewActivity.class);
 					newIntent.putExtra("url", DOMAIN
 							+ linksText.get(position).getB());
+					startActivity(newIntent);*/
+					
+					Intent newIntent = new Intent(view.getContext(),ExpandableListActivity.class);
+					newIntent.putExtra("url", DOMAIN + linksText.get(position).getB());
 					startActivity(newIntent);
 
 				}
