@@ -23,24 +23,33 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 
 public class ExpandableListActivity extends Activity {
+	
+	public static final String DOMAIN = "http://pgu.khv.gov.ru/";
 
 	String url = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional&catalog=770";
 	ArrayList<ArrayList<String>> listChilds;
 	ArrayList<String> listGroups;
-	
-	
+
+	ArrayList<ArrayList<String>> listChild2;
+
+	ArrayList<ArrayList<TupleAB<String, String>>> tupleListList = new ArrayList<ArrayList<TupleAB<String, String>>>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.exp_list_view_layout);
-		
+
 		Intent urlIntent = getIntent();
 		url = urlIntent.getStringExtra("url");
 
+		System.out.println("RUN EXPANDABLELISTACTIVITY!!!!!!!!!!!!!!!!!!!!!!!");
+		
 		DownloadListChilds downloadListChilds = new DownloadListChilds();
 		downloadListChilds.execute(url);
 
@@ -53,12 +62,23 @@ public class ExpandableListActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		DownLoadListParents downloadlistParents = new DownLoadListParents();
 		downloadlistParents.execute(url);
-		
+
 		try {
 			listGroups = downloadlistParents.get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+
+		DownloadListTupleChilds downloadListTupleChilds = new DownloadListTupleChilds();
+		downloadListTupleChilds.execute(url);
+
+		try {
+			tupleListList = downloadListTupleChilds.get();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,34 +86,46 @@ public class ExpandableListActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for(Iterator<String> iterator = listGroups.iterator(); iterator.hasNext();){
-			System.out.println(iterator.next().toString() + "!!!!");
-		}
-		
 
-		for (Iterator<ArrayList<String>> iter = listChilds.iterator(); iter.hasNext();) {
-			for (Iterator<String> iterIn = iter.next().iterator(); iterIn.hasNext();) {
-				System.out.println(iterIn.next().toString());
+		listChild2 = new ArrayList<ArrayList<String>>();
+
+		for (int i = 0; i < tupleListList.size(); i++) {
+
+			ArrayList<String> tempList = new ArrayList<String>();
+
+			for (int j = 0; j < tupleListList.get(i).size(); j++) {
+				// System.out.println("text :" +
+				// tupleListList.get(i).get(j).getA() + "href :" +
+				// tupleListList.get(i).get(j).getB());
+				tempList.add(tupleListList.get(i).get(j).getA().toString());
+				System.out.println("This is RIGHT SYSO" + tempList.get(j));
 			}
+			listChild2.add(tempList);
 		}
-
-		ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
-		ArrayList<String> children1 = new ArrayList<String>();
-		ArrayList<String> children2 = new ArrayList<String>();
-
-		children1.add("Child_1");
-		children1.add("Child_2");
-		groups.add(children1);
-		children2.add("Child_1");
-		children2.add("Child_2");
-		children2.add("Child_3");
-		groups.add(children2);
 
 		ExpandableListView listView = (ExpandableListView) findViewById(R.id.exListView);
-		//ExpandableListAdapter adapter = new ExpandableListAdapter(getApplicationContext(), listChilds);
-		ExpandableListChildsParentsAdapter adapter = new ExpandableListChildsParentsAdapter(getApplicationContext(), listChilds, listGroups);
+		// ExpandableListAdapter adapter = new
+		// ExpandableListAdapter(getApplicationContext(), listChilds);
+		ExpandableListChildsParentsAdapter adapter = new ExpandableListChildsParentsAdapter(getApplicationContext(),
+				listChilds, listGroups);
 		listView.setAdapter(adapter);
+		
+		listView.setOnChildClickListener(new OnChildClickListener() {
+
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+				
+				Intent intent = new Intent(v.getContext(), WebViewActivity.class);
+				intent.putExtra("url", DOMAIN + tupleListList.get(groupPosition).get(childPosition).getB());
+				
+				System.out.println("????????????????????This URL ::::" + DOMAIN + tupleListList.get(groupPosition).get(childPosition).getB() + "    &&&&&&&&&");
+				
+				startActivity(intent);
+				
+				return true;
+				
+			}
+		});
+		
 	}
 
 	@Override
@@ -129,6 +161,7 @@ public class ExpandableListActivity extends Activity {
 						ArrayList<String> group = new ArrayList<String>();
 						for (int i = 0; i < usClass.length && usClass != null; i++) {
 
+							// System.out.println(usClass[i].getAttributeByName("href").toString());
 							TagNode element = usClass[i];
 							group.add(element.getText().toString());
 
@@ -180,6 +213,60 @@ public class ExpandableListActivity extends Activity {
 			}
 
 			return parentList;
+		}
+
+	}
+
+	private class DownloadListTupleChilds extends
+			AsyncTask<String, Integer, ArrayList<ArrayList<TupleAB<String, String>>>> {
+		ArrayList<ArrayList<TupleAB<String, String>>> tupleListList;
+
+		@Override
+		protected ArrayList<ArrayList<TupleAB<String, String>>> doInBackground(String... urls) {
+
+			tupleListList = new ArrayList<ArrayList<TupleAB<String, String>>>();
+
+			try {
+				String result = NetworkStats.getOutputFromURL(urls[0]);
+
+				HtmlParser parser;
+
+				try {
+					parser = new HtmlParser(result);
+
+					List<TagNode> lister = parser.getObjectByTagAndClass("ul", "list");
+					for (Iterator<TagNode> iterator = lister.iterator(); iterator.hasNext();) {
+
+						TagNode[] usClass = iterator.next().getElementsByName("a", true);
+
+						ArrayList<TupleAB<String, String>> group = new ArrayList<TupleAB<String, String>>();
+
+						for (int i = 0; i < usClass.length && usClass != null; i++) {
+
+							// System.out.println(usClass[i].getAttributeByName("href").toString());
+							TagNode element = usClass[i];
+
+							String s1 = element.getText().toString();
+							String s2 = usClass[i].getAttributeByName("href").toString();
+
+							TupleAB<String, String> tuple = new TupleAB<String, String>(s1, s2);
+
+							group.add(tuple);
+
+						}
+						tupleListList.add(group);
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} catch (Exception e) {
+				Log.d("Background Task", e.toString());
+			}
+
+			return tupleListList;
+
 		}
 
 	}
