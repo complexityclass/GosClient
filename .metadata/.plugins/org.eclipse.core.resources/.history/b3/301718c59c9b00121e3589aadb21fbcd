@@ -1,0 +1,105 @@
+package com.example.client;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
+import org.htmlcleaner.TagNode;
+
+import com.example.adapters.CustomExpandableListAdapter;
+import com.example.adapters.TupleAB;
+import com.example.http.NetworkStats;
+import com.example.parser.HtmlParser;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.ExpandableListView;
+
+public class ExpandableListActivity extends Activity {
+
+	String url = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional&catalog=770";
+	Map<String, ArrayList<TupleAB<String, String>>> maper;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.exp_list_view_layout);
+		
+		DownloadHtml downloadHtml = new DownloadHtml();
+		downloadHtml.execute(url);
+
+		try {
+			maper = downloadHtml.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ExpandableListView listView = (ExpandableListView) findViewById(R.id.exListView);
+		CustomExpandableListAdapter adapter = new CustomExpandableListAdapter(getApplicationContext(), maper);
+		listView.setAdapter(adapter);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.expandable_list, menu);
+		return true;
+	}
+
+	/** Send request in separate thread using AsyncTask */
+
+	private class DownloadHtml extends AsyncTask<String, Integer, Map<String, ArrayList<TupleAB<String, String>>>> {
+
+		Map<String, ArrayList<TupleAB<String, String>>> resultMap = new HashMap<String, ArrayList<TupleAB<String, String>>>();
+
+		@Override
+		protected Map<String, ArrayList<TupleAB<String, String>>> doInBackground(String... urls) {
+			try {
+				String result = NetworkStats.getOutputFromURL(urls[0]);
+
+				HtmlParser parser;
+				try {
+					parser = new HtmlParser(result);
+					List<TagNode> links = parser.getObjectByTagAndClass("i", "slide-tabs_left");
+					for (Iterator<TagNode> iterator = links.iterator(); iterator.hasNext();) {
+						TagNode linkElement = (TagNode) iterator.next();
+
+						TupleAB<String, String> temper1 = new TupleAB<String, String>("ok1", "notok1");
+						TupleAB<String, String> temper2 = new TupleAB<String, String>("ok2", "notok2");
+						TupleAB<String, String> temper3 = new TupleAB<String, String>("ok3", "notok3");
+
+						ArrayList<TupleAB<String, String>> temp = new ArrayList<TupleAB<String, String>>();
+						temp.add(temper1);
+						temp.add(temper2);
+						temp.add(temper3);
+
+						resultMap.put(linkElement.getText().toString(), temp);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} catch (Exception e) {
+				Log.d("Background Task", e.toString());
+			}
+			return resultMap;
+		}
+
+		@Override
+		protected void onPostExecute(Map<String, ArrayList<TupleAB<String, String>>> resultMap) {
+
+		}
+
+	}
+
+}
