@@ -1,0 +1,195 @@
+package com.example.client;
+
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
+import org.htmlcleaner.TagNode;
+
+import com.example.adapters.CustomExpandableListAdapter;
+import com.example.adapters.ExpandableListAdapter;
+import com.example.adapters.ExpandableListChildsParentsAdapter;
+import com.example.adapters.TupleAB;
+import com.example.http.NetworkStats;
+import com.example.parser.HtmlParser;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.ExpandableListView;
+
+public class ServiceDataActivity extends Activity {
+
+	String url = "http://pgu.khv.gov.ru/?a=Organizations&category=Regional&catalog=790&cat1=792&sid=2700000010000233273";
+	
+	ArrayList<String> listGroups;
+	ArrayList<ArrayList<String>> listChilds;
+	
+	
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.exp_list_view_layout);
+		
+		//Intent urlIntent = getIntent();
+		//url = urlIntent.getStringExtra("url");
+
+		DownloadListChilds downloadListChilds = new DownloadListChilds();
+		downloadListChilds.execute(url);
+
+		try {
+			listTuples = downloadListChilds.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		DownLoadListParents downloadlistParents = new DownLoadListParents();
+		downloadlistParents.execute(url);
+		
+		try {
+			listGroups = downloadlistParents.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(Iterator<String> iterator = listGroups.iterator(); iterator.hasNext();){
+			System.out.println(iterator.next().toString() + "!!!!");
+		}
+		
+		for(int i = 0; i < listTuples.size() - 1; i++){
+			ArrayList<String> tempList = new ArrayList<String>();
+			for(int j = 0; j < listTuples.get(i).size(); j++){
+				//tempList.add(listTuples.get(i).get(j).getA());
+				System.out.println(listTuples.get(i).get(j).getA());
+				System.out.println(listTuples.get(i).get(j).getB());
+			}
+		}
+
+		for(int i = 0; i < listGroups.size(); i++){
+			ArrayList<String> arrayList = new ArrayList<String>();
+			arrayList.add(i + "element");
+			listChilds.add(arrayList);
+		}
+		
+		ArrayList<String> children1 = new ArrayList<String>();
+
+		ExpandableListView listView = (ExpandableListView) findViewById(R.id.exListView);
+		//ExpandableListAdapter adapter = new ExpandableListAdapter(getApplicationContext(), listChilds);
+		ExpandableListChildsParentsAdapter adapter = new ExpandableListChildsParentsAdapter(getApplicationContext(), listChilds, listGroups);
+		listView.setAdapter(adapter);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.expandable_list, menu);
+		return true;
+	}
+
+	/** Send request in separate thread using AsyncTask */
+
+	private class DownloadListChilds extends AsyncTask<String, Integer, ArrayList<ArrayList<String>>> {
+
+		ArrayList<ArrayList<String>> childList;
+
+		@Override
+		protected ArrayList<ArrayList<String>> doInBackground(String... urls) {
+
+			childList = new ArrayList<ArrayList<TupleAB<String,String>>>();
+			
+			try {
+				String result = NetworkStats.getOutputFromURL(urls[0]);
+
+				HtmlParser parser;
+
+				try {
+					parser = new HtmlParser(result);
+
+					List<TagNode> lister = parser.getObjectByTagAndClass("ul", "list");
+					for (Iterator<TagNode> iterator = lister.iterator(); iterator.hasNext();) {
+
+						TagNode[] usClass = iterator.next().getElementsByName("a", true);
+						ArrayList<String> group = new ArrayList<String>();
+						ArrayList<String> hrefs = new ArrayList<String>();
+						ArrayList<TupleAB<String,String>> tupleHandler = new ArrayList<TupleAB<String,String>>();
+						for (int i = 0; i < usClass.length && usClass != null; i++) {
+
+							TagNode element = usClass[i];
+							//group.add(element.getText().toString());
+							//hrefs.add(usClass[i].getAttributeByName("href"));
+							
+							String s1 = element.getText().toString();
+							String s2 = usClass[i].getAttributeByName("href");
+							
+							TupleAB<String, String> tupler = new TupleAB<String, String>(s1,s2);
+							tupleHandler.add(tupler);
+
+						}
+						childList.add(tupleHandler);
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} catch (Exception e) {
+				Log.d("Background Task", e.toString());
+			}
+
+			return childList;
+		}
+
+		@Override
+		protected void onPostExecute(ArrayList<ArrayList<TupleAB<String,String>>> lister) {
+			
+		}
+
+	}
+
+	private class DownLoadListParents extends AsyncTask<String, Integer, ArrayList<String>> {
+		ArrayList<String> parentList;
+
+		@Override
+		protected ArrayList<String> doInBackground(String... urls) {
+
+			parentList = new ArrayList<String>();
+
+			String result = NetworkStats.getOutputFromURL(urls[0]);
+			HtmlParser parser2;
+
+			try {
+				parser2 = new HtmlParser(result);
+
+				List<TagNode> lister = parser2.getObjectByTagAndClass("h2", "slide-tabs__title");
+				for (Iterator<TagNode> iterator = lister.iterator(); iterator.hasNext();) {
+					TagNode noder = (TagNode) iterator.next();
+					parentList.add(noder.getText().toString());
+				}
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return parentList;
+		}
+
+	}
+
+}

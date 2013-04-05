@@ -104,6 +104,7 @@ public final class R {
         public static final int life_situations=0x7f070006;
     }
     public static final class string {
+        public static final int Habarovsk_Servise=0x7f050028;
         public static final int about_project_ru=0x7f05000a;
         public static final int action_settings=0x7f05001f;
         public static final int agencies_ru=0x7f050009;

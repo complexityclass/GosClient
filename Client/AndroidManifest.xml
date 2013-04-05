@@ -150,6 +150,10 @@
             android:name="com.example.client.ExpandableListActivity"
             android:label="@string/title_activity_expandable_list" >
         </activity>
+        <activity
+            android:name="com.example.client.ServiceDataActivity"
+            android:label="@string/Habarovsk_Servise" >
+        </activity>
     </application>
 
 </manifest>

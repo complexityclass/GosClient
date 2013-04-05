@@ -147,7 +147,7 @@ public class MainActivity extends Activity {
 				}
 
 				if (expListView.equals(pen)) {
-					Intent expListViewIntent = new Intent(v.getContext(), ExpandableListActivity.class);
+					Intent expListViewIntent = new Intent(v.getContext(), ServiceDataActivity.class);
 					startActivity(expListViewIntent);
 				}
 

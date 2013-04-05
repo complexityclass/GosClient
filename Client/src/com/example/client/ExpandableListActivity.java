@@ -48,7 +48,6 @@ public class ExpandableListActivity extends Activity {
 		Intent urlIntent = getIntent();
 		url = urlIntent.getStringExtra("url");
 
-		System.out.println("RUN EXPANDABLELISTACTIVITY!!!!!!!!!!!!!!!!!!!!!!!");
 		
 		DownloadListChilds downloadListChilds = new DownloadListChilds();
 		downloadListChilds.execute(url);
@@ -114,11 +113,8 @@ public class ExpandableListActivity extends Activity {
 
 			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 				
-				Intent intent = new Intent(v.getContext(), WebViewActivity.class);
+				Intent intent = new Intent(v.getContext(), ServiceDataActivity.class);
 				intent.putExtra("url", DOMAIN + tupleListList.get(groupPosition).get(childPosition).getB());
-				
-				System.out.println("????????????????????This URL ::::" + DOMAIN + tupleListList.get(groupPosition).get(childPosition).getB() + "    &&&&&&&&&");
-				
 				startActivity(intent);
 				
 				return true;

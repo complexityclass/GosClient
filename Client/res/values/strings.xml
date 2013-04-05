@@ -41,5 +41,6 @@
     <string name="regional">Региональные</string>
     <string name="title_activity_expandable_list_view_test">ExpandableListViewTest</string>
     <string name="title_activity_expandable_list">ExpandableListActivity</string>
+     <string name="Habarovsk_Servise">Хабаровск Услуги</string>
 
 </resources>

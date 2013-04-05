@@ -48,16 +48,14 @@ public class UsefulLinksActivity extends Activity {
 			}
 		}
 
-		for (Iterator<String> iterator = linksText.iterator(); iterator
-				.hasNext();) {
+		for (Iterator<String> iterator = linksText.iterator(); iterator.hasNext();) {
 			System.out.println(iterator.next().toString());
 		}
 
 		News values[] = new News[linksText.size()];
 
 		int i = 0;
-		for (Iterator<String> iterator = linksText.iterator(); iterator
-				.hasNext();) {
+		for (Iterator<String> iterator = linksText.iterator(); iterator.hasNext();) {
 			String temp = iterator.next().toString();
 			values[i] = new News(R.drawable.arrow, temp);
 			i++;
@@ -66,8 +64,7 @@ public class UsefulLinksActivity extends Activity {
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, values);
 
 		currentListView = (ListView) findViewById(R.id.listView1);
-		View header = (View) getLayoutInflater().inflate(
-				R.layout.list_header_row_areas, null);
+		View header = (View) getLayoutInflater().inflate(R.layout.list_header_row_areas, null);
 		currentListView.addHeaderView(header);
 		currentListView.setAdapter(adapter);
 
@@ -84,32 +81,20 @@ public class UsefulLinksActivity extends Activity {
 			String result = NetworkStats.getOutputFromURL(urls[0]);
 			System.out.println(result);
 			HtmlParser parser;
-
+			
 			try {
 				parser = new HtmlParser(result);
-				List<TagNode> links = parser.getObjectByTagAndClass("p",
-						"MsoNormalCxSpFirst");
+				List<TagNode> links = parser.getObjectByTagAndClass("p", "MsoNormalCxSpFirst");
 
-				for (Iterator<TagNode> iterator = links.iterator(); iterator
-						.hasNext();) {
+				for (Iterator<TagNode> iterator = links.iterator(); iterator.hasNext();) {
+					
 					TagNode linkElement = (TagNode) iterator.next();
 					resultList.add(linkElement.getText().toString());
-					/*
-					List<TagNode> ahrefs = linkElement
-							.getElementListHavingAttribute("href", true);
-
-					for (Iterator<TagNode> iterator2 = ahrefs.iterator(); iterator
-							.hasNext();) {
-
-						TagNode inElement = (TagNode) iterator2.next();
-						if (inElement != null) {
-							//String ssyl = inElement.getAttributeByName("href");
-							System.out.println("oh yeah not null");
-						}
-
-					}
-					*/
+					
+					
+					//System.out.println("LINK ! " + linkElement.getAttributeByName("href").toString());
 				}
+				
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -124,5 +109,27 @@ public class UsefulLinksActivity extends Activity {
 		}
 
 	}
+	/*
+	private class DownloadLinks extends AsyncTask<String, Integer, List<String>> {
+		List<String> linkList = new ArrayList<String>();
+
+		@Override
+		protected List<String> doInBackground(String... urls) {
+			String result = NetworkStats.getOutputFromURL(urls[0]);
+			HtmlParser parser;
+
+			try {
+				parser = new HtmlParser(result);
+				List<TagNode> links = parser.getObjectByTagAndClass("p", "MsoNormalCxSpFirst");
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+	*/
 
 }
