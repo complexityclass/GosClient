@@ -62,15 +62,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.client.OrganizationsActivity"
-            android:label="@string/Habarovsk_Servise" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.OPENABLE" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name="com.example.client.AgenciesActivity"
             android:label="@string/title_activity_agencies" >
             <intent-filter>

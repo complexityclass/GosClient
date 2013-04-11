@@ -96,7 +96,6 @@ public class MainActivity extends Activity {
 				final String information = getString(R.string.information_ru);
 				final String lifeSituations = getString(R.string.life_situations_ru);
 				final String expListView = "ExpandableListView";
-				final String organizations = getString(R.string.organizations_ru);
 
 				// Open new activities by click
 				// Change to CASE !!!
@@ -113,41 +112,43 @@ public class MainActivity extends Activity {
 
 					startActivity(myIntent);
 
-				}else if (news.equals(pen)) {
+				}
+				if (news.equals(pen)) {
 					Intent newsIntent = new Intent(v.getContext(), NewsActivity.class);
 					startActivity(newsIntent);
-				
-				}else if (citizens.equals(pen)) {
+				}
+				if (citizens.equals(pen)) {
 					Intent citizensRegIntent = new Intent(v.getContext(), CitizenRegActivity.class);
 					startActivity(citizensRegIntent);
-				
-				}else if (agencies.equals(pen)) {
+				}
+				if (agencies.equals(pen)) {
 					Intent agenciesIntent = new Intent(v.getContext(), AgenciesActivity.class);
 					startActivity(agenciesIntent);
-				
-				}else if (areas_of.equals(pen)) {
+				}
+
+				if (areas_of.equals(pen)) {
 					Intent areasIntent = new Intent(v.getContext(), AreasOfActivity.class);
 					startActivity(areasIntent);
-				
-				}else if (searchByNews.equals(pen)) {
+				}
+
+				if (searchByNews.equals(pen)) {
 					Intent searchIntent = new Intent(v.getContext(), SearchActivity.class);
 					startActivity(searchIntent);
-				
-				}else if (information.equals(pen)) {
+				}
+
+				if (information.equals(pen)) {
 					Intent informationIntent = new Intent(v.getContext(), InformationActivity.class);
 					startActivity(informationIntent);
-				
-				}else if (lifeSituations.equals(pen)) {
+				}
+
+				if (lifeSituations.equals(pen)) {
 					Intent lifeSitIntent = new Intent(v.getContext(), LifeSituationsActivity.class);
 					startActivity(lifeSitIntent);
-				
-				}else if (expListView.equals(pen)) {
+				}
+
+				if (expListView.equals(pen)) {
 					Intent expListViewIntent = new Intent(v.getContext(), ServiceDataActivity.class);
 					startActivity(expListViewIntent);
-				
-				}else if(organizations.equals(pen)){
-					Intent organizationsIntent = new Intent(v.getContext(), OrganizationsActivity.class);
-					startActivity(organizationsIntent);
 				}
 
 			}

@@ -44,7 +44,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-public class LifeSituationsActivity extends FragmentActivity implements
+public class OrganizationsActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 
 	CollectionPagerAdapter mCollectionPagerAdapter;
@@ -154,9 +154,9 @@ public class LifeSituationsActivity extends FragmentActivity implements
 	public static class TabFragment extends Fragment {
 
 		public static final String ARG_OBJECT = "object";
-		public static final String REGIONAL_URL = "http://pgu.khv.gov.ru/?a=Living&category=Regional";
-		public static final String MUNICIPAL_URL = "http://pgu.khv.gov.ru/?a=Living&category=Municipal";
-		public static final String FEDERAL_URL = "http://pgu.khv.gov.ru/?a=Living&category=Federal";
+		public static final String REGIONAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional";
+		public static final String MUNICIPAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Municipal";
+		public static final String FEDERAL_URL = "http://pgu.khv.gov.ru/?a=Citizens&category=Federal";
 
 		public static final String DOMAIN = "http://pgu.khv.gov.ru/";
 
