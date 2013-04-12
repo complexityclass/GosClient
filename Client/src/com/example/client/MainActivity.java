@@ -97,6 +97,7 @@ public class MainActivity extends Activity {
 				final String lifeSituations = getString(R.string.life_situations_ru);
 				final String expListView = "ExpandableListView";
 				final String organizations = getString(R.string.organizations_ru);
+				final String electronicServices = getString(R.string.electronic_services_ru);
 
 				// Open new activities by click
 				// Change to CASE !!!
@@ -148,6 +149,9 @@ public class MainActivity extends Activity {
 				}else if(organizations.equals(pen)){
 					Intent organizationsIntent = new Intent(v.getContext(), OrganizationsActivity.class);
 					startActivity(organizationsIntent);
+				}else if(electronicServices.equals(pen)){
+					Intent electronicIntent = new Intent(v.getContext(),ElectronicServicesActivity.class);
+					startActivity(electronicIntent);
 				}
 
 			}

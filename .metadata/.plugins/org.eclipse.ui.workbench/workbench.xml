@@ -43,9 +43,9 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AboutUsActivity.java" partName="AboutUsActivity.java" path="C:/GosClient/Client/src/com/example/client/AboutUsActivity.java" title="AboutUsActivity.java" tooltip="Client/src/com/example/client/AboutUsActivity.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/src/com/example/client/AboutUsActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1437" selectionTopPixel="143"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ElectronicServicesActivity.java" partName="ElectronicServicesActivity.java" path="C:/GosClient/Client/src/com/example/client/ElectronicServicesActivity.java" title="ElectronicServicesActivity.java" tooltip="Client/src/com/example/client/ElectronicServicesActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/src/com/example/client/ElectronicServicesActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6731" selectionTopPixel="2276"/>
 </editor>
 </editors>
 <views>
@@ -63,8 +63,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (100 of 139 items)"/>
-<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Warnings (100 of 158 items)"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -112,7 +112,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="0" version="0.016">
 <descriptor class="com.android.ide.eclipse.ddms.Perspective" id="com.android.ide.eclipse.ddms.Perspective" label="DDMS"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -270,7 +270,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.17443688" ratioLeft="333" ratioRight="1576" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.861588" ratioLeft="803" ratioRight="129" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.81545067" ratioLeft="760" ratioRight="172" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -307,123 +307,156 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/OrganizationsActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/CitizenRegActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/EclectronicServicesActivity.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/Client/AndroidManifest.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/MainActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/LifeSituationsActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/SwipeActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/SearchActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/tain.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/tab_layout.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/listview_layout.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_expandable_list_view_test.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_expandable_list.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_life_situations.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_main.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_swipe.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_test.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_web_view.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/exp_list_child_view.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/exp_list_group_view.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/AboutUsActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/activity_main.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/ElectronicServicesActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/OrganizationsActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/CitizenRegActivity.java"/>
 </editors>
-<item historyLabel="OrganizationsActivity.java" index="0">
-<position info="not_deleted" x="9351" y="0"/>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="8086" y="0"/>
 </item>
-<item historyLabel="CitizenRegActivity.java" index="1">
-<position info="not_deleted" x="0" y="9333"/>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7297" y="0"/>
 </item>
-<item historyLabel="OrganizationsActivity.java" index="0">
-<position info="not_deleted" x="9035" y="0"/>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7340" y="0"/>
 </item>
-<item historyLabel="Client Manifest" index="2"/>
-<item historyLabel="OrganizationsActivity.java" index="0">
-<position info="not_deleted" x="8193" y="0"/>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7448" y="0"/>
 </item>
-<item historyLabel="Client Manifest" index="2"/>
-<item historyLabel="MainActivity.java" index="3">
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7567" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7657" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7776" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7879" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="8076" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="8033" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="8356" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="8356" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="8341" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="5611" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="5648" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="6631" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="4795" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="5973" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="6023" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="6121" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="6119" y="0"/>
+</item>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="8145" y="0"/>
+</item>
+<item historyLabel="Client Manifest" index="1"/>
+<item historyLabel="EclectronicServicesActivity.java" index="0">
+<position info="not_deleted" x="7043" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position info="not_deleted" x="1976" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="Client Manifest" index="1"/>
+<item historyLabel="MainActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
+</item>
+<item historyLabel="Client Manifest" index="1"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="MainActivity.java" index="3">
-<position info="not_deleted" x="3741" y="0"/>
+<item historyLabel="MainActivity.java" index="2">
+<position info="not_deleted" x="5068" y="0"/>
 </item>
-<item historyLabel="MainActivity.java" index="3">
-<position info="not_deleted" x="5539" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
 </item>
-<item historyLabel="MainActivity.java" index="3">
-<position info="not_deleted" x="5673" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
 </item>
-<item historyLabel="MainActivity.java" index="3">
-<position info="not_deleted" x="5239" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
 </item>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="9331" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
 </item>
-<item historyLabel="SwipeActivity.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
 </item>
-<item historyLabel="SearchActivity.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position info="not_deleted" x="7293" y="0"/>
 </item>
-<item historyLabel="SwipeActivity.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position info="not_deleted" x="7910" y="0"/>
 </item>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="9331" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position info="not_deleted" x="7820" y="0"/>
 </item>
-<item historyLabel="OrganizationsActivity.java" index="0">
-<position info="not_deleted" x="0" y="9351"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position/>
 </item>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="8736" y="0"/>
+<item historyLabel="OrganizationsActivity.java" index="4">
+<position info="not_deleted" x="7016" y="198"/>
 </item>
-<item historyLabel="tain.xml" index="7"/>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="2153" y="0"/>
+<item historyLabel="ElectronicServicesActivity.java" index="3">
+<position info="not_deleted" x="7022" y="0"/>
 </item>
-<item historyLabel="tab_layout.xml" index="8"/>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="2153" y="0"/>
+<item historyLabel="CitizenRegActivity.java" index="5">
+<position info="not_deleted" x="7210" y="184"/>
 </item>
-<item historyLabel="tab_layout.xml" index="8"/>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="2153" y="0"/>
-</item>
-<item historyLabel="listview_layout.xml" index="9"/>
-<item historyLabel="tab_layout.xml" index="8"/>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="9123" y="0"/>
-</item>
-<item historyLabel="activity_expandable_list_view_test.xml" index="10"/>
-<item historyLabel="activity_expandable_list.xml" index="11"/>
-<item historyLabel="activity_life_situations.xml" index="12"/>
-<item historyLabel="activity_main.xml" index="13"/>
-<item historyLabel="activity_swipe.xml" index="14"/>
-<item historyLabel="activity_main.xml" index="13"/>
-<item historyLabel="activity_swipe.xml" index="14"/>
-<item historyLabel="activity_test.xml" index="15"/>
-<item historyLabel="activity_web_view.xml" index="16"/>
-<item historyLabel="exp_list_child_view.xml" index="17"/>
-<item historyLabel="exp_list_group_view.xml" index="18"/>
-<item historyLabel="exp_list_child_view.xml" index="17"/>
-<item historyLabel="exp_list_group_view.xml" index="18"/>
-<item historyLabel="exp_list_child_view.xml" index="17"/>
-<item historyLabel="exp_list_group_view.xml" index="18"/>
-<item historyLabel="exp_list_child_view.xml" index="17"/>
-<item historyLabel="activity_life_situations.xml" index="12"/>
-<item historyLabel="exp_list_child_view.xml" index="17"/>
-<item historyLabel="exp_list_group_view.xml" index="18"/>
-<item historyLabel="LifeSituationsActivity.java" index="4">
-<position info="not_deleted" x="9123" y="0"/>
-</item>
-<item historyLabel="AboutUsActivity.java" index="19">
-<position info="not_deleted" x="1437" y="0"/>
-</item>
-<item historyLabel="activity_main.xml" index="20"/>
-<item active="true" historyLabel="AboutUsActivity.java" index="19">
-<position info="not_deleted" x="1437" y="0"/>
+<item active="true" historyLabel="ElectronicServicesActivity.java" index="3">
+<position info="not_deleted" x="7031" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -431,12 +464,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="right"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -445,11 +472,31 @@
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.HeapStatus"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CitizenRegActivity.java" tooltip="Client/src/com/example/client/CitizenRegActivity.java">
+<persistable path="/Client/src/com/example/client/CitizenRegActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OrganizationsActivity.java" tooltip="Client/src/com/example/client/OrganizationsActivity.java">
+<persistable path="/Client/src/com/example/client/OrganizationsActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" tooltip="Client/src/com/example/client/MainActivity.java">
+<persistable path="/Client/src/com/example/client/MainActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="Client/AndroidManifest.xml">
+<persistable path="/Client/AndroidManifest.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EclectronicServicesActivity.java" tooltip="Client/src/com/example/client/EclectronicServicesActivity.java">
+<persistable path="/Client/src/com/example/client/EclectronicServicesActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AreasOfActivity.java" tooltip="Client/src/com/example/client/AreasOfActivity.java">
+<persistable path="/Client/src/com/example/client/AreasOfActivity.java"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="AsyncTask.class" tooltip="android.os.AsyncTask">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Client/C:\/Program Files \(x86)\/Android\/android-sdk\/platforms\/android-16\/android.jar&lt;android.os(AsyncTask.class"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" tooltip="Client/res/layout/activity_main.xml">
 <persistable path="/Client/res/layout/activity_main.xml"/>
 </file>
@@ -473,27 +520,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_life_situations.xml" tooltip="Client/res/layout/activity_life_situations.xml">
 <persistable path="/Client/res/layout/activity_life_situations.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_expandable_list.xml" tooltip="Client/res/layout/activity_expandable_list.xml">
-<persistable path="/Client/res/layout/activity_expandable_list.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_expandable_list_view_test.xml" tooltip="Client/res/layout/activity_expandable_list_view_test.xml">
-<persistable path="/Client/res/layout/activity_expandable_list_view_test.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_layout.xml" tooltip="Client/res/layout/listview_layout.xml">
-<persistable path="/Client/res/layout/listview_layout.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="tab_layout.xml" tooltip="Client/res/layout/tab_layout.xml">
-<persistable path="/Client/res/layout/tab_layout.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="tain.xml" tooltip="Client/res/layout/tain.xml">
-<persistable path="/Client/res/layout/tain.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SearchActivity.java" tooltip="Client/src/com/example/client/SearchActivity.java">
-<persistable path="/Client/src/com/example/client/SearchActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SwipeActivity.java" tooltip="Client/src/com/example/client/SwipeActivity.java">
-<persistable path="/Client/src/com/example/client/SwipeActivity.java"/>
 </file>
 </mruList>
 </workbench>
