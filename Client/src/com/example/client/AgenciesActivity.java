@@ -21,6 +21,8 @@ import com.example.parser.HtmlParser;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,12 +46,19 @@ public class AgenciesActivity extends Activity {
 	private static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=Departments&category=Regional";
 
 	private ListView currentListView;
+	
+	ProgressDialog dialog;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listview_layout);
+		
+		dialog = new ProgressDialog(this);
+		dialog.setTitle("Title");
+		dialog.setMessage("Message");
+		System.out.println("Это то активити!!!!!!!!!!!!!!!!!!!!!");
 
 		linksText = new ArrayList<String>();
 		pics = new ArrayList<Integer>();
@@ -70,16 +79,14 @@ public class AgenciesActivity extends Activity {
 
 		System.out.println("ELEMENTS IN LIST :" + linksText.size());
 
-		for (Iterator<String> iterator = linksText.iterator(); iterator
-				.hasNext();) {
+		for (Iterator<String> iterator = linksText.iterator(); iterator.hasNext();) {
 			System.out.println(iterator.next().toString());
 		}
 
 		News values[] = new News[linksText.size()];
 
 		int i = 0;
-		for (Iterator<String> iterator = linksText.iterator(); iterator
-				.hasNext();) {
+		for (Iterator<String> iterator = linksText.iterator(); iterator.hasNext();) {
 			String temp = iterator.next().toString();
 			values[i] = new News(R.drawable.arrow, temp);
 			i++;
@@ -88,8 +95,7 @@ public class AgenciesActivity extends Activity {
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, values);
 
 		currentListView = (ListView) findViewById(R.id.listView1);
-		View header = (View) getLayoutInflater().inflate(
-				R.layout.list_header_row_areas, null);
+		View header = (View) getLayoutInflater().inflate(R.layout.list_header_row_areas, null);
 		currentListView.addHeaderView(header);
 		currentListView.setAdapter(adapter);
 	}
@@ -101,6 +107,10 @@ public class AgenciesActivity extends Activity {
 		List<String> resultList = new ArrayList<String>();
 
 		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
 		protected List<String> doInBackground(String... urls) {
 			try {
 				String result = NetworkStats.getOutputFromURL(urls[0]);
@@ -108,10 +118,8 @@ public class AgenciesActivity extends Activity {
 				HtmlParser parser;
 				try {
 					parser = new HtmlParser(result);
-					List<TagNode> links = parser
-							.getLinks("category-menu__link");
-					for (Iterator<TagNode> iterator = links.iterator(); iterator
-							.hasNext();) {
+					List<TagNode> links = parser.getLinks("category-menu__link");
+					for (Iterator<TagNode> iterator = links.iterator(); iterator.hasNext();) {
 						TagNode linkElement = (TagNode) iterator.next();
 						resultList.add(linkElement.getText().toString());
 					}
@@ -127,7 +135,6 @@ public class AgenciesActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(List<String> resultList) {
-
 		}
 
 	}

@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.client.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/Habarovsk" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -121,7 +121,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.OPENABLE" />
             </intent-filter>
         </activity>
         <activity
@@ -130,7 +130,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.OPENABLE" />
             </intent-filter>
         </activity>
         <activity
@@ -139,7 +139,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.OPENABLE" />
             </intent-filter>
         </activity>
         <activity
@@ -148,7 +148,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.OPENABLE" />
             </intent-filter>
         </activity>
         <activity
@@ -157,7 +157,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.OPENABLE" />
             </intent-filter>
         </activity>
         <activity
@@ -171,6 +171,10 @@
         <activity
             android:name="com.example.client.ServiceDataActivity"
             android:label="@string/Habarovsk_Servise" >
+        </activity>
+        <activity
+            android:name="com.example.client.ServiceActivity"
+            android:label="@string/title_activity_service" >
         </activity>
     </application>
 

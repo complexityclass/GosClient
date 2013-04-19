@@ -4,6 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/back">
 
+    
     <EditText
         android:id="@+id/editText1"
         android:layout_width="132dp"

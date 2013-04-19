@@ -1,0 +1,26 @@
+package com.example.client;
+
+import java.util.ArrayList;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+/**
+ * @author complexityclass
+ * 
+ */
+public class ServiceActivity extends Activity {
+	
+	public static final String DOMAIN = "http://pgu.khv.gov.ru/";
+	String url = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional&catalog=770";
+	ArrayList<ArrayList<String>> listChilds;
+	ArrayList<String> listGroups;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_service);
+	}
+
+}

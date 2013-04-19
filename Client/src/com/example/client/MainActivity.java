@@ -32,6 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
@@ -45,7 +46,7 @@ public class MainActivity extends Activity {
 	private ImageButton searchButton;
 	private EditText queryText;
 
-	private ProgressDialog progressDialog;
+	ProgressDialog dialog;
 
 	private static final String SEARCH_URL = "http://pgu.khv.gov.ru/?a=Search&query=";
 
@@ -57,8 +58,6 @@ public class MainActivity extends Activity {
 		// MainActivity has static content
 		News[] newsData = new News[] {
 				new News(R.drawable.arrow, getString(R.string.agencies_ru)),
-				// new News(R.drawable.arrow,
-				// getString(R.string.about_project_ru)),
 				new News(R.drawable.arrow, getString(R.string.areas_of_ru)),
 				new News(R.drawable.arrow, getString(R.string.citizens_ru)),
 				new News(R.drawable.arrow, getString(R.string.news_ru)),
@@ -109,49 +108,57 @@ public class MainActivity extends Activity {
 				if (about_project.equals(pen)) {
 					Intent myIntent = new Intent(v.getContext(), AboutUsActivity.class);
 
-					// progressDialog = new ProgressDialog(this);
-					progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-
 					startActivity(myIntent);
 
-				}else if (news.equals(pen)) {
+				} else if (news.equals(pen)) {
 					Intent newsIntent = new Intent(v.getContext(), NewsActivity.class);
 					startActivity(newsIntent);
-				
-				}else if (citizens.equals(pen)) {
+
+				} else if (citizens.equals(pen)) {
 					Intent citizensRegIntent = new Intent(v.getContext(), CitizenRegActivity.class);
 					startActivity(citizensRegIntent);
-				
-				}else if (agencies.equals(pen)) {
+
+				} else if (agencies.equals(pen)) {
 					Intent agenciesIntent = new Intent(v.getContext(), AgenciesActivity.class);
 					startActivity(agenciesIntent);
-				
-				}else if (areas_of.equals(pen)) {
+
+				} else if (areas_of.equals(pen)) {
 					Intent areasIntent = new Intent(v.getContext(), AreasOfActivity.class);
 					startActivity(areasIntent);
-				
-				}else if (searchByNews.equals(pen)) {
+
+				} else if (searchByNews.equals(pen)) {
 					Intent searchIntent = new Intent(v.getContext(), SearchActivity.class);
 					startActivity(searchIntent);
-				
-				}else if (information.equals(pen)) {
+
+				} else if (information.equals(pen)) {
 					Intent informationIntent = new Intent(v.getContext(), InformationActivity.class);
 					startActivity(informationIntent);
-				
-				}else if (lifeSituations.equals(pen)) {
+
+				} else if (lifeSituations.equals(pen)) {
 					Intent lifeSitIntent = new Intent(v.getContext(), LifeSituationsActivity.class);
 					startActivity(lifeSitIntent);
-				
-				}else if (expListView.equals(pen)) {
+
+				} else if (expListView.equals(pen)) {
 					Intent expListViewIntent = new Intent(v.getContext(), ServiceDataActivity.class);
 					startActivity(expListViewIntent);
-				
-				}else if(organizations.equals(pen)){
+
+				} else if (organizations.equals(pen)) {
 					Intent organizationsIntent = new Intent(v.getContext(), OrganizationsActivity.class);
 					startActivity(organizationsIntent);
-				}else if(electronicServices.equals(pen)){
-					Intent electronicIntent = new Intent(v.getContext(),ElectronicServicesActivity.class);
+
+				} else if (electronicServices.equals(pen)) {
+					
+					//((ProgressBar)findViewById(R.id.progressbar)).setVisibility(View.VISIBLE);
+					
+					/*dialog = new ProgressDialog(parent.getContext());
+					dialog.setTitle("Title");
+					dialog.setMessage("Message");
+				
+					dialog.show();*/
+					
+					Intent electronicIntent = new Intent(v.getContext(), ElectronicServicesActivity.class);
 					startActivity(electronicIntent);
+					//dialog.dismiss();
 				}
 
 			}
@@ -217,11 +224,6 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			progressDialog = new ProgressDialog(parent);
-			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-			progressDialog.setMessage("Loading..."); // //!!!!! add to
-														// strings.xml
-			progressDialog.setProgress(0);
 		}
 
 		@Override
@@ -238,13 +240,11 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onProgressUpdate(Integer... values) {
 			super.onProgressUpdate(values);
-			progressDialog.setProgress(50);
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-			progressDialog.setProgress(100);
-			progressDialog.dismiss();
+
 		}
 
 	}

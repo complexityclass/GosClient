@@ -55,8 +55,7 @@ public class NewsActivity extends Activity {
 		}
 
 		for (Map.Entry<Integer, String> entry : news.entrySet()) {
-			System.out.println("KEY : " + entry.getKey() + " VALUE :"
-					+ entry.getValue());
+			System.out.println("KEY : " + entry.getKey() + " VALUE :" + entry.getValue());
 		}
 
 		News[] values = new News[news.size() / 2];
@@ -75,14 +74,12 @@ public class NewsActivity extends Activity {
 
 		currentlistView = (ListView) findViewById(R.id.listView1);
 
-		View header = (View) getLayoutInflater().inflate(
-				R.layout.list_header_row_areas, null);
+		View header = (View) getLayoutInflater().inflate(R.layout.list_header_row_areas, null);
 		currentlistView.addHeaderView(header);
 		currentlistView.setAdapter(adapter);
 	}
 
-	private class DownloadHtml extends
-			AsyncTask<String, Integer, Map<Integer, String>> {
+	private class DownloadHtml extends AsyncTask<String, Integer, Map<Integer, String>> {
 
 		Map<Integer, String> resultMap = new HashMap<Integer, String>();
 
@@ -100,20 +97,17 @@ public class NewsActivity extends Activity {
 
 					Iterator<TagNode> iterator2 = title.iterator();
 					Integer count = 0;
-					for (Iterator<TagNode> iterator1 = data.iterator(); iterator1
-							.hasNext();) {
+					for (Iterator<TagNode> iterator1 = data.iterator(); iterator1.hasNext();) {
 						TagNode dataElement = (TagNode) iterator1.next();
 						TagNode titleElement = (TagNode) iterator2.next();
+						TagNode restElement = (TagNode) iterator2.next();
 
 						if (dataElement != null && titleElement != null) {
-							resultMap.put(count, dataElement.getText()
-									.toString());
-							resultMap.put(++count, titleElement.getText()
-									.toString());
+							resultMap.put(count, dataElement.getText().toString());
+							resultMap.put(++count, titleElement.getText().toString());
 							count++;
 						} else if (titleElement == null) {
-							resultMap.put(count, dataElement.getText()
-									.toString());
+							resultMap.put(count, dataElement.getText().toString());
 							resultMap.put(count++, "");
 							count++;
 						}
@@ -135,5 +129,3 @@ public class NewsActivity extends Activity {
 		}
 	}
 }
-
-

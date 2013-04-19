@@ -150,14 +150,14 @@ public class ExpandableListActivity extends Activity {
 				try {
 					parser = new HtmlParser(result);
 
-					List<TagNode> lister = parser.getObjectByTagAndClass("ul", "list");
+					List<TagNode> lister = parser.getObjectByTagAndClass("div", "slide-tabs__text slide-tabs__text_state_opened");
 					for (Iterator<TagNode> iterator = lister.iterator(); iterator.hasNext();) {
 
-						TagNode[] usClass = iterator.next().getElementsByName("a", true);
+						TagNode[] usClass = iterator.next().getElementsByName("li", true);
 						ArrayList<String> group = new ArrayList<String>();
 						for (int i = 0; i < usClass.length && usClass != null; i++) {
 
-							// System.out.println(usClass[i].getAttributeByName("href").toString());
+							System.out.println(usClass[i].getText().toString());
 							TagNode element = usClass[i];
 							group.add(element.getText().toString());
 
