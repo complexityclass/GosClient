@@ -33,13 +33,14 @@ public final class R {
         public static final int ic_action_search=0x7f020009;
         public static final int ic_launcher=0x7f02000a;
         public static final int image_bg=0x7f02000b;
-        public static final int list_selector=0x7f02000c;
-        public static final int magnifier=0x7f02000d;
-        public static final int rihanna=0x7f02000e;
-        public static final int simple=0x7f02000f;
-        public static final int slide_=0x7f020010;
-        public static final int tree=0x7f020011;
-        public static final int upbutton=0x7f020012;
+        public static final int kapli=0x7f02000c;
+        public static final int list_selector=0x7f02000d;
+        public static final int magnifier=0x7f02000e;
+        public static final int rihanna=0x7f02000f;
+        public static final int simple=0x7f020010;
+        public static final int slide_=0x7f020011;
+        public static final int tree=0x7f020012;
+        public static final int upbutton=0x7f020013;
     }
     public static final class id {
         public static final int ImageButton01=0x7f080011;
@@ -76,32 +77,33 @@ public final class R {
         public static final int activity_expandable_list_view_test=0x7f030001;
         public static final int activity_life_situations=0x7f030002;
         public static final int activity_main=0x7f030003;
-        public static final int activity_service=0x7f030004;
-        public static final int activity_swipe=0x7f030005;
-        public static final int activity_test=0x7f030006;
-        public static final int activity_web_view=0x7f030007;
-        public static final int exp_list_child_view=0x7f030008;
-        public static final int exp_list_group_view=0x7f030009;
-        public static final int exp_list_view_layout=0x7f03000a;
-        public static final int list_header_row=0x7f03000b;
-        public static final int list_header_row_areas=0x7f03000c;
-        public static final int list_header_row_information=0x7f03000d;
-        public static final int list_header_row_main=0x7f03000e;
-        public static final int list_header_search=0x7f03000f;
-        public static final int list_row=0x7f030010;
-        public static final int list_view_text_text=0x7f030011;
-        public static final int listview_layout=0x7f030012;
-        public static final int listview_searchbar_layout=0x7f030013;
-        public static final int main=0x7f030014;
-        public static final int newsrowlayout=0x7f030015;
-        public static final int rowlayout=0x7f030016;
-        public static final int search_activity=0x7f030017;
-        public static final int tab1=0x7f030018;
-        public static final int tab2=0x7f030019;
-        public static final int tab3=0x7f03001a;
-        public static final int tab_layout=0x7f03001b;
-        public static final int tabs_navigation=0x7f03001c;
-        public static final int tain=0x7f03001d;
+        public static final int activity_news_archive=0x7f030004;
+        public static final int activity_service=0x7f030005;
+        public static final int activity_swipe=0x7f030006;
+        public static final int activity_test=0x7f030007;
+        public static final int activity_web_view=0x7f030008;
+        public static final int exp_list_child_view=0x7f030009;
+        public static final int exp_list_group_view=0x7f03000a;
+        public static final int exp_list_view_layout=0x7f03000b;
+        public static final int list_header_row=0x7f03000c;
+        public static final int list_header_row_areas=0x7f03000d;
+        public static final int list_header_row_information=0x7f03000e;
+        public static final int list_header_row_main=0x7f03000f;
+        public static final int list_header_search=0x7f030010;
+        public static final int list_row=0x7f030011;
+        public static final int list_view_text_text=0x7f030012;
+        public static final int listview_layout=0x7f030013;
+        public static final int listview_searchbar_layout=0x7f030014;
+        public static final int main=0x7f030015;
+        public static final int newsrowlayout=0x7f030016;
+        public static final int rowlayout=0x7f030017;
+        public static final int search_activity=0x7f030018;
+        public static final int tab1=0x7f030019;
+        public static final int tab2=0x7f03001a;
+        public static final int tab3=0x7f03001b;
+        public static final int tab_layout=0x7f03001c;
+        public static final int tabs_navigation=0x7f03001d;
+        public static final int tain=0x7f03001e;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
@@ -111,6 +113,7 @@ public final class R {
         public static final int expandable_list=0x7f070004;
         public static final int expandable_list_view_test=0x7f070005;
         public static final int life_situations=0x7f070006;
+        public static final int news_archive=0x7f070007;
     }
     public static final class string {
         public static final int Habarovsk=0x7f050029;
@@ -146,6 +149,7 @@ public final class R {
         public static final int title_activity_life_situations=0x7f05001e;
         public static final int title_activity_main=0x7f050003;
         public static final int title_activity_news=0x7f050005;
+        public static final int title_activity_news_archive=0x7f05002b;
         public static final int title_activity_service=0x7f05002a;
         public static final int title_activity_swipe=0x7f05001d;
         public static final int title_activity_test=0x7f050018;

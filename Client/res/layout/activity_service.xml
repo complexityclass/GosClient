@@ -8,7 +8,7 @@
         android:id="@+id/drawer"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#336699"
+        android:background="@drawable/kapli"
         android:content="@+id/content"
         android:handle="@+id/handle"
         android:rotation="0" >

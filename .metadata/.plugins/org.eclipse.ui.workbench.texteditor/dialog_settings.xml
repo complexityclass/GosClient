@@ -13,9 +13,10 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="System.out" key="selection"/>
 		<list key="findhistory">
 			<item value="System.out"/>
+			<item value="Intent"/>
 			<item value="MainActivity"/>
 		</list>
 		<list key="replacehistory">

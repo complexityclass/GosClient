@@ -7,16 +7,18 @@
     <SlidingDrawer
         android:id="@+id/drawer"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:background="#336699"
         android:content="@+id/content"
-        android:handle="@+id/handle" >
+        android:handle="@+id/handle"
+        android:rotation="0" >
 
         <LinearLayout
             android:id="@id/content"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:rotation="0" >
 
             <ExpandableListView
                 android:id="@+id/exListView"
@@ -27,19 +29,20 @@
                 android:indicatorRight="300dp" />
         </LinearLayout>
 
-        <ImageView
+        <LinearLayout
             android:id="@id/handle"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:contentDescription="@string/Habarovsk"
-            android:src="@drawable/upbutton" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_orange_light"
-            android:text="TextView" />
+            android:orientation="vertical"
+            android:rotation="0" >
+
+            <ImageView
+                android:id="@+id/imageView23"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:contentDescription="@string/Habarovsk"
+                android:src="@drawable/upbutton" />
+        </LinearLayout>
     </SlidingDrawer>
 
 </LinearLayout>

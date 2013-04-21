@@ -32,6 +32,10 @@ public class HtmlParser {
 		HtmlCleaner cleaner = new HtmlCleaner();
 		rootNode = cleaner.clean(html);
 	}
+	
+	public HtmlParser(TagNode rootNode){
+		this.rootNode = rootNode;
+	}
 
 	public List<TagNode> getObjectByTagAndClass(String tag, String CSSClassName) {
 

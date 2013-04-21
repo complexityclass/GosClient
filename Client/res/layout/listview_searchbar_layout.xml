@@ -12,6 +12,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ImageButton01"
+        android:text="Поиск услуг"
+        android:textColor="#104E8B"
+        android:textSize="14dp"
+        android:typeface="monospace"
+        android:cursorVisible="false"
+        android:singleLine="true"
         android:ems="10" >
 
         <requestFocus />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="15" version="2.0">
+<workbench progressCount="16" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="508" y="189">
 <fastViewData fastViewLocation="1024"/>
@@ -13,7 +13,7 @@
 <coolItem id="adt.actionSet.avdManager" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="adt.actionSet.lint" itemType="typeToolBarContribution" x="53" y="22"/>
 <coolItem id="adt.actionSet.wizards" itemType="typeToolBarContribution" x="38" y="22"/>
-<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -23,7 +23,7 @@
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="107" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="61" y="22"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -40,24 +40,17 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
-<part id="3"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ServiceActivity.java" partName="ServiceActivity.java" path="C:/GosClient/Client/src/com/example/client/ServiceActivity.java" title="ServiceActivity.java" tooltip="Client/src/com/example/client/ServiceActivity.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/src/com/example/client/ServiceActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2360" selectionTopPixel="857"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NewsArchiveActivity.java" partName="NewsArchiveActivity.java" path="C:/GosClient/Client/src/com/example/client/NewsArchiveActivity.java" title="NewsArchiveActivity.java" tooltip="Client/src/com/example/client/NewsArchiveActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/src/com/example/client/NewsArchiveActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6365" selectionTopPixel="2881"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_service.xml" partName="activity_service.xml" path="C:/GosClient/Client/res/layout/activity_service.xml" title="activity_service.xml" tooltip="Client/res/layout/activity_service.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/res/layout/activity_service.xml"/>
-</editor>
-<editor activePart="true" focus="true" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="exp_list_child_view.xml" partName="exp_list_child_view.xml" path="C:/GosClient/Client/res/layout/exp_list_child_view.xml" title="exp_list_child_view.xml" tooltip="Client/res/layout/exp_list_child_view.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/res/layout/exp_list_child_view.xml"/>
-</editor>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="exp_list_group_view.xml" partName="exp_list_group_view.xml" path="C:/GosClient/Client/res/layout/exp_list_group_view.xml" title="exp_list_group_view.xml" tooltip="Client/res/layout/exp_list_group_view.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/res/layout/exp_list_group_view.xml"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExpandableListActivity.java" partName="ExpandableListActivity.java" path="C:/GosClient/Client/src/com/example/client/ExpandableListActivity.java" title="ExpandableListActivity.java" tooltip="Client/src/com/example/client/ExpandableListActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Client/src/com/example/client/ExpandableListActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="189" selectionOffset="4454" selectionTopPixel="1350"/>
 </editor>
 </editors>
 <views>
@@ -78,7 +71,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (100 of 178 items)"/>
+<category IMemento.internal.id="Warnings (100 of 195 items)"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
@@ -127,7 +120,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="com.android.ide.eclipse.editors.CommonXmlEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="0" version="0.016">
 <descriptor class="com.android.ide.eclipse.ddms.Perspective" id="com.android.ide.eclipse.ddms.Perspective" label="DDMS"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -286,7 +279,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="478" ratioRight="1434" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.8540773" ratioLeft="796" ratioRight="136" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.6920601" ratioLeft="645" ratioRight="287" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -307,7 +300,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="right" ratio="0.7496513" ratioLeft="1075" ratioRight="359" relationship="2" relative="org.eclipse.ui.editorss">
+<info folder="true" part="right" ratio="0.8165266" ratioLeft="1166" ratioRight="262" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
@@ -325,77 +318,168 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/ServiceActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/exp_list_child_view.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Client/res/layout/exp_list_group_view.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/ExpandableListActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/NewsArchiveActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/MainActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/adapters/TupleAB.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Client/src/com/example/client/SearchActivity.java"/>
 </editors>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="ServiceActivity.java" index="0">
-<position info="not_deleted" x="2425" y="0"/>
+<item historyLabel="MainActivity.java" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="exp_list_group_view.xml" index="2"/>
-<item historyLabel="exp_list_child_view.xml" index="1"/>
-<item historyLabel="ServiceActivity.java" index="0">
-<position info="not_deleted" x="2360" y="0"/>
+<item historyLabel="MainActivity.java" index="2">
+<position info="not_deleted" x="6085" y="0"/>
 </item>
-<item active="true" historyLabel="exp_list_child_view.xml" index="1"/>
+<item historyLabel="MainActivity.java" index="2">
+<position info="not_deleted" x="6171" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position info="not_deleted" x="6206" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="1352" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position/>
+</item>
+<item historyLabel="ExpandableListActivity.java" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4937" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4916" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3797" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4114" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4113" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4114" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4169" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="5355" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="5355" y="0"/>
+</item>
+<item historyLabel="TupleAB.java" index="3">
+<position info="not_deleted" x="197" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="5355" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="5316" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4016" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="4253" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="1147" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="1230" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="1642" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="2281" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="2316" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="2364" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3782" y="0"/>
+</item>
+<item historyLabel="SearchActivity.java" index="4">
+<position info="not_deleted" x="1534" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3782" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position info="not_deleted" x="6206" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3782" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="2">
+<position info="not_deleted" x="6206" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3782" y="0"/>
+</item>
+<item historyLabel="ExpandableListActivity.java" index="0">
+<position info="not_deleted" x="4454" y="189"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3782" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="5780" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="6400" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="5314" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="6316" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="6144" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="6316" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="1225" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3299" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3601" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="3711" y="0"/>
+</item>
+<item historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="6228" y="0"/>
+</item>
+<item active="true" historyLabel="NewsArchiveActivity.java" index="1">
+<position info="not_deleted" x="6307" y="0"/>
+</item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
-<trimItem IMemento.internal.id="right"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -408,6 +492,39 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExpandableListActivity.java" tooltip="Client/src/com/example/client/ExpandableListActivity.java">
+<persistable path="/Client/src/com/example/client/ExpandableListActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SearchActivity.java" tooltip="Client/src/com/example/client/SearchActivity.java">
+<persistable path="/Client/src/com/example/client/SearchActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TupleAB.java" tooltip="Client/src/com/example/adapters/TupleAB.java">
+<persistable path="/Client/src/com/example/adapters/TupleAB.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" tooltip="Client/src/com/example/client/MainActivity.java">
+<persistable path="/Client/src/com/example/client/MainActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AreasOfActivity.java" tooltip="Client/src/com/example/client/AreasOfActivity.java">
+<persistable path="/Client/src/com/example/client/AreasOfActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HtmlParser.java" tooltip="Client/src/com/example/parser/HtmlParser.java">
+<persistable path="/Client/src/com/example/parser/HtmlParser.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CitizenRegActivity.java" tooltip="Client/src/com/example/client/CitizenRegActivity.java">
+<persistable path="/Client/src/com/example/client/CitizenRegActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NewsArchiveActivity.java" tooltip="Client/src/com/example/client/NewsArchiveActivity.java">
+<persistable path="/Client/src/com/example/client/NewsArchiveActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_news_archive.xml" tooltip="Client/res/layout/activity_news_archive.xml">
+<persistable path="/Client/res/layout/activity_news_archive.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OrganizationsActivity.java" tooltip="Client/src/com/example/client/OrganizationsActivity.java">
+<persistable path="/Client/src/com/example/client/OrganizationsActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_searchbar_layout.xml" tooltip="Client/res/layout/listview_searchbar_layout.xml">
+<persistable path="/Client/res/layout/listview_searchbar_layout.xml"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="exp_list_group_view.xml" tooltip="Client/res/layout/exp_list_group_view.xml">
 <persistable path="/Client/res/layout/exp_list_group_view.xml"/>
 </file>
@@ -419,39 +536,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="R.java" tooltip="Client/gen/com/example/client/R.java">
 <persistable path="/Client/gen/com/example/client/R.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_service.xml" tooltip="Client/res/layout/activity_service.xml">
-<persistable path="/Client/res/layout/activity_service.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExpandableListActivity.java" tooltip="Client/src/com/example/client/ExpandableListActivity.java">
-<persistable path="/Client/src/com/example/client/ExpandableListActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ElectronicServicesActivity.java" tooltip="Client/src/com/example/client/ElectronicServicesActivity.java">
-<persistable path="/Client/src/com/example/client/ElectronicServicesActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" tooltip="Client/res/layout/activity_main.xml">
-<persistable path="/Client/res/layout/activity_main.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_layout.xml" tooltip="Client/res/layout/listview_layout.xml">
-<persistable path="/Client/res/layout/listview_layout.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_searchbar_layout.xml" tooltip="Client/res/layout/listview_searchbar_layout.xml">
-<persistable path="/Client/res/layout/listview_searchbar_layout.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_expandable_list.xml" tooltip="Client/res/layout/activity_expandable_list.xml">
-<persistable path="/Client/res/layout/activity_expandable_list.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="exp_list_view_layout.xml" tooltip="Client/res/layout/exp_list_view_layout.xml">
-<persistable path="/Client/res/layout/exp_list_view_layout.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ServiceActivity.java" tooltip="Client/src/com/example/client/ServiceActivity.java">
-<persistable path="/Client/src/com/example/client/ServiceActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ServiceDataActivity.java" tooltip="Client/src/com/example/client/ServiceDataActivity.java">
-<persistable path="/Client/src/com/example/client/ServiceDataActivity.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ViewPager$SimpleOnPageChangeListener.class" tooltip="android.support.v4.view.ViewPager$SimpleOnPageChangeListener">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Client/C:\/GosClient\/Client\/libs\/android-support-v4.jar&lt;android.support.v4.view(ViewPager$SimpleOnPageChangeListener.class"/>
 </file>
 </mruList>
 </workbench>

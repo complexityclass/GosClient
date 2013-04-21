@@ -20,17 +20,25 @@ import com.example.parser.HtmlParser;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 import android.widget.ExpandableListView.OnChildClickListener;
 
 public class ExpandableListActivity extends Activity {
-	
+
 	public static final String DOMAIN = "http://pgu.khv.gov.ru/";
+
+	public static String parentName = "com.example.client.MainActivity";
 
 	String url = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional&catalog=770";
 	ArrayList<ArrayList<String>> listChilds;
@@ -48,7 +56,6 @@ public class ExpandableListActivity extends Activity {
 		Intent urlIntent = getIntent();
 		url = urlIntent.getStringExtra("url");
 
-		
 		DownloadListChilds downloadListChilds = new DownloadListChilds();
 		downloadListChilds.execute(url);
 
@@ -97,7 +104,7 @@ public class ExpandableListActivity extends Activity {
 				// tupleListList.get(i).get(j).getA() + "href :" +
 				// tupleListList.get(i).get(j).getB());
 				tempList.add(tupleListList.get(i).get(j).getA().toString());
-				System.out.println("This is RIGHT SYSO" + tempList.get(j));
+				// System.out.println("This is RIGHT SYSO" + tempList.get(j));
 			}
 			listChild2.add(tempList);
 		}
@@ -108,20 +115,31 @@ public class ExpandableListActivity extends Activity {
 		ExpandableListChildsParentsAdapter adapter = new ExpandableListChildsParentsAdapter(getApplicationContext(),
 				listChilds, listGroups);
 		listView.setAdapter(adapter);
-		
+
 		listView.setOnChildClickListener(new OnChildClickListener() {
 
 			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-				
+
 				Intent intent = new Intent(v.getContext(), ServiceDataActivity.class);
 				intent.putExtra("url", DOMAIN + tupleListList.get(groupPosition).get(childPosition).getB());
 				startActivity(intent);
-				
+
 				return true;
-				
+
 			}
 		});
-		
+
+		String invokeActivity = getCallingActivity() != null ? getCallingActivity().getClassName() : "ImagineActivity";
+
+		if (parentName.equals(invokeActivity)) {
+
+			Toast toast = Toast.makeText(getApplicationContext(), "Найдено " + listGroups.size() + " совпадений",
+					Toast.LENGTH_LONG);
+			toast.setGravity(Gravity.CENTER, 0, 0);
+			toast.show();
+
+		}
+
 	}
 
 	@Override
@@ -150,14 +168,15 @@ public class ExpandableListActivity extends Activity {
 				try {
 					parser = new HtmlParser(result);
 
-					List<TagNode> lister = parser.getObjectByTagAndClass("div", "slide-tabs__text slide-tabs__text_state_opened");
+					List<TagNode> lister = parser.getObjectByTagAndClass("div",
+							"slide-tabs__text slide-tabs__text_state_opened");
 					for (Iterator<TagNode> iterator = lister.iterator(); iterator.hasNext();) {
 
 						TagNode[] usClass = iterator.next().getElementsByName("li", true);
 						ArrayList<String> group = new ArrayList<String>();
 						for (int i = 0; i < usClass.length && usClass != null; i++) {
 
-							System.out.println(usClass[i].getText().toString());
+							// System.out.println(usClass[i].getText().toString());
 							TagNode element = usClass[i];
 							group.add(element.getText().toString());
 

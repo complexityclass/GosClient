@@ -44,5 +44,6 @@
     <string name="Habarovsk_Servise">Хабаровск Услуги</string>
     <string name="Habarovsk">Habarovsk</string>
     <string name="title_activity_service">ServiceActivity</string>
+    <string name="title_activity_news_archive">NewsArchiveActivity</string>
 
 </resources>

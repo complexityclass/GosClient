@@ -176,6 +176,10 @@
             android:name="com.example.client.ServiceActivity"
             android:label="@string/title_activity_service" >
         </activity>
+        <activity
+            android:name="com.example.client.NewsArchiveActivity"
+            android:label="@string/title_activity_news_archive" >
+        </activity>
     </application>
 
 </manifest>

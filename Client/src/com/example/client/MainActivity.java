@@ -2,6 +2,7 @@ package com.example.client;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.security.spec.EncodedKeySpec;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -48,26 +49,33 @@ public class MainActivity extends Activity {
 
 	ProgressDialog dialog;
 
-	private static final String SEARCH_URL = "http://pgu.khv.gov.ru/?a=Search&query=";
+	// private static final String SEARCH_URL =
+	// "http://pgu.khv.gov.ru/?a=Search&query=";
+
+	private static final String SEARCH_URL = "http://pgu.khv.gov.ru/?a=Search&type=Services&query=";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listview_searchbar_layout);
+	
 
 		// MainActivity has static content
 		News[] newsData = new News[] {
-				new News(R.drawable.arrow, getString(R.string.agencies_ru)),
-				new News(R.drawable.arrow, getString(R.string.areas_of_ru)),
 				new News(R.drawable.arrow, getString(R.string.citizens_ru)),
-				new News(R.drawable.arrow, getString(R.string.news_ru)),
 				new News(R.drawable.arrow, getString(R.string.organizations_ru)),
 				new News(R.drawable.arrow, getString(R.string.electronic_services_ru)),
 				new News(R.drawable.arrow, getString(R.string.life_situations_ru)),
+				new News(R.drawable.arrow, getString(R.string.agencies_ru)),
+				new News(R.drawable.arrow, getString(R.string.areas_of_ru)),
+				// new News(R.drawable.arrow, getString(R.string.news_ru)),
+				// new News(R.drawable.arrow,
+				// getString(R.string.life_situations_ru)),
 				new News(R.drawable.arrow, getString(R.string.information_ru)),
 				new News(R.drawable.arrow, getString(R.string.visitor_statistics_ru)),
-				new News(R.drawable.arrow, getString(R.string.search_news_ru)),
-				new News(R.drawable.arrow, "ExpandableListView") };
+		// new News(R.drawable.arrow, getString(R.string.search_news_ru)),
+		// new News(R.drawable.arrow, "ExpandableListView")
+		};
 
 		// set custom adapter
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, newsData);
@@ -97,6 +105,7 @@ public class MainActivity extends Activity {
 				final String expListView = "ExpandableListView";
 				final String organizations = getString(R.string.organizations_ru);
 				final String electronicServices = getString(R.string.electronic_services_ru);
+				final String visitorStat = getString(R.string.visitor_statistics_ru);
 
 				// Open new activities by click
 				// Change to CASE !!!
@@ -147,25 +156,35 @@ public class MainActivity extends Activity {
 					startActivity(organizationsIntent);
 
 				} else if (electronicServices.equals(pen)) {
-					
-					//((ProgressBar)findViewById(R.id.progressbar)).setVisibility(View.VISIBLE);
-					
-					/*dialog = new ProgressDialog(parent.getContext());
-					dialog.setTitle("Title");
-					dialog.setMessage("Message");
-				
-					dialog.show();*/
-					
+
 					Intent electronicIntent = new Intent(v.getContext(), ElectronicServicesActivity.class);
 					startActivity(electronicIntent);
-					//dialog.dismiss();
+				}else if(visitorStat.equals(pen)){
+					
+					Intent archiveNews = new Intent(v.getContext(),NewsArchiveActivity.class);
+					startActivity(archiveNews);
+					
 				}
 
 			}
+			
+			
 		});
 
 		searchButton = (ImageButton) findViewById(R.id.ImageButton01);
 		queryText = (EditText) findViewById(R.id.editText1);
+		
+		queryText.setText("Поиск услуг");
+
+		queryText.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+
+				queryText.setText("");
+				queryText.setCursorVisible(true);
+
+			}
+		});
 
 		searchButton.setOnClickListener(new OnClickListener() {
 			/** Check network connection ang GET html */
@@ -174,33 +193,19 @@ public class MainActivity extends Activity {
 				String html = "obtaining";
 				queryText.setText("портал");
 
+				String encodeQuery1 = new String(queryText.getText().toString());
+				String encodeQuery = "";
 				try {
-					String encodeQuery = URLEncoder.encode(queryText.getText().toString(), "UTF-8");
-
-					if (NetworkStats.isNetworkAvailable(MainActivity.this)) {
-						DownloadHtml downloadHtml = new DownloadHtml(MainActivity.this);
-						downloadHtml.execute(SEARCH_URL + encodeQuery);
-						try {
-							html = downloadHtml.get();
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						} catch (ExecutionException e) {
-							e.printStackTrace();
-						}
-
-						/** Open Search activity {SearchActivity.java} */
-						Intent searchIntent = new Intent(v.getContext(), SearchActivity.class);
-						searchIntent.putExtra("html", html);
-						searchIntent.putExtra("query", queryText.getText().toString());
-						startActivity(searchIntent);
-
-					}
-
+					encodeQuery = URLEncoder.encode(queryText.getText().toString(), "UTF-8");
 				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			//	System.out.println(SEARCH_URL + encodeQuery);
 
-				System.out.println(html);
+				Intent newIntent = new Intent(v.getContext(), ExpandableListActivity.class);
+				newIntent.putExtra("url", SEARCH_URL + encodeQuery);
+				startActivityForResult(newIntent, 43);
 
 			}
 		});
