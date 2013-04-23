@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.widget.Button"/>
-<fullyQualifiedTypeName name="com.example.client.ExpandableListViewTest"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.example.adapters.CustomExpandableListAdapter"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
@@ -12,7 +9,6 @@
 <fullyQualifiedTypeName name="com.example.client.ExpandableListActivity.DownLoadListParents"/>
 <fullyQualifiedTypeName name="com.example.adapters.ExpandableListChildsParentsAdapter"/>
 <fullyQualifiedTypeName name="com.example.client.ExpandableListActivity.DownloadListTupleChilds"/>
-<fullyQualifiedTypeName name="com.example.client.WebViewActivity"/>
 <fullyQualifiedTypeName name="com.example.client.ServiceDataActivity"/>
 <fullyQualifiedTypeName name="com.example.client.OrganizationsActivity"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
@@ -32,27 +28,19 @@
 <fullyQualifiedTypeName name="android.app.ActionBar"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="com.example.client.EclectronicServicesActivity"/>
-<fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="com.example.client.AgenciesActivity"/>
 <fullyQualifiedTypeName name="android.app.ProgressDialog"/>
-<fullyQualifiedTypeName name="com.example.client.ServiceActivity"/>
 <fullyQualifiedTypeName name="android.widget.SlidingDrawer"/>
 <fullyQualifiedTypeName name="com.example.client.R.layout"/>
-<fullyQualifiedTypeName name="com.example.client.R.id"/>
 <fullyQualifiedTypeName name="android.view.View"/>
-<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="java.security.spec.EncodedKeySpec"/>
 <fullyQualifiedTypeName name="com.example.client.MainActivity"/>
-<fullyQualifiedTypeName name="android.app.AlertDialog"/>
-<fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
-<fullyQualifiedTypeName name="android.content.DialogInterface.OnClickListener"/>
 <fullyQualifiedTypeName name="android.app.Dialog"/>
 <fullyQualifiedTypeName name="com.example.client.ExpandableListActivity"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="android.view.Gravity"/>
 <fullyQualifiedTypeName name="org.htmlcleaner.HtmlCleaner"/>
 <fullyQualifiedTypeName name="com.example.client.R.string"/>
-<fullyQualifiedTypeName name="com.example.client.NewsArchiveActivity"/>
 <fullyQualifiedTypeName name="com.example.adapters.TupleAB"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.example.client.R.drawable"/>
@@ -60,4 +48,16 @@
 <fullyQualifiedTypeName name="com.example.http.NetworkStats"/>
 <fullyQualifiedTypeName name="com.example.parser.HtmlParser"/>
 <fullyQualifiedTypeName name="com.example.client.NewsArchiveActivity.DownloadFullNews"/>
+<fullyQualifiedTypeName name="android.app.AlertDialog"/>
+<fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
+<fullyQualifiedTypeName name="com.example.client.NewsArchiveActivity"/>
+<fullyQualifiedTypeName name="android.content.DialogInterface.OnClickListener"/>
+<fullyQualifiedTypeName name="android.content.DialogInterface.OnCancelListener"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="com.example.client.R.id"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="com.example.client.ServiceActivity"/>
+<fullyQualifiedTypeName name="com.example.client.WebViewActivity"/>
+<fullyQualifiedTypeName name="android.webkit.WebViewClient"/>
 </qualifiedTypeNameHistroy>

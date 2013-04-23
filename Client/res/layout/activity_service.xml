@@ -19,6 +19,13 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:rotation="0" >
+            
+             <Button
+                android:id="@+id/buttonGetSevice"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="#B22222"
+                android:text="Получить услугу" />
 
             <ExpandableListView
                 android:id="@+id/exListView"
@@ -36,12 +43,15 @@
             android:orientation="vertical"
             android:rotation="0" >
 
+           
+
             <ImageView
                 android:id="@+id/imageView23"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:contentDescription="@string/Habarovsk"
                 android:src="@drawable/upbutton" />
+
         </LinearLayout>
     </SlidingDrawer>
 

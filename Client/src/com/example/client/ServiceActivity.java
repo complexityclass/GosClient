@@ -15,10 +15,13 @@ import com.example.parser.HtmlParser;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.SlidingDrawer;
 
@@ -32,8 +35,10 @@ public class ServiceActivity extends Activity {
 	String url = "http://pgu.khv.gov.ru/?a=Citizens&category=Regional&catalog=770";
 	ArrayList<ArrayList<String>> listChilds;
 	ArrayList<String> listGroups;
-
 	ArrayList<ArrayList<TupleAB<String, String>>> tupleListList = new ArrayList<ArrayList<TupleAB<String, String>>>();
+	
+	Button getServicesButton;
+	Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,8 @@ public class ServiceActivity extends Activity {
 
 		Intent urlIntent = getIntent();
 		url = urlIntent.getStringExtra("url");
+		
+		context = ServiceActivity.this;
 
 		DownloadListChilds downloadListChilds = new DownloadListChilds();
 		downloadListChilds.execute(url);
@@ -70,6 +77,19 @@ public class ServiceActivity extends Activity {
 				listChilds, listGroups);
 
 		listView.setAdapter(adapter);
+		
+		getServicesButton = (Button) findViewById(R.id.buttonGetSevice);
+		
+		getServicesButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				Intent newIntent = new Intent(context,WebViewActivity.class);
+				newIntent.putExtra("url",url);
+				startActivity(newIntent);
+				
+			}
+		});
 
 	}
 

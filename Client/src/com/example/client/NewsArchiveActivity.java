@@ -15,6 +15,12 @@ import com.example.http.NetworkStats;
 import com.example.parser.HtmlParser;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +53,10 @@ public class NewsArchiveActivity extends Activity {
 	public static final String PAGE_URL = "http://pgu.khv.gov.ru/?a=NewsList&range=All";
 
 	private ListView currentlistView;
+	
+	AlertDialog.Builder alertDialogBuilder;
+	
+	public Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +67,8 @@ public class NewsArchiveActivity extends Activity {
 		pics = new ArrayList<Integer>();
 
 		newsList = new ArrayList<TupleAB<String, String>>();
+		
+		context = NewsArchiveActivity.this;
 
 		/*
 		 * Check the device network connection
@@ -74,13 +86,6 @@ public class NewsArchiveActivity extends Activity {
 			}
 		}
 
-		/*
-		 * for (Iterator<String> iterator = linksText.iterator();
-		 * iterator.hasNext();) {
-		 * System.out.println(iterator.next().toString()); }
-		 */
-
-		// News[] values = new News[linksText.size()];
 		News[] values = new News[newsList.size()];
 
 		for (int i = 0; i < newsList.size(); i++) {
@@ -88,13 +93,6 @@ public class NewsArchiveActivity extends Activity {
 			values[i] = new News(R.drawable.arrow, newsList.get(i).getA());
 		}
 
-		/*
-		 * for (Iterator<String> iterator = linksText.iterator();
-		 * iterator.hasNext();) { String temp = iterator.next().toString();
-		 * values[i] = new News(R.drawable.arrow, temp); i++;
-		 * 
-		 * /* Set NewsAdapter {@link NewsAdapter}
-		 */
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, values);
 		currentlistView = (ListView) findViewById(R.id.listView1);
 		View header = (View) getLayoutInflater().inflate(R.layout.list_header_row_areas, null);
@@ -107,7 +105,7 @@ public class NewsArchiveActivity extends Activity {
 
 				DownloadFullNews downloadNews = new DownloadFullNews();
 
-				downloadNews.execute(DOMAIN + newsList.get(position).getB());
+				downloadNews.execute(DOMAIN + newsList.get(position - 1).getB());
 
 				String news = "";
 
@@ -120,11 +118,36 @@ public class NewsArchiveActivity extends Activity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				System.out.println("Thats news !!!!!!!!!!!!!!!!!!!!" + news);
 
+				alertDialogBuilder = new AlertDialog.Builder(context);
+				alertDialogBuilder.setTitle("Новость");
+				alertDialogBuilder.setMessage(news);
+				alertDialogBuilder.setPositiveButton("ok", new OnClickListener() {
+					
+					public void onClick(DialogInterface dialog, int which) {
+						
+					}
+				});
+				
+				alertDialogBuilder.setCancelable(true);
+				
+				alertDialogBuilder.setOnCancelListener(new OnCancelListener() {
+					
+					public void onCancel(DialogInterface dialog) {
+						
+					}
+				});
+				
+				alertDialogBuilder.show();
+				
+				/*
 				Toast toast = Toast.makeText(getApplicationContext(), news, Toast.LENGTH_LONG);
-				System.out.println(news);
+				// System.out.println(news);
 				toast.setGravity(Gravity.CENTER, 0, 0);
 				toast.show();
+				*/
 
 			}
 		});
@@ -136,8 +159,6 @@ public class NewsArchiveActivity extends Activity {
 	 * value List<String> links handler
 	 */
 	private class DownloadHtml extends AsyncTask<String, Integer, List<TupleAB<String, String>>> {
-
-		// List<String> resultList = new ArrayList<String>();
 
 		List<TupleAB<String, String>> resultTuple = new ArrayList<TupleAB<String, String>>();
 
@@ -165,8 +186,8 @@ public class NewsArchiveActivity extends Activity {
 
 							TupleAB<String, String> tmpTuple = new TupleAB<String, String>(dates2x.get(i).getText()
 									.toString()
-									+ "\n" + preview2x.get(j).getText().toString() + "...", links2x.get(i).getText()
-									.toString());
+									+ "\n" + preview2x.get(j).getText().toString() + "...", links2x.get(i)
+									.getAttributeByName("href"));
 
 							resultTuple.add(tmpTuple);
 
@@ -176,6 +197,7 @@ public class NewsArchiveActivity extends Activity {
 						}
 
 					}
+					links = null;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -208,15 +230,15 @@ public class NewsArchiveActivity extends Activity {
 			try {
 				parser = new HtmlParser(result);
 
-				List<TagNode> texts = parser.getObjectByTagAndClass("div",
-						"tab-pane active marginRight10 tab-pane-pretty-content");
-				
-				for(Iterator<TagNode> iterator = texts.iterator(); iterator.hasNext();){
-					
-					fullNews += iterator.next().getText().toString();
-					
-				}
+				System.out.println("adress ==========" + urls[0]);
 
+				List<TagNode> texts = parser.getObjectByTagAndClass("div", "tab-content");
+
+				for (Iterator<TagNode> iterator = texts.iterator(); iterator.hasNext();) {
+
+					fullNews += iterator.next().getText().toString();
+
+				}
 
 			} catch (Exception e) {
 				e.printStackTrace();
