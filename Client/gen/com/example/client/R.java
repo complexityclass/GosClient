@@ -45,23 +45,23 @@ public final class R {
     public static final class id {
         public static final int ImageButton01=0x7f080012;
         public static final int action_settings=0x7f08001c;
-        public static final int buttonGetSevice=0x7f080006;
-        public static final int content=0x7f080004;
-        public static final int drawer=0x7f080003;
+        public static final int buttonGetSevice=0x7f080007;
+        public static final int content=0x7f080005;
+        public static final int drawer=0x7f080004;
         public static final int editText1=0x7f080011;
         public static final int exListView=0x7f080000;
-        public static final int handle=0x7f080005;
+        public static final int handle=0x7f080006;
         public static final int icon=0x7f080017;
         public static final int imageView1=0x7f08000a;
         public static final int imageView2=0x7f08000c;
-        public static final int imageView23=0x7f080007;
+        public static final int imageView23=0x7f080008;
         public static final int imgIcon=0x7f08000e;
         public static final int label=0x7f080018;
         public static final int listView1=0x7f080010;
         public static final int listViewData=0x7f080016;
         public static final int listview=0x7f080014;
         public static final int menu_settings=0x7f08001b;
-        public static final int pager=0x7f080008;
+        public static final int pager=0x7f080009;
         public static final int parse=0x7f080015;
         public static final int tab1=0x7f08001a;
         public static final int textChild=0x7f08000b;
@@ -71,7 +71,7 @@ public final class R {
         public static final int textview=0x7f080013;
         public static final int txtHeader=0x7f080001;
         public static final int txtTitle=0x7f08000f;
-        public static final int webView1=0x7f080009;
+        public static final int webView1=0x7f080003;
     }
     public static final class layout {
         public static final int activity_expandable_list=0x7f030000;
@@ -79,32 +79,33 @@ public final class R {
         public static final int activity_life_situations=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_news_archive=0x7f030004;
-        public static final int activity_service=0x7f030005;
-        public static final int activity_swipe=0x7f030006;
-        public static final int activity_test=0x7f030007;
-        public static final int activity_web_view=0x7f030008;
-        public static final int exp_list_child_view=0x7f030009;
-        public static final int exp_list_group_view=0x7f03000a;
-        public static final int exp_list_view_layout=0x7f03000b;
-        public static final int list_header_row=0x7f03000c;
-        public static final int list_header_row_areas=0x7f03000d;
-        public static final int list_header_row_information=0x7f03000e;
-        public static final int list_header_row_main=0x7f03000f;
-        public static final int list_header_search=0x7f030010;
-        public static final int list_row=0x7f030011;
-        public static final int list_view_text_text=0x7f030012;
-        public static final int listview_layout=0x7f030013;
-        public static final int listview_searchbar_layout=0x7f030014;
-        public static final int main=0x7f030015;
-        public static final int newsrowlayout=0x7f030016;
-        public static final int rowlayout=0x7f030017;
-        public static final int search_activity=0x7f030018;
-        public static final int tab1=0x7f030019;
-        public static final int tab2=0x7f03001a;
-        public static final int tab3=0x7f03001b;
-        public static final int tab_layout=0x7f03001c;
-        public static final int tabs_navigation=0x7f03001d;
-        public static final int tain=0x7f03001e;
+        public static final int activity_rostelecom_login=0x7f030005;
+        public static final int activity_service=0x7f030006;
+        public static final int activity_swipe=0x7f030007;
+        public static final int activity_test=0x7f030008;
+        public static final int activity_web_view=0x7f030009;
+        public static final int exp_list_child_view=0x7f03000a;
+        public static final int exp_list_group_view=0x7f03000b;
+        public static final int exp_list_view_layout=0x7f03000c;
+        public static final int list_header_row=0x7f03000d;
+        public static final int list_header_row_areas=0x7f03000e;
+        public static final int list_header_row_information=0x7f03000f;
+        public static final int list_header_row_main=0x7f030010;
+        public static final int list_header_search=0x7f030011;
+        public static final int list_row=0x7f030012;
+        public static final int list_view_text_text=0x7f030013;
+        public static final int listview_layout=0x7f030014;
+        public static final int listview_searchbar_layout=0x7f030015;
+        public static final int main=0x7f030016;
+        public static final int newsrowlayout=0x7f030017;
+        public static final int rowlayout=0x7f030018;
+        public static final int search_activity=0x7f030019;
+        public static final int tab1=0x7f03001a;
+        public static final int tab2=0x7f03001b;
+        public static final int tab3=0x7f03001c;
+        public static final int tab_layout=0x7f03001d;
+        public static final int tabs_navigation=0x7f03001e;
+        public static final int tain=0x7f03001f;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
@@ -115,6 +116,7 @@ public final class R {
         public static final int expandable_list_view_test=0x7f070005;
         public static final int life_situations=0x7f070006;
         public static final int news_archive=0x7f070007;
+        public static final int rostelecom_login=0x7f070008;
     }
     public static final class string {
         public static final int Habarovsk=0x7f050029;
@@ -151,6 +153,7 @@ public final class R {
         public static final int title_activity_main=0x7f050003;
         public static final int title_activity_news=0x7f050005;
         public static final int title_activity_news_archive=0x7f05002b;
+        public static final int title_activity_rostelecom_login=0x7f05002c;
         public static final int title_activity_service=0x7f05002a;
         public static final int title_activity_swipe=0x7f05001d;
         public static final int title_activity_test=0x7f050018;

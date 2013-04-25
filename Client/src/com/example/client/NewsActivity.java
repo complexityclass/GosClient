@@ -125,7 +125,7 @@ public class NewsActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(Map<Integer, String> resultMap) {
-
+		
 		}
 	}
 }

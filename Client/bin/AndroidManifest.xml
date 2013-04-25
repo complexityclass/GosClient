@@ -180,6 +180,10 @@
             android:name="com.example.client.NewsArchiveActivity"
             android:label="@string/title_activity_news_archive" >
         </activity>
+        <activity
+            android:name="com.example.client.RostelecomLoginActivity"
+            android:label="@string/title_activity_rostelecom_login" >
+        </activity>
     </application>
 
 </manifest>
