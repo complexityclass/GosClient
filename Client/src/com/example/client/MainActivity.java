@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
 				// new News(R.drawable.arrow,
 				// getString(R.string.life_situations_ru)),
 				new News(R.drawable.arrow, getString(R.string.information_ru)),
-				new News(R.drawable.arrow, getString(R.string.visitor_statistics_ru)),
+				new News(R.drawable.arrow, getString(R.string.news_archive_ru)),
 		// new News(R.drawable.arrow, getString(R.string.search_news_ru)),
 		// new News(R.drawable.arrow, "ExpandableListView")
 		};
@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
 				final String expListView = "ExpandableListView";
 				final String organizations = getString(R.string.organizations_ru);
 				final String electronicServices = getString(R.string.electronic_services_ru);
-				final String visitorStat = getString(R.string.visitor_statistics_ru);
+				final String visitorStat = getString(R.string.news_archive_ru);
 
 				// Open new activities by click
 				// Change to CASE !!!
@@ -191,7 +191,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 
 				String html = "obtaining";
-				queryText.setText("портал");
+				//queryText.setText("портал");
 
 				String encodeQuery1 = new String(queryText.getText().toString());
 				String encodeQuery = "";

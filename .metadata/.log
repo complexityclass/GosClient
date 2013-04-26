@@ -936,3 +936,699 @@ The most important of these settings is core.autocrlf. Git for Windows by defaul
 this system level configuration. The Git installation location can be configured on the
 Team > Git > Configuration preference page's 'System Settings' tab.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2013-04-26 16:20:09.734 -----------------------------------------------
+eclipse.buildId=v21.1.0-569685
+java.version=1.7.0_09
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2013-04-26 16:20:16.267
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.788
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.788
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.789
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.789
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.789
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.790
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.790
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.790
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.791
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.791
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.791
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.792
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.792
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.793
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.793
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.793
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.794
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.794
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.794
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.795
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.795
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.796
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.796
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.796
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.797
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.797
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.797
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.798
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.798
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.798
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.799
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.799
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.799
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.800
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.800
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.800
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.800
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.801
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.801
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.802
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.802
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.802
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.803
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.803
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.803
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.804
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.804
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.804
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.804
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.805
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.805
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.805
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.806
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.806
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.806
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.807
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.807
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.807
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.808
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.808
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.808
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.809
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.809
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.809
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.810
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.810
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.810
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.811
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.811
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.811
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.812
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.812
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.812
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.813
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.813
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.813
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.814
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.814
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.815
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.815
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.815
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.816
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.816
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.816
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.817
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.817
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.817
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.817
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.818
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.818
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.818
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.819
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.819
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.819
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.820
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.820
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.820
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.821
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.821
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.821
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.822
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.822
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.822
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.823
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.823
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.823
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.823
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.824
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.824
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.824
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.825
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.825
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.825
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.826
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.826
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.826
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.827
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.827
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.827
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.828
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.828
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.828
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.829
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.829
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.829
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.830
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.830
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.830
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.830
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.831
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.831
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.831
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.832
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.832
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.832
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.833
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.833
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.833
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.834
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.834
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.834
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.834
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.835
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.835
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.835
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.836
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.836
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.836
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.837
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.837
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.837
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.838
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.838
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.838
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.839
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.839
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.839
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.840
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.840
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.840
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.841
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.841
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.841
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.842
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.842
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.842
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.842
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.843
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.843
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.843
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.844
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.844
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.845
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.845
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.845
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.846
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.846
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.847
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.847
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.847
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.848
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.848
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.849
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.849
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.849
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.850
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.850
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.850
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.850
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.851
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.851
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.851
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.852
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.852
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.852
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.853
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.853
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.853
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.854
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.854
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.854
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.854
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.855
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.855
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.855
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.856
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.856
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.856
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.856
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.857
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.857
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.857
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.858
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.858
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.858
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.859
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.859
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.859
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.860
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.860
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.860
+!MESSAGE Current file is not a match for the given config.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-04-26 17:27:50.861
+!MESSAGE Current file is not a match for the given config.
+!SESSION 2013-04-26 20:18:08.437 -----------------------------------------------
+eclipse.buildId=v21.1.0-569685
+java.version=1.7.0_09
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2013-04-26 20:18:15.667
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

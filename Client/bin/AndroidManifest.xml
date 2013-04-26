@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.client.MainActivity"
-            android:label="@string/Habarovsk" >
+            android:label="@string/Habarovsk_Servise" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,7 +54,7 @@
         </activity>
         <activity
             android:name="com.example.client.CitizenRegActivity"
-            android:label="@string/title_activity_citizen_reg" >
+            android:label="@string/citizens_ru" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +63,7 @@
         </activity>
         <activity
             android:name="com.example.client.OrganizationsActivity"
-            android:label="@string/Habarovsk_Servise" >
+            android:label="@string/organizations_ru" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -153,7 +153,7 @@
         </activity>
         <activity
             android:name="com.example.client.LifeSituationsActivity"
-            android:label="@string/title_activity_life_situations" >
+            android:label="@string/life_situations_ru" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -166,7 +166,7 @@
         </activity>
         <activity
             android:name="com.example.client.ExpandableListActivity"
-            android:label="@string/title_activity_expandable_list" >
+            android:label="@string/Habarovsk_Servise" >
         </activity>
         <activity
             android:name="com.example.client.ServiceDataActivity"

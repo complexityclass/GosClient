@@ -95,7 +95,7 @@ public class NewsArchiveActivity extends Activity {
 
 		NewsAdapter adapter = new NewsAdapter(this, R.layout.list_row, values);
 		currentlistView = (ListView) findViewById(R.id.listView1);
-		View header = (View) getLayoutInflater().inflate(R.layout.list_header_row_areas, null);
+		View header = (View) getLayoutInflater().inflate(R.layout.list_header_news_archive, null);
 		currentlistView.addHeaderView(header);
 		currentlistView.setAdapter(adapter);
 
@@ -118,8 +118,6 @@ public class NewsArchiveActivity extends Activity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				System.out.println("Thats news !!!!!!!!!!!!!!!!!!!!" + news);
 
 				alertDialogBuilder = new AlertDialog.Builder(context);
 				alertDialogBuilder.setTitle("Новость");
@@ -184,9 +182,11 @@ public class NewsArchiveActivity extends Activity {
 
 							boolean isPreviewText = i % 2 == 0 ? false : true;
 
-							TupleAB<String, String> tmpTuple = new TupleAB<String, String>(dates2x.get(i).getText()
-									.toString()
-									+ "\n" + preview2x.get(j).getText().toString() + "...", links2x.get(i)
+							String cutString = preview2x.get(j).getText().toString();
+							cutString = cutString.replace("\\s{1,}", "\u0020");
+							
+							TupleAB<String, String> tmpTuple = new TupleAB<String, String>(dates2x.get(i).getText().toString()
+									 + cutString + "...", links2x.get(i)
 									.getAttributeByName("href"));
 
 							resultTuple.add(tmpTuple);
@@ -243,6 +243,8 @@ public class NewsArchiveActivity extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			fullNews = fullNews.replace("\\s{1,}", "\u0020");
 
 			return fullNews;
 
