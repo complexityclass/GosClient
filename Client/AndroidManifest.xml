@@ -184,6 +184,10 @@
             android:name="com.example.client.RostelecomLoginActivity"
             android:label="@string/title_activity_rostelecom_login" >
         </activity>
+        <activity
+            android:name="com.example.client.EsiaLoginActivity"
+            android:label="@string/title_activity_esia_login" >
+        </activity>
     </application>
 
 </manifest>

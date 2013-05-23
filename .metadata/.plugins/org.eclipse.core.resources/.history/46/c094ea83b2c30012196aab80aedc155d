@@ -1,0 +1,9 @@
+package com.example.http;
+
+import com.example.client.RostelecomLoginActivity;
+
+public class JavaScriptHandler {
+	
+	RostelecomLoginActivity parentActivity;
+
+}

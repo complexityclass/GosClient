@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.example.adapters.ExpandableListAdapter"/>
-<fullyQualifiedTypeName name="java.io.StringReader"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="com.example.client.ExpandableListActivity.DownLoadListParents"/>
-<fullyQualifiedTypeName name="com.example.adapters.ExpandableListChildsParentsAdapter"/>
-<fullyQualifiedTypeName name="com.example.client.ExpandableListActivity.DownloadListTupleChilds"/>
-<fullyQualifiedTypeName name="com.example.client.ServiceDataActivity"/>
 <fullyQualifiedTypeName name="com.example.client.OrganizationsActivity"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.example.client.AreasOfActivity"/>
@@ -23,7 +16,6 @@
 <fullyQualifiedTypeName name="java.lang.InterruptedException"/>
 <fullyQualifiedTypeName name="com.example.adapters.NewsAdapter"/>
 <fullyQualifiedTypeName name="android.app.ActionBar"/>
-<fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="com.example.client.EclectronicServicesActivity"/>
 <fullyQualifiedTypeName name="com.example.client.AgenciesActivity"/>
 <fullyQualifiedTypeName name="android.app.ProgressDialog"/>
@@ -33,7 +25,6 @@
 <fullyQualifiedTypeName name="java.security.spec.EncodedKeySpec"/>
 <fullyQualifiedTypeName name="com.example.client.MainActivity"/>
 <fullyQualifiedTypeName name="android.app.Dialog"/>
-<fullyQualifiedTypeName name="com.example.client.ExpandableListActivity"/>
 <fullyQualifiedTypeName name="android.view.Gravity"/>
 <fullyQualifiedTypeName name="org.htmlcleaner.HtmlCleaner"/>
 <fullyQualifiedTypeName name="com.example.client.R.string"/>
@@ -49,15 +40,24 @@
 <fullyQualifiedTypeName name="com.example.client.NewsArchiveActivity"/>
 <fullyQualifiedTypeName name="android.content.DialogInterface.OnClickListener"/>
 <fullyQualifiedTypeName name="android.content.DialogInterface.OnCancelListener"/>
-<fullyQualifiedTypeName name="android.widget.Button"/>
-<fullyQualifiedTypeName name="com.example.client.R.id"/>
-<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
-<fullyQualifiedTypeName name="com.example.client.ServiceActivity"/>
 <fullyQualifiedTypeName name="com.example.client.WebViewActivity"/>
 <fullyQualifiedTypeName name="android.webkit.WebSettings"/>
 <fullyQualifiedTypeName name="android.webkit.WebChromeClient"/>
 <fullyQualifiedTypeName name="android.view.Window"/>
-<fullyQualifiedTypeName name="android.webkit.WebViewClient"/>
+<fullyQualifiedTypeName name="com.example.client.ExpandableListActivity"/>
+<fullyQualifiedTypeName name="com.example.client.ServiceActivity"/>
+<fullyQualifiedTypeName name="android.widget.ImageButton"/>
+<fullyQualifiedTypeName name="com.example.client.EsiaLoginActivity"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="android.content.res.ColorStateList"/>
+<fullyQualifiedTypeName name="android.graphics.Color"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="com.example.client.RostelecomLoginActivity"/>
+<fullyQualifiedTypeName name="com.example.client.R.id"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.webkit.WebViewClient"/>
+<fullyQualifiedTypeName name="com.example.http.MeWebViewClient"/>
 </qualifiedTypeNameHistroy>

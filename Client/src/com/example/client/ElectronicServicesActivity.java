@@ -38,6 +38,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -69,8 +71,8 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tain);
-		
-		//mProgress =(ProgressBar) findViewById(R.id.progressbar);
+
+		// mProgress =(ProgressBar) findViewById(R.id.progressbar);
 
 		mCollectionPagerAdapter = new CollectionPagerAdapter(getSupportFragmentManager());
 
@@ -78,11 +80,11 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 		actionBar.setHomeButtonEnabled(false);
 
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
+
 		mViewPager = (ViewPager) findViewById(R.id.pager);
-		
-		//showProgress(true);
-		
+
+		// showProgress(true);
+
 		mViewPager.setAdapter(mCollectionPagerAdapter);
 		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 			@Override
@@ -94,9 +96,8 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 		for (int i = 0; i < mCollectionPagerAdapter.getCount(); i++) {
 			actionBar.addTab(actionBar.newTab().setText(mCollectionPagerAdapter.getPageTitle(i)).setTabListener(this));
 		}
-		
-		//showProgress(false);
 
+		// showProgress(false);
 
 		actionBar.getTabAt(0).setCustomView(R.layout.tab_layout);
 		TextView txt1 = (TextView) actionBar.getTabAt(0).getCustomView().findViewById(R.id.textView1);
@@ -105,8 +106,7 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 		actionBar.getTabAt(1).setCustomView(R.layout.tab_layout);
 		TextView txt2 = (TextView) actionBar.getTabAt(1).getCustomView().findViewById(R.id.textView1);
 		txt2.setText(R.string.munitipal);
-		
-		
+
 	}
 
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
@@ -175,8 +175,6 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 		public List<TupleAB<String, String>> linksText;
 		public List<Integer> pics;
 		public String myHTML = "";
-		
-		
 
 		private ListView currentListView;
 
@@ -202,7 +200,7 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 			}
 
 			View rootView = inflater.inflate(tabLayout, container, false);
-			
+
 			perform(rootView);
 			return rootView;
 		}
@@ -218,7 +216,7 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 			downloadHtml.execute(currentUrl);
 
 			try {
-				
+
 				linksText = downloadHtml.get();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -270,8 +268,6 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 			List<String> titleList = new ArrayList<String>();
 			List<String> hrefList = new ArrayList<String>();
 			List<TupleAB<String, String>> resultTuple = new ArrayList<TupleAB<String, String>>();
-			
-			
 
 			@Override
 			protected void onPreExecute() {
@@ -286,7 +282,7 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 				maxPage = positionNum == 0 ? MUNICIPAL_PAGES : REGIONAL_PAGES;
 
 				for (Integer j = 1; j < maxPage; j++) {
-					
+
 					System.out.println("parse page!");
 
 					String curUrl = j == 1 ? urls[0] : urls[0] + "&page=" + j.toString();
@@ -316,11 +312,22 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 
 								String s1 = titleList.get(i);
 								String s2 = hrefList.get(i);
-								System.out.println(s1 + " " + s2);
+								System.out.println("TITLES WITH LINKS" + s1 + " " + s2);
 								TupleAB<String, String> temp = new TupleAB<String, String>(s1, s2);
 								resultTuple.add(temp);
 
 							}
+
+							/*
+							 * for (int i = 0; i < Math.min(titles.size() - 1,
+							 * hrefs.size() - 1); i++) {
+							 * 
+							 * String s1 = titles.get(i).getText().toString();
+							 * String s2 = hrefs.get(i).getText().toString();
+							 * TupleAB<String, String> temp = new
+							 * TupleAB<String, String>(s1, s2);
+							 * resultTuple.add(temp); }
+							 */
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -337,19 +344,18 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 
 			@Override
 			protected void onPostExecute(List<TupleAB<String, String>> resultList) {
-				
-				
+
 			}
 
 		}
 
 	}
 
-	public void showProgress(boolean b){
-		
+	public void showProgress(boolean b) {
+
 		mProgress.setVisibility(b ? View.VISIBLE : View.GONE);
 		mViewPager.setVisibility(b ? View.VISIBLE : View.GONE);
-		
+
 	}
-	
+
 }

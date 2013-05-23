@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
 
 	private ListView currentlistView;
 	private ImageButton searchButton;
+	private ImageButton loginButton;
 	private EditText queryText;
 
 	ProgressDialog dialog;
@@ -174,6 +175,7 @@ public class MainActivity extends Activity {
 		searchButton = (ImageButton) findViewById(R.id.ImageButton01);
 		queryText = (EditText) findViewById(R.id.editText1);
 		
+	
 		queryText.setText("Поиск услуг");
 
 		queryText.setOnClickListener(new View.OnClickListener() {
@@ -207,6 +209,19 @@ public class MainActivity extends Activity {
 				newIntent.putExtra("url", SEARCH_URL + encodeQuery);
 				startActivityForResult(newIntent, 43);
 
+			}
+		});
+		
+		loginButton = (ImageButton) findViewById(R.id.imageButton1);
+		loginButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				//Intent esiaIntent = new Intent(v.getContext(), EsiaLoginActivity.class);
+				//startActivity(esiaIntent);
+				
+				Intent rostelekomLogin = new Intent(v.getContext(), RostelecomLoginActivity.class);
+				rostelekomLogin.putExtra("url", "http://pgu.khv.gov.ru/");
+				startActivityForResult(rostelekomLogin, 43);
 			}
 		});
 	}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/back">
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="132dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageButton1"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:singleLine="true"
+        android:text="Поиск услуг"
+        android:textColor="#104E8B"
+        android:textSize="15sp"
+        android:typeface="monospace" >
+
+        <requestFocus />
+    </EditText>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1" >
+    </ListView>
+
+    <ImageButton
+        android:id="@+id/ImageButton01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listView1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/magnifier" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ImageButton01"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ImageButton01"
+        android:src="@android:drawable/arrow_up_float" />
+
+</RelativeLayout>

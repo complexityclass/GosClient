@@ -36,7 +36,7 @@ public class ServiceActivity extends Activity {
 	ArrayList<ArrayList<String>> listChilds;
 	ArrayList<String> listGroups;
 	ArrayList<ArrayList<TupleAB<String, String>>> tupleListList = new ArrayList<ArrayList<TupleAB<String, String>>>();
-	
+
 	Button getServicesButton;
 	Context context;
 
@@ -47,7 +47,7 @@ public class ServiceActivity extends Activity {
 
 		Intent urlIntent = getIntent();
 		url = urlIntent.getStringExtra("url");
-		
+
 		context = ServiceActivity.this;
 
 		DownloadListChilds downloadListChilds = new DownloadListChilds();
@@ -77,17 +77,17 @@ public class ServiceActivity extends Activity {
 				listChilds, listGroups);
 
 		listView.setAdapter(adapter);
-		
+
 		getServicesButton = (Button) findViewById(R.id.buttonGetSevice);
-		
+
 		getServicesButton.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View v) {
-				
+
 				Intent newIntent = new Intent(context,WebViewActivity.class);
 				newIntent.putExtra("url",url);
 				startActivity(newIntent);
-				
+
 			}
 		});
 

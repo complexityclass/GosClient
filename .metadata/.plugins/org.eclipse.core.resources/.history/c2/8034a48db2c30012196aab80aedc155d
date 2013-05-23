@@ -1,0 +1,15 @@
+package com.example.http;
+
+import android.webkit.JavascriptInterface;
+
+import com.example.client.RostelecomLoginActivity;
+
+public class JavaScriptHandler {
+	
+	RostelecomLoginActivity parentActivity;
+	
+	public JavaScriptHandler(RostelecomLoginActivity activity){
+		
+	}
+
+}

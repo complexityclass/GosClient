@@ -47,5 +47,7 @@
     <string name="title_activity_news_archive">NewsArchiveActivity</string>
     <string name="title_activity_rostelecom_login">RostelecomLoginActivity</string>
     <string name="news_archive_ru">Архив новостей</string>
+    <string name="title_activity_esia_login">Авторизация</string>
+    <string name="loginButton">Войти</string>
 
 </resources>
