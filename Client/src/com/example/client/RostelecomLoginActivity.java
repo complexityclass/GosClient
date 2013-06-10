@@ -59,7 +59,7 @@ public class RostelecomLoginActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu; this adds items to the action bar if it is present. ok ob
 		getMenuInflater().inflate(R.menu.rostelecom_login, menu);
 		return true;
 	}
