@@ -34,7 +34,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
 	public int getChildrenCount(String groupName) {
 		int count = 0;
-		for (Map.Entry<String, ArrayList<TupleAB<String,String>>> entry : mGroups.entrySet()) {
+		for (Map.Entry<String, ArrayList<TupleAB<String, String>>> entry : mGroups.entrySet()) {
 			if (entry.getKey().equals(groupName)) {
 				count = entry.getValue().size();
 			}
@@ -43,13 +43,13 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	public Object getGroup(String groupName) {
-		
-		for(Map.Entry<String, ArrayList<TupleAB<String,String>>> entry : mGroups.entrySet()){
-			if(entry.getKey().equals(groupName)){
-				
+
+		for (Map.Entry<String, ArrayList<TupleAB<String, String>>> entry : mGroups.entrySet()) {
+			if (entry.getKey().equals(groupName)) {
+
 			}
 		}
-		
+
 		return null;
 	}
 

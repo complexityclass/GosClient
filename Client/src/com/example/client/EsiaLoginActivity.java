@@ -22,8 +22,8 @@ public class EsiaLoginActivity extends Activity {
 		EditText passField = (EditText) findViewById(R.id.passText);
 		Button logButton = (Button) findViewById(R.id.logbut);
 
-		loginField.setHint("СНИЛС/логин");
-		passField.setHint("Пароль");
+		//loginField.setHint("СНИЛС/логин");
+		//passField.setHint("Пароль");
 
 		logButton.setOnClickListener(new OnClickListener() {
 

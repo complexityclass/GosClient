@@ -188,6 +188,10 @@
             android:name="com.example.client.EsiaLoginActivity"
             android:label="@string/title_activity_esia_login" >
         </activity>
+        <activity
+            android:name="com.example.client.TestWebViewWithJavascript"
+            android:label="@string/title_activity_test_web_view_with_javascript" >
+        </activity>
     </application>
 
 </manifest>

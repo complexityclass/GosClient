@@ -1,7 +1,0 @@
-package com.example.http;
-
-import android.webkit.WebViewClient;
-
-public class MeWebViewClient extends WebViewClient {
-
-}

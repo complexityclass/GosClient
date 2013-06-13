@@ -58,7 +58,6 @@ public class AgenciesActivity extends Activity {
 		dialog = new ProgressDialog(this);
 		dialog.setTitle("Title");
 		dialog.setMessage("Message");
-		System.out.println("Это то активити!!!!!!!!!!!!!!!!!!!!!");
 
 		linksText = new ArrayList<String>();
 		pics = new ArrayList<Integer>();

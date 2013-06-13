@@ -10,18 +10,37 @@
 
     <WebView
         android:id="@+id/webView1"
-        android:layout_width="269dp"
-        android:layout_height="168dp"
+        android:layout_width="276dp"
+        android:layout_height="228dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="241dp"
+        android:layout_height="wrap_content"
+        android:layout_x="21dp"
+        android:layout_y="311dp"
+        android:ems="10" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="207dp"
         android:layout_height="wrap_content"
-        android:layout_x="27dp"
-        android:layout_y="240dp"
+        android:layout_x="38dp"
+        android:layout_y="392dp"
         android:text="Button" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_x="0dp"
+        android:layout_y="278dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
 
 </AbsoluteLayout>
