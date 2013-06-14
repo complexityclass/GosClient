@@ -31,6 +31,8 @@ public class RostelecomLoginActivity extends Activity {
 	WebView webView;
 	String url;
 
+	public static int auth;
+
 	@SupressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class RostelecomLoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_rostelecom_login);
+
+		auth = 1;
 
 		Intent webIntent = getIntent();
 		final String url = webIntent.getStringExtra("url");
@@ -53,11 +57,11 @@ public class RostelecomLoginActivity extends Activity {
 		final Button button = (Button) findViewById(R.id.button1);
 		final EditText loginField = (EditText) findViewById(R.id.editText1);
 		final EditText passField = (EditText) findViewById(R.id.editText2);
-
-		loginField.setVisibility(View.INVISIBLE);
-		passField.setVisibility(View.INVISIBLE);
-		button.setVisibility(View.INVISIBLE);
-
+		/*
+		 * loginField.setVisibility(View.INVISIBLE);
+		 * passField.setVisibility(View.INVISIBLE);
+		 * button.setVisibility(View.INVISIBLE);
+		 */
 		webView.setWebViewClient(new WebViewClient() {
 
 			public void onPageLoad(WebView view, String url) {
@@ -68,33 +72,56 @@ public class RostelecomLoginActivity extends Activity {
 			}
 
 			public void onPageFinished(final WebView view, String url) {
-				view.loadUrl("javascript:pLogin(2)");
 
-				webView.setVisibility(View.VISIBLE);
-				loginField.setVisibility(View.VISIBLE);
-				passField.setVisibility(View.VISIBLE);
-				button.setVisibility(View.VISIBLE);
-				
-				loginField.setHint("SNILS");
-				passField.setHint("Pass");
+				if (auth == 1) {
+					view.loadUrl("javascript:pLogin(2)");
 
-				button.setOnClickListener(new OnClickListener() {
+					System.out.println("INJECTING JAVASCRIPT REDIRECTING TO ///");
 
-					public void onClick(View v) {
+					webView.setVisibility(View.VISIBLE);
+					loginField.setVisibility(View.VISIBLE);
+					passField.setVisibility(View.VISIBLE);
+					button.setVisibility(View.VISIBLE);
 
-						String login = loginField.getText().toString();
-						String password = passField.getText().toString();
-	
-						webView.loadUrl("javascript:document.getElementById('username').value = " + login);
-						webView.loadUrl("javascript:document.getElementById('password').value = " + password);
-						//webView.loadUrl("javascript:document.getElementsByClassName('button-blue-big in_button display showCaptchaSignInBtn')[0].click();");
-						//webView.loadUrl("javascript:document.getElementsByClassName('col-01')[0]");
-						
+					loginField.setHint("SNILS");
+					passField.setHint("Pass");
 
-						System.out.println("login : " + login + "password : " + password);
+					button.setOnClickListener(new OnClickListener() {
 
-					}
-				});
+						public void onClick(View v) {
+
+							String login = loginField.getText().toString();
+							String password = passField.getText().toString();
+
+							webView.loadUrl("javascript:document.getElementById('username').value = " + login);
+							webView.loadUrl("javascript:document.getElementById('password').value = " + password);
+							// webView.loadUrl("javascript:document.getElementsByClassName('button-blue-big in_button display showCaptchaSignInBtn')[0].click();");
+							// //webView.loadUrl("javascript:document.getElementsByClassName('col-01')[0]");
+							System.out.println("login : " + login + "password : " + password);
+
+							webView.loadUrl("javascript:"
+									+ "var arr = document.getElementsByTagName('button'); "
+									+ "for(i = 0, l = arr.length; i < l; ++i)"
+									+ "{ if(arr[i].className == 'button-blue-big in_button display showCaptchaSignInBtn')"
+									+ "{arr[i].click()} " + "}");
+							
+							auth = 2;
+
+						}
+					});
+				} else if(auth == 2) {
+
+					System.out.println("PUTKEY");
+
+					// loginField.setVisibility(View.GONE);
+					// passField.setVisibility(View.GONE);
+					
+					webView.loadUrl(url);
+					auth = 3;
+
+				} else if(auth == 3){
+					System.out.println("END ");
+				}
 
 			}
 
@@ -106,13 +133,13 @@ public class RostelecomLoginActivity extends Activity {
 				return false;
 			}
 		});
+
 		webView.loadUrl(url);
+
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		// ok ob
 		getMenuInflater().inflate(R.menu.rostelecom_login, menu);
 		return true;
 	}
