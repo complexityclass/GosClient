@@ -268,7 +268,6 @@ public class CitizenRegActivity extends FragmentActivity implements ActionBar.Ta
 
 						for (Iterator<TagNode> iterator = hrefLinks.iterator(); iterator.hasNext();) {
 							TagNode hrefer = (TagNode) iterator.next();
-							// System.out.println(hrefer.getAttributeByName("href").toString());
 							hrefers.add(hrefer.getAttributeByName("href").toString());
 						}
 

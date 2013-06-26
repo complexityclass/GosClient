@@ -1,4 +1,4 @@
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,37 +10,26 @@
 
     <WebView
         android:id="@+id/webView1"
-        android:layout_width="276dp"
-        android:layout_height="228dp"
+        android:layout_width="286dp"
+        android:layout_height="385dp"
+        android:layout_above="@+id/seekBar1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="241dp"
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="313dp"
         android:layout_height="wrap_content"
-        android:layout_x="21dp"
-        android:layout_y="311dp"
-        android:ems="10" />
+        android:layout_alignLeft="@+id/webView1"
+        android:layout_alignParentBottom="true" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="207dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="38dp"
-        android:layout_y="392dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/seekBar1"
         android:text="Button" />
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_x="0dp"
-        android:layout_y="278dp"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
-</AbsoluteLayout>
+</RelativeLayout>

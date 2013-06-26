@@ -1,8 +1,11 @@
 package com.example.client;
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.http.MeWebViewClient;
+import com.example.http.PostData;
 import com.example.http.WebAppInterface;
 
 import android.net.http.SslError;
@@ -23,6 +26,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Toast;
 import android.graphics.Bitmap;
 
@@ -31,7 +35,7 @@ public class RostelecomLoginActivity extends Activity {
 	WebView webView;
 	String url;
 
-	public static int auth;
+	public static int auth = 1;
 
 	@SupressLint("SetJavaScriptEnabled")
 	@Override
@@ -40,8 +44,6 @@ public class RostelecomLoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_rostelecom_login);
-
-		auth = 1;
 
 		Intent webIntent = getIntent();
 		final String url = webIntent.getStringExtra("url");
@@ -54,14 +56,8 @@ public class RostelecomLoginActivity extends Activity {
 		webSettings.setSaveFormData(true);
 		webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 
-		final Button button = (Button) findViewById(R.id.button1);
-		final EditText loginField = (EditText) findViewById(R.id.editText1);
-		final EditText passField = (EditText) findViewById(R.id.editText2);
-		/*
-		 * loginField.setVisibility(View.INVISIBLE);
-		 * passField.setVisibility(View.INVISIBLE);
-		 * button.setVisibility(View.INVISIBLE);
-		 */
+		SeekBar seekbar = (SeekBar) findViewById(R.id.seekBar1);
+
 		webView.setWebViewClient(new WebViewClient() {
 
 			public void onPageLoad(WebView view, String url) {
@@ -73,55 +69,18 @@ public class RostelecomLoginActivity extends Activity {
 
 			public void onPageFinished(final WebView view, String url) {
 
-				if (auth == 1) {
-					view.loadUrl("javascript:pLogin(2)");
+				view.loadUrl("javascript:(function f(){if (portal.UID == 0) {pLogin(2);} else {alert('authorized');if(document.URL.indexOf('Details',0) < 0){"
+						+ "var links = document.getElementsByTagName('a');for (i = 0; i < links.length; i++) {if (links[i].className == 'private-cab-link') {links[i].click();}}"
+						+ "}else{alert('ok');}}})()");
 
-					System.out.println("INJECTING JAVASCRIPT REDIRECTING TO ///");
+				view.loadUrl("javascript:(function erase(){if(document.URL.indexOf('Details',0) > 0){ var obj = document.getElementsByTagName('div');"
+						+ "for(i = 0; i < obj.length; i++){if(obj[i].className == 'header' || obj[i].className == 'footer' || "
+						+ "obj[i].className == 'category-menu-wrapper' || obj[i].className == 'r-layout pull-right'){obj[i].parentNode.removeChild(obj[i]);}}"
+						+ "var arr = document.getElementsByTagName('ul');for(i = 0; i < arr.length; i++){if(arr[i].className == 'nav nav-tabs'){arr[i].parentNode.removeChild(arr[i]);}}}})()");
 
-					webView.setVisibility(View.VISIBLE);
-					loginField.setVisibility(View.VISIBLE);
-					passField.setVisibility(View.VISIBLE);
-					button.setVisibility(View.VISIBLE);
+				System.out.println("INJECTING JAVASCRIPT REDIRECTING TO ///");
 
-					loginField.setHint("SNILS");
-					passField.setHint("Pass");
-
-					button.setOnClickListener(new OnClickListener() {
-
-						public void onClick(View v) {
-
-							String login = loginField.getText().toString();
-							String password = passField.getText().toString();
-
-							webView.loadUrl("javascript:document.getElementById('username').value = " + login);
-							webView.loadUrl("javascript:document.getElementById('password').value = " + password);
-							// webView.loadUrl("javascript:document.getElementsByClassName('button-blue-big in_button display showCaptchaSignInBtn')[0].click();");
-							// //webView.loadUrl("javascript:document.getElementsByClassName('col-01')[0]");
-							System.out.println("login : " + login + "password : " + password);
-
-							webView.loadUrl("javascript:"
-									+ "var arr = document.getElementsByTagName('button'); "
-									+ "for(i = 0, l = arr.length; i < l; ++i)"
-									+ "{ if(arr[i].className == 'button-blue-big in_button display showCaptchaSignInBtn')"
-									+ "{arr[i].click()} " + "}");
-							
-							auth = 2;
-
-						}
-					});
-				} else if(auth == 2) {
-
-					System.out.println("PUTKEY");
-
-					// loginField.setVisibility(View.GONE);
-					// passField.setVisibility(View.GONE);
-					
-					webView.loadUrl(url);
-					auth = 3;
-
-				} else if(auth == 3){
-					System.out.println("END ");
-				}
+				webView.setVisibility(View.VISIBLE);
 
 			}
 
@@ -135,6 +94,17 @@ public class RostelecomLoginActivity extends Activity {
 		});
 
 		webView.loadUrl(url);
+
+		Button button = (Button) findViewById(R.id.button1);
+		button.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				new PostData().execute();
+				
+			}
+		});
+		
 
 	}
 
