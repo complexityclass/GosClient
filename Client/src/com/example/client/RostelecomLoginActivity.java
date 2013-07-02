@@ -97,14 +97,36 @@ public class RostelecomLoginActivity extends Activity {
 
 		Button button = (Button) findViewById(R.id.button1);
 		button.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View v) {
-				
-				new PostData().execute();
-				
+
+				new PostData(getApplicationContext()).execute();
+
 			}
 		});
-		
+
+		Button buttonEdit = (Button) findViewById(R.id.editProfile);
+		buttonEdit.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+
+				Intent editProfileIntent = new Intent(v.getContext(), EditProfileActivity.class);
+				startActivity(editProfileIntent);
+
+			}
+		});
+
+		Button buttonCab = (Button) findViewById(R.id.personCab);
+
+		buttonCab.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+
+				Intent personCabIntent = new Intent(v.getContext(), PersonCabActivity.class);
+				startActivity(personCabIntent);
+
+			}
+		});
 
 	}
 

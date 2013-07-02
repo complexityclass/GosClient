@@ -15,7 +15,7 @@
         android:layout_above="@+id/seekBar1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
+        android:layout_below="@+id/editProfile" />
 
     <SeekBar
         android:id="@+id/seekBar1"
@@ -31,5 +31,24 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/seekBar1"
         android:text="Button" />
+
+    <Button
+        android:id="@+id/editProfile"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="MultChoice" />
+
+    <Button
+        android:id="@+id/personCab"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/webView1"
+        android:layout_alignTop="@+id/editProfile"
+        android:layout_toRightOf="@+id/editProfile"
+        android:text="PersonCab" />
 
 </RelativeLayout>

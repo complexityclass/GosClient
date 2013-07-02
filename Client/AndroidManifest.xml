@@ -192,6 +192,14 @@
             android:name="com.example.client.TestWebViewWithJavascript"
             android:label="@string/title_activity_test_web_view_with_javascript" >
         </activity>
+        <activity
+            android:name="com.example.client.EditProfileActivity"
+            android:label="@string/title_activity_edit_profile" >
+        </activity>
+        <activity
+            android:name="com.example.client.PersonCabActivity"
+            android:label="@string/title_activity_person_cab" >
+        </activity>
     </application>
 
 </manifest>
