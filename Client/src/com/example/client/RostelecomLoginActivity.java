@@ -58,7 +58,7 @@ public class RostelecomLoginActivity extends Activity {
 
 		SeekBar seekbar = (SeekBar) findViewById(R.id.seekBar1);
 
-		webView.setWebViewClient(new WebViewClient() {
+		/*webView.setWebViewClient(new WebViewClient() {
 
 			public void onPageLoad(WebView view, String url) {
 			}
@@ -94,13 +94,18 @@ public class RostelecomLoginActivity extends Activity {
 		});
 
 		webView.loadUrl(url);
+		*/
 
 		Button button = (Button) findViewById(R.id.button1);
 		button.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 
-				new PostData(getApplicationContext()).execute();
+				//new PostData(getApplicationContext()).execute();
+				
+				Intent textBrowserIntent = new Intent(v.getContext(), TextBrowser.class);
+				startActivity(textBrowserIntent);
+				
 
 			}
 		});

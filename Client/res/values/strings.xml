@@ -52,5 +52,6 @@
     <string name="title_activity_test_web_view_with_javascript">TestWebViewWithJavascript</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_person_cab">PersonCabActivity</string>
+    <string name="title_activity_text_browser">TextBrowser</string>
 
 </resources>

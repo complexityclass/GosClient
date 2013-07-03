@@ -1,0 +1,45 @@
+package com.example.client;
+
+import com.example.http.Connect;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class TextBrowser extends Activity {
+
+	public static final String fileName = "http://pgu.khv.gov.ru/";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_text_browser);
+
+		final EditText text = (EditText) findViewById(R.id.textContent);
+		Button button = (Button) findViewById(R.id.buttonLoad);
+
+		button.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+
+				Connect connect = new Connect(getApplicationContext());
+				StringBuffer stringBuffer = connect.doGet(fileName);
+
+				text.setText(stringBuffer);
+
+			}
+		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.text_browser, menu);
+		return true;
+	}
+
+}

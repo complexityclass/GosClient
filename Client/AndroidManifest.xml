@@ -200,6 +200,10 @@
             android:name="com.example.client.PersonCabActivity"
             android:label="@string/title_activity_person_cab" >
         </activity>
+        <activity
+            android:name="com.example.client.TextBrowser"
+            android:label="@string/title_activity_text_browser" >
+        </activity>
     </application>
 
 </manifest>
