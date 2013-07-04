@@ -1,0 +1,19 @@
+package com.example.http;
+
+import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+
+public class MySSLSocketFactory extends SSLSocketFactory {
+	
+	SSLContext sslContext = SSLContext.getInstance("TLS");
+	
+	public MySSLSocketFactory(KeyStore truststore) throws NoSuchAlgorithmException{
+		
+		super(truststore);
+		
+	}
+
+}

@@ -6,9 +6,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.CookieHandler;
 import java.net.CookieManager;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -18,6 +28,7 @@ import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
@@ -32,6 +43,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 
 import android.annotation.SuppressLint;
@@ -53,32 +65,60 @@ public class Connect {
 	private CookieStore cookieStore;
 
 	public Connect(Context context) {
-		
-		DefaultHttpClient ret = null;
 
-		// Sets up http parameters
-		HttpParams params = new BasicHttpParams();
-		HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-		HttpProtocolParams.setContentCharset(params, "utf-8");
-		params.setBooleanParameter("http.protocol.expect-continue", false);
+		/*
+		 * DefaultHttpClient ret = null;
+		 * 
+		 * // Sets up http parameters HttpParams params = new BasicHttpParams();
+		 * HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+		 * HttpProtocolParams.setContentCharset(params, "utf-8");
+		 * params.setBooleanParameter("http.protocol.expect-continue", false);
+		 * 
+		 * // Registers schemes for both http and https SchemeRegistry registry
+		 * = new SchemeRegistry(); registry.register(new Scheme("http",
+		 * PlainSocketFactory.getSocketFactory(), 80));
+		 * 
+		 * final SSLSocketFactory sslSocketFactory =
+		 * SSLSocketFactory.getSocketFactory();
+		 * sslSocketFactory.setHostnameVerifier
+		 * (SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+		 * 
+		 * registry.register(new Scheme("https", sslSocketFactory, 443));
+		 * ThreadSafeClientConnManager manager = new
+		 * ThreadSafeClientConnManager(params, registry); ret = new
+		 * DefaultHttpClient(manager, params);
+		 */
 
-		// Registers schemes for both http and https
-		SchemeRegistry registry = new SchemeRegistry();
-		registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-		final SSLSocketFactory sslSocketFactory = SSLSocketFactory.getSocketFactory();
-		sslSocketFactory.setHostnameVerifier(SSLSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
-		registry.register(new Scheme("https", sslSocketFactory, 443));
-		ThreadSafeClientConnManager manager = new ThreadSafeClientConnManager(params, registry);
-		ret = new DefaultHttpClient(manager, params);
-		
-		
-		this.client = ret;
+		this.client = getNewHttpClient();
 		this.context = context;
 		CookieHandler.setDefault(new CookieManager());
 		cookieStore = new BasicCookieStore();
-		
+
 	}
-	
+
+	public HttpClient getNewHttpClient() {
+		try {
+			KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+			trustStore.load(null, null);
+
+			SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
+			sf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
+			HttpParams params = new BasicHttpParams();
+			HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+			HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+
+			SchemeRegistry registry = new SchemeRegistry();
+			registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+			registry.register(new Scheme("https", sf, 443));
+
+			ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
+
+			return new DefaultHttpClient(ccm, params);
+		} catch (Exception e) {
+			return new DefaultHttpClient();
+		}
+	}
 
 	public StringBuffer topgu(String url) {
 
@@ -133,39 +173,39 @@ public class Connect {
 		return result;
 
 	}
-	
-	public String doGet(String url){	
+
+	public String doGet(String url) {
 		HttpContext localContext = new BasicHttpContext();
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
 		HttpGet request = new HttpGet(url);
 		HttpProtocolParams.setUserAgent(client.getParams(), "My funcy UA");
-		
+
 		try {
-			HttpResponse response = client.execute(request,localContext);
+			HttpResponse response = client.execute(request, localContext);
 			System.out.println("Response Code:" + response.getStatusLine().getStatusCode());
-			
+
 			Header[] cookiesArray = response.getHeaders("Set-Cookie");
-			
+
 			for (int i = 0; i < cookiesArray.length; i++) {
 				Cookie cookie = new BasicClientCookie(cookiesArray[i].getName().toString(), cookiesArray[i].getValue()
 						.toString());
 				cookieStore.addCookie(cookie);
 			}
-			
+
 			List<Cookie> cookieList = cookieStore.getCookies();
 			for (int i = 0; i < cookieList.size(); i++) {
 				System.out.println("Cookie " + "name :" + cookieList.get(i).getName() + "value :"
 						+ cookieList.get(i).getValue());
 			}
-			
+
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return "second get complited!";
-		
+
 	}
 
 }
