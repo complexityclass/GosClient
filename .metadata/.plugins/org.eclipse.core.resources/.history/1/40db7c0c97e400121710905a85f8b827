@@ -1,0 +1,99 @@
+package com.example.client;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import com.example.http.Connect;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class TextBrowser extends Activity {
+
+	public static final String url = "http://pgu.khv.gov.ru/";
+	public static Integer page = 1;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_text_browser);
+
+		final EditText text = (EditText) findViewById(R.id.textContent);
+		Button button = (Button) findViewById(R.id.buttonLoad);
+
+		button.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+
+				NetworkThread netThread = new NetworkThread();
+				netThread.execute(url);
+
+				try {
+					text.setText(netThread.get());
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.text_browser, menu);
+		return true;
+	}
+
+	private class NetworkThread extends AsyncTask<String, Integer, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			
+			String result = "OKI?";
+			
+			Connect connect = new Connect(getApplicationContext());
+			
+			System.out.println("--------------------Do first GET-------------------------");
+			StringBuffer stringBuffer = connect.topgu(params[0]);
+			result = stringBuffer.toString();
+			
+			System.out.println("--------------------Do second GET------------------------");
+			result = connect.doGet("http://pgu.khv.gov.ru/?a=Authorization&category=Snils");
+			
+			System.out.println("--------------------Do firs POST-------------------------");
+			
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+
+			nameValuePairs.add(new BasicNameValuePair("username", "168-216-427+76"));
+			nameValuePairs.add(new BasicNameValuePair("password", "2391423choco"));
+			nameValuePairs.add(new BasicNameValuePair("answer", ""));
+			nameValuePairs.add(new BasicNameValuePair("globalRole", "RF_PERSON"));
+			nameValuePairs.add(new BasicNameValuePair("capture", ""));
+			nameValuePairs.add(new BasicNameValuePair("phraseId", ""));
+			nameValuePairs.add(new BasicNameValuePair("cmsDS", ""));
+			nameValuePairs.add(new BasicNameValuePair("isRegCheck", "false"));
+			
+			connect.doPost("https://pgu.khv.gov.ru/saml/module.php/saml/sp/saml2-acs.php/default-sp", nameValuePairs);
+			
+			return result;
+
+		}
+
+	}
+
+}

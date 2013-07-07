@@ -13115,3 +13115,36 @@ Binding(CTRL+SHIFT+\,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SESSION 2013-07-07 12:08:13.597 -----------------------------------------------
+eclipse.buildId=v21.1.0-569685
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.core.net 1 0 2013-07-07 12:08:28.207
+!MESSAGE System property http.proxyHost is not set but should be cache.fors.ru.
+
+!ENTRY org.eclipse.core.net 1 0 2013-07-07 12:08:28.259
+!MESSAGE System property http.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2013-07-07 12:08:28.261
+!MESSAGE System property https.proxyHost is not set but should be cache.fors.ru.
+
+!ENTRY org.eclipse.core.net 1 0 2013-07-07 12:08:28.261
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2013-07-07 12:08:28.264
+!MESSAGE System property https.proxyHost is not set but should be cache.fors.ru.
+
+!ENTRY org.eclipse.core.net 1 0 2013-07-07 12:08:28.265
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.egit.ui 2 0 2013-07-07 12:08:38.450
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
