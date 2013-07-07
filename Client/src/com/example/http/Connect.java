@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.security.KeyManagementException;
@@ -23,10 +24,13 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.PlainSocketFactory;
@@ -34,6 +38,10 @@ import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.DefaultClientConnection;
@@ -191,12 +199,12 @@ public class Connect {
 						.toString());
 				cookieStore.addCookie(cookie);
 			}
-			
+
 			System.out.println();
 
 			List<Cookie> cookieList = cookieStore.getCookies();
 			for (int i = 0; i < cookieList.size(); i++) {
-				System.out.println("Cookie " + "name :" + cookieList.get(i).getName() + "value :"
+				System.out.println("Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
 						+ cookieList.get(i).getValue());
 			}
 
@@ -208,6 +216,72 @@ public class Connect {
 
 		return "second get complited!";
 
+	}
+
+	public String doPost(String url, List<NameValuePair> urlParametrs) {
+		HttpContext localContext = new BasicHttpContext();
+		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+
+		HttpPost request = new HttpPost(url);
+		HttpProtocolParams.setUserAgent(client.getParams(), "My funcy UA");
+
+		try {
+			request.setEntity(new UrlEncodedFormEntity(urlParametrs));
+			try {
+				HttpResponse response = client.execute(request, localContext);
+				System.out.println("Response Code : " + response.getStatusLine().getStatusCode());
+
+				Header[] cookiesArray = response.getHeaders("Set-Cookie");
+
+				for (int i = 0; i < cookiesArray.length; i++) {
+					Cookie cookie = new BasicClientCookie(cookiesArray[i].getName().toString(), cookiesArray[i]
+							.getValue().toString());
+					cookieStore.addCookie(cookie);
+				}
+
+				List<Cookie> cookieList = cookieStore.getCookies();
+				for (int i = 0; i < cookieList.size(); i++) {
+					System.out.println("Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
+							+ cookieList.get(i).getValue());
+				}
+
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		return "first post completed!";
+
+	}
+	
+	
+	public String doMultipartPost(String url, List<NameValuePair> urlParameters){
+		
+		HttpContext localContext = new BasicHttpContext();
+		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+		
+		HttpPost request = new HttpPost(url);
+		HttpProtocolParams.setUserAgent(client.getParams(), "My funcy UA");
+		
+		MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+		
+		for(NameValuePair nvp : urlParameters){
+			try {
+				entity.addPart(nvp.getName(), new StringBody(nvp.getValue()));
+				File filetoUpload = new File(filePath);
+				FileBody fileBody = new FileBody(filetoUpload,"application/octet-stream");
+				
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
 	}
 
 }
