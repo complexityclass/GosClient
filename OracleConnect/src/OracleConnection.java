@@ -21,18 +21,20 @@ public class OracleConnection {
 			cs = connection
 					.prepareCall("{call ws_ctx_pkg.set_ws_id(1,'ADMIN')}");
 			ResultSet rs = cs.executeQuery();
-			
-			String query = "select SYS_CONTEXT ('WS_CTX', 'WS_ID'), SYS_CONTEXT ('WS_CTX', 'WS_TYPE') from dual";
+
+			String query = "select SYS_CONTEXT ('WS_CTX', 'WS_ID') as one, SYS_CONTEXT ('WS_CTX', 'WS_TYPE') as two from dual";
 			Statement stmt = connection.createStatement();
-			ResultSet rs2 = stmt.executeQuery(query); 
-			
+			ResultSet rs2 = stmt.executeQuery(query);
+
 			int i = 1;
-			while(rs2.next()){
-				System.out.println(rs2.getString(i));
+			while (rs2.next()) {
+				String one = rs2.getString("one");
+				String two = rs2.getString("two");
+
+				System.out.println(one + " " + two);
 				i++;
 			}
-			
-			
+
 		} finally {
 			try {
 				connection.close();
