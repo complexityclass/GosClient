@@ -222,6 +222,8 @@ public class Connect {
 		HttpContext localContext = new BasicHttpContext();
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
 
+		StringBuffer result = null;
+
 		HttpPost request = new HttpPost(url);
 		HttpProtocolParams.setUserAgent(client.getParams(), "My funcy UA");
 
@@ -232,6 +234,14 @@ public class Connect {
 				System.out.println("Response Code : " + response.getStatusLine().getStatusCode());
 
 				Header[] cookiesArray = response.getHeaders("Set-Cookie");
+
+				BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+				result = new StringBuffer();
+				String line = "";
+
+				while ((line = rd.readLine()) != null) {
+					result.append(line);
+				}
 
 				for (int i = 0; i < cookiesArray.length; i++) {
 					Cookie cookie = new BasicClientCookie(cookiesArray[i].getName().toString(), cookiesArray[i]
@@ -253,35 +263,67 @@ public class Connect {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
-		return "first post completed!";
+
+		return result.toString();
 
 	}
-	
-	
-	public String doMultipartPost(String url, List<NameValuePair> urlParameters){
-		
+
+	public String doMultipartPost(String url, List<NameValuePair> urlParameters) {
+
 		HttpContext localContext = new BasicHttpContext();
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
-		
+
 		HttpPost request = new HttpPost(url);
 		HttpProtocolParams.setUserAgent(client.getParams(), "My funcy UA");
-		
+
 		MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-		
-		for(NameValuePair nvp : urlParameters){
+
+		StringBuffer result = null;
+
+		for (NameValuePair nvp : urlParameters) {
 			try {
 				entity.addPart(nvp.getName(), new StringBody(nvp.getValue()));
-				File filetoUpload = new File(filePath);
-				FileBody fileBody = new FileBody(filetoUpload,"application/octet-stream");
-				
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-		
+
+		request.setEntity(entity);
+
+		try {
+			HttpResponse response = client.execute(request, localContext);
+			System.out.println("Response Code : " + response.getStatusLine().getStatusCode());
+
+			BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+			result = new StringBuffer();
+			String line = "";
+
+			while ((line = rd.readLine()) != null) {
+				result.append(line);
+			}
+
+			Header[] cookiesArray = response.getHeaders("Set-Cookie");
+
+			for (int i = 0; i < cookiesArray.length; i++) {
+				Cookie cookie = new BasicClientCookie(cookiesArray[i].getName().toString(), cookiesArray[i].getValue()
+						.toString());
+				cookieStore.addCookie(cookie);
+			}
+
+			List<Cookie> cookieList = cookieStore.getCookies();
+			for (int i = 0; i < cookieList.size(); i++) {
+				System.out.println("Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
+						+ cookieList.get(i).getValue());
+			}
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return result.toString();
+
 	}
 
 }

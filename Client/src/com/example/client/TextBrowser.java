@@ -101,19 +101,19 @@ public class TextBrowser extends Activity {
 			nameValuePairs.add(new BasicNameValuePair("cmsDS", ""));
 			nameValuePairs.add(new BasicNameValuePair("isRegCheck", "false"));
 
-			result = connect.doPost("https://esia.gosuslugi.ru/idp/Authn/UsernamePasswordLogin",
+			result = connect.doPost("https://esia.gosuslugi.ru/idp/Authn/CommonLogin",
 					nameValuePairs);
 			
 		/*	System.out.println("--------------------Do 6 GET------------------------");
 			result = connect.doGet("https://pgu.khv.gov.ru/saml/module.php/core/khvLogin2.php?as=default-sp&srv=http%253A%252F%252F172.18.205.4%253A7779%252FCore%252Fservices%252F&ref=");*/
 			
-			System.out.println("--------------------Do 7 GET------------------------");
-			result = connect.doGet("https://pgu.khv.gov.ru/");
+			//System.out.println("--------------------Do 7 GET------------------------");
+			//result = connect.doGet("https://pgu.khv.gov.ru/");
 			
 			/*System.out.println("--------------------Do 8 GET------------------------");
 			result = connect.doGet("https://pgu.khv.gov.ru/?a=PersonCab");*/
 			
-			System.out.println("--------------------Do 9 GET------------------------");
+		/*	System.out.println("--------------------Do 9 GET------------------------");
 			result = connect.doGet("https://pgu.khv.gov.ru/?a=PersonCab&category=Details");
 			
 			
@@ -144,8 +144,9 @@ public class TextBrowser extends Activity {
 			dataPairs.add(new BasicNameValuePair(PostData.BUILDING, "32"));
 			dataPairs.add(new BasicNameValuePair(PostData.FLAT, "156"));
 			
-			result = connect.doPost("https://pgu.khv.gov.ru/?a=PCSD", dataPairs);
-			
+			//result = connect.doPost("https://pgu.khv.gov.ru/?a=PCSD", dataPairs);
+			result = connect.doMultipartPost("https://pgu.khv.gov.ru/?a=PCSD", dataPairs);
+			*/
 			
 			
 

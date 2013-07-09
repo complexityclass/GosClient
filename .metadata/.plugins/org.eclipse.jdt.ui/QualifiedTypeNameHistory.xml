@@ -18,7 +18,6 @@
 <fullyQualifiedTypeName name="org.apache.http.params.HttpProtocolParams"/>
 <fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="com.example.http.Connect"/>
-<fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="com.example.client.TextBrowser.NetworkThread"/>
 <fullyQualifiedTypeName name="java.net.CookieHandler"/>
 <fullyQualifiedTypeName name="java.net.CookieManager"/>
@@ -47,7 +46,6 @@
 <fullyQualifiedTypeName name="org.apache.http.conn.ClientConnectionManager"/>
 <fullyQualifiedTypeName name="org.apache.http.client.methods.HttpPost"/>
 <fullyQualifiedTypeName name="org.apache.http.client.entity.UrlEncodedFormEntity"/>
-<fullyQualifiedTypeName name="org.apache.http.HttpResponse"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.apache.http.message.BasicNameValuePair"/>
 <fullyQualifiedTypeName name="com.example.http.PostData"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="org.apache.http.NameValuePair"/>
 <fullyQualifiedTypeName name="org.apache.http.entity.mime.content.StringBody"/>
 <fullyQualifiedTypeName name="org.apache.http.entity.mime.content.FileBody"/>
+<fullyQualifiedTypeName name="org.apache.http.HttpResponse"/>
+<fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 </qualifiedTypeNameHistroy>
