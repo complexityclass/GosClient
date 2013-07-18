@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="CollectionDemoAc" key="selection"/>
+		<item value="raw" key="selection"/>
 		<list key="findhistory">
+			<item value="raw"/>
+			<item value="searchButton"/>
+			<item value="Constants"/>
 			<item value="CollectionDemoAc"/>
 			<item value="CollectionDemo"/>
 			<item value="Collection"/>
 			<item value="mButton"/>
 			<item value="layout"/>
-			<item value="Intent"/>
-			<item value="System.out"/>
-			<item value="MainActivity"/>
 		</list>
 		<list key="replacehistory">
 			<item value="TTTActivity"/>

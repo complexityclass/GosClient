@@ -53,5 +53,6 @@
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_person_cab">PersonCabActivity</string>
     <string name="title_activity_text_browser">TextBrowser</string>
+    <string name="title_activity_crypto_pro">CryptoProActivity</string>
 
 </resources>

@@ -1,0 +1,57 @@
+package com.complexityclass.cryp;
+
+import java.io.File;
+import java.io.InputStream;
+import java.net.URI;
+import java.security.KeyStore;
+import java.security.Security;
+
+import org.apache.http.client.HttpClient;
+
+import ru.CryptoPro.JCSP.JCSP;
+import ru.CryptoPro.ssl.Provider;
+
+public class HttpTLSExample {
+
+	private static String remoteHost;
+	private static String remotePort;
+	private static String downloadPage;
+
+	public InputStream trustedStrore;
+	public boolean needClientAuth;
+
+	static {
+		Security.setProperty("ssl.KeyManagerFactory.algorithm", Provider.KEYMANGER_ALG);
+		Security.setProperty("ssl.TrustManagerFactory.algorithm", Provider.KEYMANGER_ALG);
+
+		Security.setProperty("ssl.SocketFactory.provider", "ru.CryptoPro.ssl.SSLSocketFactoryImpl");
+		Security.setProperty("ssl.ServerSocketFactory.provider", "ru.CryptoPro.ssl.SSLServerSocketFactoryImpl");
+
+	}
+
+	private class HttpTLSThread {
+
+		public void execute() throws Exception {
+
+			HttpClient httpclient = null;
+
+			try {
+
+				final String httpAddress = "https://" + remoteHost + ":" + remotePort + File.separator + downloadPage;
+				URI url = new URI(httpAddress);
+
+				KeyStore ts = KeyStore.getInstance(JCSP.CERT_STORE_NAME, JCSP.PROVIDER_NAME);
+				ts.load(trustedStrore, null);
+				
+				KeyStore ks = null;
+				
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+}

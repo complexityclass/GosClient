@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="libs/ASN1P.jar"/>
+	<classpathentry kind="lib" path="libs/asn1rt.jar"/>
+	<classpathentry kind="lib" path="libs/cpSSL.jar"/>
+	<classpathentry kind="lib" path="libs/JCP.jar"/>
+	<classpathentry kind="lib" path="libs/JCPRequest.jar"/>
+	<classpathentry kind="lib" path="libs/JCPRevCheck.jar"/>
+	<classpathentry kind="lib" path="libs/JCPRevTools.jar"/>
+	<classpathentry kind="lib" path="libs/JCSP.jar"/>
+	<classpathentry kind="lib" path="libs/JInitCSP.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

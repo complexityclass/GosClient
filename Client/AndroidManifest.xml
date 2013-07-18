@@ -204,6 +204,10 @@
             android:name="com.example.client.TextBrowser"
             android:label="@string/title_activity_text_browser" >
         </activity>
+        <activity
+            android:name="com.example.client.CryptoProActivity"
+            android:label="@string/title_activity_crypto_pro" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,108 @@
+package com.complexityclass.cryp;
+
+import java.io.File;
+import java.io.InputStream;
+import java.security.Security;
+import java.util.HashMap;
+import java.util.Map;
+
+import ru.CryptoPro.JCSP.CSPConfig;
+import ru.CryptoPro.JCSP.JCSP;
+import ru.CryptoPro.JCSP.tools.common.CSPTool;
+import ru.CryptoPro.JCSP.tools.common.RawResource;
+import ru.CryptoPro.reprov.RevCheck;
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		final int initialized = CSPConfig.initInAndroid(this);
+		final EditText textField = (EditText) findViewById(R.id.editText1);
+		Button button = (Button) findViewById(R.id.button1);
+
+		/*
+		 * String textLog = "textLog";
+		 * 
+		 * switch (initialized) { case CSPConfig.CSP_INIT_CONTEXT: textLog =
+		 * "error init context"; return; case
+		 * CSPConfig.CSP_INIT_CREATE_INFRASTRUCTURE: textLog =
+		 * "error create infrastructure"; return; case
+		 * CSPConfig.CSP_INIT_COPY_RESOURCES: textLog = "error copy resources";
+		 * return; case CSPConfig.CSP_INIT_CHANGE_WORK_DIR: textLog =
+		 * "error change work directory"; return; case CSPConfig.CSP_INIT_OK:
+		 * textLog = "Initialized !"; return; }
+		 */
+
+		System.out.println("Init status =" + initialized);
+
+		final String result = initProviders();
+
+		button.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				System.out.println("[***********TLS channel using apache http client************]");
+
+			}
+		});
+
+	}
+
+	private String initProviders() {
+
+		String result = "Provider's initialization : ";
+
+		if (Security.getProvider(JCSP.PROVIDER_NAME) == null) {
+			Security.addProvider(new JCSP());
+			result += "[ adding new JCSP provider ]";
+		} // if
+
+		if (Security.getProvider(ru.CryptoPro.ssl.Provider.PROVIDER_NAME) == null) {
+			Security.addProvider(new ru.CryptoPro.ssl.Provider());
+			result += "[ adding new Crypto.ssl.Provider ]";
+		} // if
+
+		if (Security.getProvider(RevCheck.PROVIDER_NAME) == null) {
+			Security.addProvider(new RevCheck());
+			result += "[ adding new RevCheck ]";
+		} // if
+
+		return result;
+
+	}
+
+	private void installContainer(String containerName, Map<Integer, String> containerFiles) throws Exception {
+
+		Log.d("install container", "install container " + containerName);
+		CSPTool cspTool = new CSPTool(this);
+		RawResource resource = new RawResource(this, cspTool.getAppInfrastructure().getKeysDirectory() + File.separator
+				+ userName2Dir() + File.separator + containerName);
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	private String userName2Dir() throws Exception {
+
+		ApplicationInfo appInfo = getPackageManager().getPackageInfo(getPackageName(), 0).applicationInfo;
+
+		return String.valueOf(appInfo.uid) + "." + String.valueOf(appInfo.uid);
+	}
+
+}

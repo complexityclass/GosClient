@@ -219,9 +219,14 @@ public class MainActivity extends Activity {
 				//Intent esiaIntent = new Intent(v.getContext(), EsiaLoginActivity.class);
 				//startActivity(esiaIntent);
 				
-				Intent rostelekomLogin = new Intent(v.getContext(), RostelecomLoginActivity.class);
+				/*Intent rostelekomLogin = new Intent(v.getContext(), RostelecomLoginActivity.class);
 				rostelekomLogin.putExtra("url", "http://pgu.khv.gov.ru/");
-				startActivityForResult(rostelekomLogin, 43);
+				startActivityForResult(rostelekomLogin, 43);*/
+				
+				Intent cryptoIntent = new Intent(v.getContext(),CryptoProActivity.class);
+				startActivity(cryptoIntent);
+				
+				
 			}
 		});
 	}

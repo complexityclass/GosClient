@@ -23,5 +23,14 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/httpmime-4.2.5.jar"/>
+	<classpathentry kind="lib" path="libs/JInitCSP.jar"/>
+	<classpathentry kind="lib" path="libs/ASN1P.jar"/>
+	<classpathentry kind="lib" path="libs/asn1rt.jar"/>
+	<classpathentry kind="lib" path="libs/cpSSL.jar"/>
+	<classpathentry kind="lib" path="libs/JCP.jar"/>
+	<classpathentry kind="lib" path="libs/JCPRequest.jar"/>
+	<classpathentry kind="lib" path="libs/JCPRevCheck.jar"/>
+	<classpathentry kind="lib" path="libs/JCPRevTools.jar"/>
+	<classpathentry kind="lib" path="libs/JCSP.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
