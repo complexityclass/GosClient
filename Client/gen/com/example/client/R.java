@@ -165,7 +165,9 @@ public final class R {
         public static final int text_browser=0x7f08000f;
     }
     public static final class raw {
-        public static final int truststore=0x7f040000;
+        public static final int mycert=0x7f040000;
+        public static final int mystore=0x7f040001;
+        public static final int truststore=0x7f040002;
     }
     public static final class string {
         public static final int Habarovsk=0x7f060029;

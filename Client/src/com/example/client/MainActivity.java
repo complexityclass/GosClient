@@ -223,7 +223,7 @@ public class MainActivity extends Activity {
 				rostelekomLogin.putExtra("url", "http://pgu.khv.gov.ru/");
 				startActivityForResult(rostelekomLogin, 43);*/
 				
-				Intent cryptoIntent = new Intent(v.getContext(),CryptoProActivity.class);
+				Intent cryptoIntent = new Intent(v.getContext(),TextBrowser.class);
 				startActivity(cryptoIntent);
 				
 				
