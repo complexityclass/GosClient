@@ -83,28 +83,6 @@ public class Connect {
 
 	public Connect(Context context) {
 
-		/*
-		 * DefaultHttpClient ret = null;
-		 * 
-		 * // Sets up http parameters HttpParams params = new BasicHttpParams();
-		 * HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-		 * HttpProtocolParams.setContentCharset(params, "utf-8");
-		 * params.setBooleanParameter("http.protocol.expect-continue", false);
-		 * 
-		 * // Registers schemes for both http and https SchemeRegistry registry
-		 * = new SchemeRegistry(); registry.register(new Scheme("http",
-		 * PlainSocketFactory.getSocketFactory(), 80));
-		 * 
-		 * final SSLSocketFactory sslSocketFactory =
-		 * SSLSocketFactory.getSocketFactory();
-		 * sslSocketFactory.setHostnameVerifier
-		 * (SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-		 * 
-		 * registry.register(new Scheme("https", sslSocketFactory, 443));
-		 * ThreadSafeClientConnManager manager = new
-		 * ThreadSafeClientConnManager(params, registry); ret = new
-		 * DefaultHttpClient(manager, params);
-		 */
 		this.context = context;
 
 		this.client = getNewHttpClient();
@@ -112,6 +90,12 @@ public class Connect {
 
 		CookieHandler.setDefault(new CookieManager());
 		cookieStore = new BasicCookieStore();
+
+	}
+
+	public Connect(Context context, CookieStore startStore) {
+		this(context);
+		cookieStore = startStore;
 
 	}
 
@@ -182,6 +166,12 @@ public class Connect {
 
 	}
 
+	public void addCookies(Cookie... cookies) {
+		for (Cookie ck : cookies) {
+			cookieStore.addCookie(ck);
+		}
+	}
+
 	public StringBuffer topgu(String url, boolean cert) {
 
 		HttpClient myClient = (cert) ? this.clientwithCert : this.client;
@@ -224,7 +214,10 @@ public class Connect {
 
 			List<Cookie> cookieList = cookieStore.getCookies();
 			for (int i = 0; i < cookieList.size(); i++) {
-				System.out.println("Cookie " + "name :" + cookieList.get(i).getName() + "value :"
+				// System.out.println("Cookie " + "name :" +
+				// cookieList.get(i).getName() + "value :"
+				// + cookieList.get(i).getValue());
+				Log.d("TO PGU", "Cookie " + "name :" + cookieList.get(i).getName() + "value :"
 						+ cookieList.get(i).getValue());
 			}
 
@@ -273,7 +266,10 @@ public class Connect {
 
 			List<Cookie> cookieList = cookieStore.getCookies();
 			for (int i = 0; i < cookieList.size(); i++) {
-				System.out.println("Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
+				// System.out.println("Cookie " + "name :  " +
+				// cookieList.get(i).getName() + "   value :"
+				// + cookieList.get(i).getValue());
+				Log.d("DO GET", "Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
 						+ cookieList.get(i).getValue());
 			}
 
@@ -323,7 +319,10 @@ public class Connect {
 
 				List<Cookie> cookieList = cookieStore.getCookies();
 				for (int i = 0; i < cookieList.size(); i++) {
-					System.out.println("Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
+					// System.out.println("Cookie " + "name :  " +
+					// cookieList.get(i).getName() + "   value :"
+					// + cookieList.get(i).getValue());
+					Log.d("DO POST", "Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
 							+ cookieList.get(i).getValue());
 				}
 
@@ -386,7 +385,10 @@ public class Connect {
 
 			List<Cookie> cookieList = cookieStore.getCookies();
 			for (int i = 0; i < cookieList.size(); i++) {
-				System.out.println("Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
+				// System.out.println("Cookie " + "name :  " +
+				// cookieList.get(i).getName() + "   value :"
+				// + cookieList.get(i).getValue());
+				Log.d("DO MULTIPART", "Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
 						+ cookieList.get(i).getValue());
 			}
 

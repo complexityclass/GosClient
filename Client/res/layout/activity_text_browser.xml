@@ -10,21 +10,26 @@
     tools:context=".TextBrowser" >
 
     <EditText
-        android:id="@+id/textContent"
-        android:layout_width="303dp"
-        android:layout_height="367dp"
-        android:layout_x="-7dp"
-        android:layout_y="4dp"
-        android:ems="10"
-        android:inputType="textMultiLine" />
+        android:id="@+id/LText"
+        android:layout_width="274dp"
+        android:layout_height="114dp"
+        android:layout_x="18dp"
+        android:layout_y="10dp"
+        android:ems="10" />
+
+    <WebView
+        android:id="@+id/LView"
+        android:layout_width="match_parent"
+        android:layout_height="218dp"
+        android:layout_x="10dp"
+        android:layout_y="220dp" />
 
     <Button
-        android:id="@+id/buttonLoad"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:id="@+id/Lbutton"
+        android:layout_width="198dp"
         android:layout_height="wrap_content"
-        android:layout_x="16dp"
-        android:layout_y="393dp"
+        android:layout_x="53dp"
+        android:layout_y="158dp"
         android:text="Button" />
 
 </AbsoluteLayout>

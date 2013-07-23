@@ -22,9 +22,9 @@ import android.widget.Toast;
 public class WebViewActivity extends Activity {
 
 	WebView webView;
-	
+
 	String url;
-	
+
 	private int page;
 
 	@Override
@@ -34,7 +34,7 @@ public class WebViewActivity extends Activity {
 		setContentView(R.layout.activity_web_view);
 
 		Intent webIntent = getIntent();
-	    url = webIntent.getStringExtra("url");
+		// url = webIntent.getStringExtra("url");
 
 		webView = (WebView) findViewById(R.id.webView1);
 
@@ -43,10 +43,8 @@ public class WebViewActivity extends Activity {
 		webSettings.setSaveFormData(true);
 		webSettings.setJavaScriptEnabled(true);
 
-	
-		
 		final Activity activity = this;
-		
+
 		page = 0;
 
 		webView.setWebChromeClient(new WebChromeClient() {
@@ -66,14 +64,13 @@ public class WebViewActivity extends Activity {
 
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				if(url.indexOf("esia") <= 0){
+				if (url.indexOf("esia") <= 0) {
 					page = 1;
-				}else{
+				} else {
 					page = 0;
 				}
 				return false;
 			}
-			
 
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -81,7 +78,10 @@ public class WebViewActivity extends Activity {
 
 			@Override
 			public void onPageFinished(WebView view, String url) {
-				//view.loadUrl("javascript:(function() { document.getElementsByTagName('button')[1].click(); })()");
+				view.loadDataWithBaseURL("/Client/assets/tmp1/index.htm", "/Client/assets/tmp1/test.js",
+						"text/javascript", "utf-8", "");
+				// view.loadUrl("javascript:(function() { document.getElementsByTagName('button')[1].click(); })()");
+
 			}
 
 			@Override
@@ -94,12 +94,10 @@ public class WebViewActivity extends Activity {
 			public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
 				handler.proceed();
 			}
-			
-			
 
 		});
 
-		webView.loadUrl(url);
+		// webView.loadUrl(url);
 
 	}
 
