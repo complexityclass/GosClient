@@ -12,24 +12,24 @@
     <EditText
         android:id="@+id/LText"
         android:layout_width="274dp"
-        android:layout_height="114dp"
+        android:layout_height="316dp"
         android:layout_x="18dp"
         android:layout_y="10dp"
         android:ems="10" />
 
     <WebView
         android:id="@+id/LView"
-        android:layout_width="match_parent"
-        android:layout_height="218dp"
-        android:layout_x="10dp"
-        android:layout_y="220dp" />
+        android:layout_width="310dp"
+        android:layout_height="75dp"
+        android:layout_x="2dp"
+        android:layout_y="378dp" />
 
     <Button
         android:id="@+id/Lbutton"
         android:layout_width="198dp"
         android:layout_height="wrap_content"
-        android:layout_x="53dp"
-        android:layout_y="158dp"
+        android:layout_x="62dp"
+        android:layout_y="330dp"
         android:text="Button" />
 
 </AbsoluteLayout>

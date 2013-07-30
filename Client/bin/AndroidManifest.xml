@@ -208,6 +208,10 @@
             android:name="com.example.client.CryptoProActivity"
             android:label="@string/title_activity_crypto_pro" >
         </activity>
+        <activity
+            android:name="com.example.client.HttpsConnect"
+            android:label="@string/title_activity_https_connect" >
+        </activity>
     </application>
 
 </manifest>

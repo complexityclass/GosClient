@@ -1,0 +1,174 @@
+package com.example.client;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.CookieStore;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.cookie.BasicClientCookie;
+import org.apache.http.message.BasicNameValuePair;
+
+import com.example.http.Connect;
+import com.example.http.PostData;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
+import android.webkit.SslErrorHandler;
+
+import android.graphics.Bitmap;
+
+import android.net.http.SslError;
+
+public class TextBrowser extends Activity {
+
+	public static final String url = "http://pgu.khv.gov.ru/";
+
+	public static final String BASE_URL = "http://pgu.khv.gov.ru/";
+	public static final String URL_1 = "https://pgu.khv.gov.ru/saml/module.php/core/khvLogin2.php?ref=&srv=http%3A%2F%2F172.18.205.4%3A7779%2FCore%2Fservices%2F&as=default-sp";
+
+	public static Integer page = 1;
+
+	WebView loginPage;
+	CookieStore cookieStore;
+	String allcookies = "";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_text_browser);
+
+		final EditText text = (EditText) findViewById(R.id.LText);
+		Button button = (Button) findViewById(R.id.Lbutton);
+
+		loginPage = (WebView) findViewById(R.id.LView);
+		WebSettings webSettings = loginPage.getSettings();
+		webSettings.setJavaScriptEnabled(true);
+		webSettings.setSaveFormData(true);
+		webSettings.setSavePassword(true);
+		webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+		loginPage.setWebViewClient(new WebViewClient() {
+			public void onPageLoad(WebView view, String url) {
+			}
+
+			public void onPageStarted(WebView view, String url, Bitmap favicon) {
+			}
+
+			public void onPageFinished(final WebView view, String url) {
+				String cookies = CookieManager.getInstance().getCookie(url);
+				if (allcookies.equals("")) {
+					allcookies += cookies;
+				} else {
+					allcookies += ("; " + cookies);
+				}
+
+			}
+
+			public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+				handler.proceed();
+			}
+
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				return false;
+			}
+
+		});
+
+		startWebView();
+
+		button.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+
+				cookieStore = getCookieStore(allcookies, "domain");
+
+				NetworkThread netThread = new NetworkThread();
+				netThread.execute(cookieStore);
+
+				try {
+					text.setText(netThread.get());
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+	}
+
+	public BasicCookieStore getCookieStore(String cookies, String domain) {
+		String[] cookieValues = cookies.split(";");
+		BasicCookieStore cs = new BasicCookieStore();
+
+		BasicClientCookie cookie;
+		for (int i = 0; i < cookieValues.length; i++) {
+			String[] split = cookieValues[i].split("=");
+			if (split.length == 2) {
+				cookie = new BasicClientCookie(split[0], split[1]);
+			} else {
+				cookie = new BasicClientCookie(split[0], null);
+			}
+			cs.addCookie(cookie);
+		}
+		return cs;
+	}
+
+	public void startWebView() {
+
+		loginPage.loadUrl(URL_1);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.text_browser, menu);
+		return true;
+	}
+
+	private class NetworkThread extends AsyncTask<CookieStore, Integer, String> {
+
+		@Override
+		protected String doInBackground(CookieStore... params) {
+
+			String result = "Start";
+
+			CookieStore cookieStore = params[0];
+
+			Connect connect = new Connect(getApplicationContext());
+			List<Cookie> tmpCookie = connect.getCookies();
+			
+			System.out.println("################################################################");
+			connect.clearCookies();
+			System.out.println("CLEARED COOKIES : ");
+			connect.printCookies();
+
+			Cookie phpsessionid = new BasicClientCookie("PHPSESSID", "0e3a859eae4d01a097858b158eafc914");
+
+			connect.addCookies(phpsessionid);
+			
+			connect.printCookies();
+
+			result = connect.doGet("https://pgu.khv.gov.ru/?a=PersonCab&category=Services", false);
+
+			return result;
+
+		}
+	}
+
+}

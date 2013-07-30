@@ -66,7 +66,7 @@ import android.webkit.WebSettings;
 
 /**
  * @author complexityclass
- * 
+ *         <p/>
  *         Class to get/post request to pgu.khv.gov.ru and save cookies
  */
 public class Connect {
@@ -76,7 +76,7 @@ public class Connect {
 
 	private HttpClient client;
 
-	private HttpClient clientwithCert;
+	// private HttpClient clientwithCert;
 
 	private Context context;
 	private CookieStore cookieStore;
@@ -84,10 +84,7 @@ public class Connect {
 	public Connect(Context context) {
 
 		this.context = context;
-
 		this.client = getNewHttpClient();
-		this.clientwithCert = getHttpClientWithCert();
-
 		CookieHandler.setDefault(new CookieManager());
 		cookieStore = new BasicCookieStore();
 
@@ -117,6 +114,8 @@ public class Connect {
 
 			ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
 
+			System.out.println("getNewHttpClient");
+
 			return new DefaultHttpClient(ccm, params);
 		} catch (Exception e) {
 			return new DefaultHttpClient();
@@ -135,34 +134,29 @@ public class Connect {
 				System.out.println("Try Password ###################");
 				localTrustStore.load(in, TRUSTSTORE_PASSWORD.toCharArray());
 				System.out.println("TRUSTPASSWOR" + TRUSTSTORE_PASSWORD.toCharArray());
+				SchemeRegistry schemeRegistry = new SchemeRegistry();
+				schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+
+				SSLSocketFactory sslSocketFactory = new SSLSocketFactory(localTrustStore);
+
+				schemeRegistry.register(new Scheme("https", sslSocketFactory, 443));
+
+				HttpParams params = new BasicHttpParams();
+				HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+				HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+
+				ClientConnectionManager cm = new ThreadSafeClientConnManager(params, schemeRegistry);
+
+				return new DefaultHttpClient(cm, params);
 			} finally {
 				in.close();
 			}
+
 		} catch (Exception e) {
 			System.out.println("KeyStore Exception !!!!! : " + e.toString());
 			Log.d("Keystore exception : ", "except : " + e.toString());
+			return new DefaultHttpClient();
 		}
-
-		/*
-		 * SchemeRegistry schemeRegistry = new SchemeRegistry();
-		 * schemeRegistry.register(new Scheme("http",
-		 * PlainSocketFactory.getSocketFactory(), 80));
-		 * 
-		 * SSLSocketFactory sslSocketFactory = new
-		 * SSLSocketFactory(localTrustStore);
-		 * 
-		 * schemeRegistry.register(new Scheme("https", sslSocketFactory, 443));
-		 * 
-		 * HttpParams params = new BasicHttpParams();
-		 * HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-		 * HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-		 * 
-		 * ClientConnectionManager cm = new ThreadSafeClientConnManager(params,
-		 * schemeRegistry);
-		 */
-
-		// return new DefaultHttpClient(cm, params);
-		return new DefaultHttpClient();
 
 	}
 
@@ -172,68 +166,32 @@ public class Connect {
 		}
 	}
 
-	public StringBuffer topgu(String url, boolean cert) {
+	public List<Cookie> getCookies() {
+		return cookieStore.getCookies();
+	}
 
-		HttpClient myClient = (cert) ? this.clientwithCert : this.client;
+	public void clearCookies() {
+		cookieStore.clear();
+		System.out.println("CookieStore size = " + cookieStore.getCookies().size());
+	}
 
-		HttpGet request = new HttpGet(url);
-		HttpProtocolParams.setUserAgent(client.getParams(), "My funcy UA");
-		StringBuffer result = null;
-		try {
-
-			HttpResponse response = myClient.execute(request);
-			System.out.println("Response Code:" + response.getStatusLine().getStatusCode());
-
-			/* Print response body into String */
-			BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			result = new StringBuffer();
-			String line = "";
-
-			while ((line = rd.readLine()) != null) {
-				result.append(line);
-			}
-
-			Header[] cookiesArray = response.getHeaders("Set-Cookie");
-
-			/*
-			 * Header[] allHeaders = response.getAllHeaders(); for (int i = 0; i
-			 * < allHeaders.length; i++) {
-			 * System.out.println("---------------------Header " + i +
-			 * ":-------------------------"); System.out.println("name : " +
-			 * allHeaders[i].getName()); System.out.println("value :" +
-			 * allHeaders[i].getValue()); System.out.println(
-			 * "---------------------------------------------------------------"
-			 * );}
-			 */
-
-			for (int i = 0; i < cookiesArray.length; i++) {
-				Cookie cookie = new BasicClientCookie(cookiesArray[i].getName().toString(), cookiesArray[i].getValue()
-						.toString());
-				cookieStore.addCookie(cookie);
-			}
-
-			List<Cookie> cookieList = cookieStore.getCookies();
-			for (int i = 0; i < cookieList.size(); i++) {
-				// System.out.println("Cookie " + "name :" +
-				// cookieList.get(i).getName() + "value :"
-				// + cookieList.get(i).getValue());
-				Log.d("TO PGU", "Cookie " + "name :" + cookieList.get(i).getName() + "value :"
-						+ cookieList.get(i).getValue());
-			}
-
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void setCookies(List<Cookie> cookiesList) {
+		clearCookies();
+		for (Cookie ck : cookiesList) {
+			cookieStore.addCookie(ck);
 		}
+	}
 
-		return result;
-
+	public void printCookies() {
+		for (Cookie ck : cookieStore.getCookies()) {
+			Log.d("COOKIES", "name : " + ck.getName() + " value : " + ck.getValue() + " version : " + ck.getVersion());
+		}
 	}
 
 	public String doGet(String url, boolean cert) {
 
-		HttpClient myClient = (cert) ? this.clientwithCert : this.client;
+		// HttpClient myClient = (cert) ? this.clientwithCert : this.client;
+		HttpClient myClient = this.client;
 
 		StringBuffer result = null;
 
@@ -246,6 +204,12 @@ public class Connect {
 			HttpResponse response = myClient.execute(request, localContext);
 			System.out.println("Response Code:" + response.getStatusLine().getStatusCode());
 
+			Header[] cooks = response.getAllHeaders();
+
+			for (int i = 0; i < cooks.length; i++) {
+				System.out.println(cooks[i].toString());
+			}
+
 			BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 			result = new StringBuffer();
 			String line = "";
@@ -262,17 +226,6 @@ public class Connect {
 				cookieStore.addCookie(cookie);
 			}
 
-			System.out.println();
-
-			List<Cookie> cookieList = cookieStore.getCookies();
-			for (int i = 0; i < cookieList.size(); i++) {
-				// System.out.println("Cookie " + "name :  " +
-				// cookieList.get(i).getName() + "   value :"
-				// + cookieList.get(i).getValue());
-				Log.d("DO GET", "Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
-						+ cookieList.get(i).getValue());
-			}
-
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -283,9 +236,61 @@ public class Connect {
 
 	}
 
+	public String doGetwithSession(String url, String phpsessionid) {
+
+		HttpClient myClient = this.client;
+		StringBuffer result = null;
+
+		HttpGet httpget = new HttpGet(url);
+
+		BasicClientCookie cookie = new BasicClientCookie("PHPSESSID", phpsessionid);
+		cookie.setPath("/");
+		cookie.setDomain("pgu.khv.gov.ru");
+
+		CookieStore cookieStore = new BasicCookieStore();
+		cookieStore.addCookie(cookie);
+
+		HttpContext localContext = new BasicHttpContext();
+		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+
+		HttpResponse response = null;
+		String line = "";
+		StringBuilder total = new StringBuilder();
+		total.append("###");
+
+		try {
+			response = myClient.execute(httpget, localContext);
+			BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+			while ((line = rd.readLine()) != null) {
+				total.append(line + "\n");
+			}
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Header[] header = response.getAllHeaders();
+		for (Header head : header) {
+			Log.d("HEADERS", head.getName() + " " + head.getValue());
+		}
+
+		List<Cookie> cookieList = cookieStore.getCookies();
+
+		for (Cookie cook : cookieList) {
+			Log.d("COOKIE", cook.getName() + " value: " + cook.getValue() + " path : " + cook.getPath() + " domain : "
+					+ cook.getDomain() + " version : " + cook.getVersion());
+		}
+
+		return total.toString();
+
+	}
+
 	public String doPost(String url, List<NameValuePair> urlParametrs, boolean cert) {
 
-		HttpClient myClient = (cert) ? this.clientwithCert : this.client;
+		// HttpClient myClient = (cert) ? this.clientwithCert : this.client;
+		HttpClient myClient = this.client;
 
 		HttpContext localContext = new BasicHttpContext();
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
@@ -317,15 +322,6 @@ public class Connect {
 					cookieStore.addCookie(cookie);
 				}
 
-				List<Cookie> cookieList = cookieStore.getCookies();
-				for (int i = 0; i < cookieList.size(); i++) {
-					// System.out.println("Cookie " + "name :  " +
-					// cookieList.get(i).getName() + "   value :"
-					// + cookieList.get(i).getValue());
-					Log.d("DO POST", "Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
-							+ cookieList.get(i).getValue());
-				}
-
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -339,19 +335,24 @@ public class Connect {
 
 	}
 
-	public String doMultipartPost(String url, List<NameValuePair> urlParameters, boolean cert) {
+	public String doMultipartPost(String url, List<NameValuePair> urlParameters, String phpsessionid) {
 
-		HttpClient myClient = (cert) ? this.clientwithCert : this.client;
+		HttpClient myClient = this.client;
+		StringBuffer result = null;
+
+		HttpPost httppost = new HttpPost(url);
+
+		BasicClientCookie cookie = new BasicClientCookie("PHPSESSID", phpsessionid);
+		cookie.setPath("/");
+		cookie.setDomain("pgu.khv.gov.ru");
+
+		CookieStore cookStore = new BasicCookieStore();
+		cookStore.addCookie(cookie);
 
 		HttpContext localContext = new BasicHttpContext();
-		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+		localContext.setAttribute(ClientContext.COOKIE_STORE, cookStore);
 
-		HttpPost request = new HttpPost(url);
-		HttpProtocolParams.setUserAgent(myClient.getParams(), "My funcy UA");
-
-		MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-
-		StringBuffer result = null;
+		MultipartEntity entity = new MultipartEntity();
 
 		for (NameValuePair nvp : urlParameters) {
 			try {
@@ -361,35 +362,20 @@ public class Connect {
 			}
 		}
 
-		request.setEntity(entity);
+		httppost.setEntity(entity);
+
+		HttpResponse response = null;
+		String line = "";
+		StringBuilder total = new StringBuilder();
+		total.append("###");
 
 		try {
-			HttpResponse response = myClient.execute(request, localContext);
+			response = myClient.execute(httppost, localContext);
 			System.out.println("Response Code : " + response.getStatusLine().getStatusCode());
 
 			BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			result = new StringBuffer();
-			String line = "";
-
 			while ((line = rd.readLine()) != null) {
-				result.append(line);
-			}
-
-			Header[] cookiesArray = response.getHeaders("Set-Cookie");
-
-			for (int i = 0; i < cookiesArray.length; i++) {
-				Cookie cookie = new BasicClientCookie(cookiesArray[i].getName().toString(), cookiesArray[i].getValue()
-						.toString());
-				cookieStore.addCookie(cookie);
-			}
-
-			List<Cookie> cookieList = cookieStore.getCookies();
-			for (int i = 0; i < cookieList.size(); i++) {
-				// System.out.println("Cookie " + "name :  " +
-				// cookieList.get(i).getName() + "   value :"
-				// + cookieList.get(i).getValue());
-				Log.d("DO MULTIPART", "Cookie " + "name :  " + cookieList.get(i).getName() + "   value :"
-						+ cookieList.get(i).getValue());
+				total.append(line + "\n");
 			}
 
 		} catch (ClientProtocolException e) {
@@ -398,7 +384,19 @@ public class Connect {
 			e.printStackTrace();
 		}
 
-		return result.toString();
+		Header[] header = response.getAllHeaders();
+		for (Header head : header) {
+			Log.d("HEADER POST", head.getName() + " " + head.getValue());
+		}
+
+		List<Cookie> cookieList = cookieStore.getCookies();
+
+		for (Cookie cook : cookieList) {
+			Log.d("COOKIE POST", cook.getName() + " value: " + cook.getValue() + " path: " + cook.getPath()
+					+ " domain: " + cook.getDomain() + " version: " + cook.getVersion());
+		}
+
+		return total.toString();
 
 	}
 
