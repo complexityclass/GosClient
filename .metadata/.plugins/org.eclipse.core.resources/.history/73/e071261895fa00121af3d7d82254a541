@@ -1,0 +1,9 @@
+package com.example.adapters;
+
+import android.widget.ArrayAdapter;
+
+
+
+public class PersonalDataAdapter extends ArrayAdapter<PersonalRow> {
+
+}

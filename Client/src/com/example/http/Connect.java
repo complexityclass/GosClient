@@ -81,12 +81,18 @@ public class Connect {
 	private Context context;
 	private CookieStore cookieStore;
 
-	public Connect(Context context) {
+	public Connect() {
 
-		this.context = context;
 		this.client = getNewHttpClient();
 		CookieHandler.setDefault(new CookieManager());
 		cookieStore = new BasicCookieStore();
+
+	}
+
+	public Connect(Context context) {
+
+		this();
+		this.context = context;
 
 	}
 

@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -66,11 +67,15 @@ public class ElectronicServicesActivity extends FragmentActivity implements Acti
 	public static final int REGIONAL_PAGES = 6;
 
 	public static int positionNum = 0;
+	
+	public Context globalContext;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tain);
+		
+		globalContext = this.getApplicationContext();
 
 		// mProgress =(ProgressBar) findViewById(R.id.progressbar);
 

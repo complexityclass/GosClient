@@ -212,6 +212,10 @@
             android:name="com.example.client.HttpsConnect"
             android:label="@string/title_activity_https_connect" >
         </activity>
+        <activity
+            android:name="com.example.client.PrivateOfficeActivity"
+            android:label="@string/title_activity_private_office" >
+        </activity>
     </application>
 
 </manifest>
