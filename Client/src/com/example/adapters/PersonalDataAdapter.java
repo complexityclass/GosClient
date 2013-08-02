@@ -82,6 +82,38 @@ public class PersonalDataAdapter extends ArrayAdapter<PersonalRow> {
 
 	}
 
+	public void change(View view, String text, int position) {
+
+		NewsHolder holder = (NewsHolder) view.getTag();
+
+		holder.value.setText(text);
+
+		data[position].setValue(text);
+
+	}
+
+	public String getText(View view) {
+
+		NewsHolder holder = (NewsHolder) view.getTag();
+
+		return holder.value.getText().toString();
+
+	}
+
+	public String getPersonalData() {
+
+		StringBuilder sb = new StringBuilder();
+
+		for (PersonalRow prow : data) {
+
+			sb.append(prow.getName() + " : " + prow.getValue() + "/n");
+
+		}
+
+		return sb.toString();
+
+	}
+
 	/** Class holder for News */
 	static class NewsHolder {
 		TextView name;

@@ -133,15 +133,6 @@ public class PrivateOfficeActivity extends FragmentActivity implements ActionBar
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
 
-			switch (position) {
-			case 0:
-				fragment = new PersonalDataFragment();
-				break;
-			case 1:
-				fragment = new PersonalServicesFragment();
-				break;
-			}
-
 			fragment = new PersonalDataFragment();
 
 			Bundle args = new Bundle();
@@ -210,6 +201,10 @@ public class PrivateOfficeActivity extends FragmentActivity implements ActionBar
 			cont = new PersonalRow[map.size()];
 		}
 
+		public void changeArrayItem(int position, String value) {
+			cont[position].setValue(value);
+		}
+
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.p_data_view, container, false);
@@ -240,13 +235,13 @@ public class PrivateOfficeActivity extends FragmentActivity implements ActionBar
 
 			listview.setOnItemClickListener(new OnItemClickListener() {
 
-				public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+				public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
 
 					Log.d("CHECKED", pdataAdapter.getData(position));
 
 					AlertDialog.Builder editAlert = new AlertDialog.Builder(globalcontext);
 					editAlert.setTitle("");
-					editAlert.setMessage("Изменить" + pdataAdapter.getData(position).split("::")[0]);
+					editAlert.setMessage("Изменить " + pdataAdapter.getData(position).split("::")[0]);
 
 					final EditText input = new EditText(getActivity());
 
@@ -256,12 +251,13 @@ public class PrivateOfficeActivity extends FragmentActivity implements ActionBar
 					input.setLayoutParams(lp);
 					editAlert.setView(input);
 
-					editAlert.setPositiveButton("Введите новое значение", new DialogInterface.OnClickListener() {
+					editAlert.setPositiveButton(" Сохранить изменение ", new DialogInterface.OnClickListener() {
 
 						public void onClick(DialogInterface dialog, int which) {
 							String newValue = input.getText().toString();
 							Log.d("BUTTON CLICK NEW VALUE: ", newValue);
-							pdataAdapter.setData(position, newValue);
+							pdataAdapter.change(view, newValue, position);
+							System.out.println(pdataAdapter.getPersonalData());
 
 						}
 					});

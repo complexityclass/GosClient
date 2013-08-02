@@ -3659,3 +3659,28 @@ Created Time: 2013-08-01 13:37:44.040
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2013-08-01 13:51:39.451
 !MESSAGE Current file is not a match for the given config.
+!SESSION 2013-08-02 12:32:59.054 -----------------------------------------------
+eclipse.buildId=v21.1.0-569685
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.core.net 1 0 2013-08-02 12:33:07.291
+!MESSAGE System property http.proxyHost is not set but should be cache.fors.ru.
+
+!ENTRY org.eclipse.core.net 1 0 2013-08-02 12:33:07.307
+!MESSAGE System property http.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2013-08-02 12:33:07.307
+!MESSAGE System property https.proxyHost is not set but should be cache.fors.ru.
+
+!ENTRY org.eclipse.core.net 1 0 2013-08-02 12:33:07.307
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2013-08-02 12:33:07.322
+!MESSAGE System property https.proxyHost is not set but should be cache.fors.ru.
+
+!ENTRY org.eclipse.core.net 1 0 2013-08-02 12:33:07.322
+!MESSAGE System property https.proxyPort is not set but should be 3128.

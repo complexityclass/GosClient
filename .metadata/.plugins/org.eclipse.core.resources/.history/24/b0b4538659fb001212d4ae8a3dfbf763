@@ -1,0 +1,109 @@
+package com.example.adapters;
+
+import com.example.adapters.NewsAdapter.NewsHolder;
+import com.example.client.R;
+import com.example.client.LifeSituationsActivity.TabFragment;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class PersonalDataAdapter extends ArrayAdapter<PersonalRow> {
+
+	Context context;
+	int layoutResourceId;
+	PersonalRow data[] = null;
+
+	public PersonalDataAdapter(Context context, int layoutResourceId, PersonalRow[] data) {
+		super(context, layoutResourceId, data);
+		this.context = context;
+		this.layoutResourceId = layoutResourceId;
+		this.data = data;
+	}
+
+	public PersonalDataAdapter(TabFragment fragment, int layoutResourceId, PersonalRow[] data) {
+		super(fragment.getActivity(), layoutResourceId, data);
+		this.context = fragment.getActivity();
+		this.layoutResourceId = layoutResourceId;
+		this.data = data;
+	}
+
+	/**
+	 * @param int position in ListView
+	 * @param View
+	 *            convertView current view
+	 * @param ViewGroup
+	 *            parent
+	 * */
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+
+		View row = convertView;
+		NewsHolder holder = null;
+
+		if (row == null) {
+			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+			row = inflater.inflate(layoutResourceId, parent, false);
+
+			holder = new NewsHolder();
+			holder.name = (TextView) row.findViewById(R.id.viewName);
+			holder.value = (TextView) row.findViewById(R.id.viewValue);
+
+			row.setTag(holder);
+
+		} else {
+			holder = (NewsHolder) row.getTag();
+		}
+
+		PersonalRow persRow = data[position];
+		holder.name.setText(persRow.getName());
+		holder.value.setText(persRow.getValue());
+
+		return row;
+
+	}
+
+	public String getData(int position) {
+
+		return data[position].getName() + "::" + data[position].getValue();
+
+	}
+
+	public void setData(int position, String value) {
+
+		PersonalRow current = new PersonalRow(data[position].getName(), value);
+		data[position] = current;
+		this.getItem(position).setValue(value);
+
+	}
+
+	public void change(View view, String text, int position) {
+
+		NewsHolder holder = (NewsHolder) view.getTag();
+
+		holder.value.setText(text);
+		
+		data[position].setValue(text);
+
+	}
+
+	public String getText(View view) {
+
+		NewsHolder holder = (NewsHolder) view.getTag();
+
+		return holder.value.getText().toString();
+
+	}
+
+	/** Class holder for News */
+	static class NewsHolder {
+		TextView name;
+		TextView value;
+	}
+
+}
