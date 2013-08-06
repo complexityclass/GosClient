@@ -99,6 +99,15 @@ public class PersonalDataAdapter extends ArrayAdapter<PersonalRow> {
 		return holder.value.getText().toString();
 
 	}
+	
+	public String getName(View view){
+		
+		NewsHolder holder = (NewsHolder) view.getTag();
+
+		return holder.name.getText().toString();
+
+		
+	}
 
 	public String getPersonalData() {
 
@@ -106,7 +115,7 @@ public class PersonalDataAdapter extends ArrayAdapter<PersonalRow> {
 
 		for (PersonalRow prow : data) {
 
-			sb.append(prow.getName() + " : " + prow.getValue() + "/n");
+			sb.append(prow.getValue() + "&&&");
 
 		}
 

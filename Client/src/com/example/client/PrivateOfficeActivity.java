@@ -1,12 +1,18 @@
 package com.example.client;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.impl.cookie.DateParseException;
+import org.apache.http.message.BasicNameValuePair;
 
 import com.example.adapters.PersonalDataAdapter;
 import com.example.adapters.PersonalRow;
@@ -15,7 +21,10 @@ import com.example.http.Connect;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -26,22 +35,51 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class PrivateOfficeActivity extends FragmentActivity implements ActionBar.TabListener {
+
+	public final static String SURNAME = "PERSON*1[F*2][2664]";
+	public final static String NAME = "PERSON*1[I*3][2776]";
+	public final static String SECOND_NAME = "PERSON*1[O*4][2778]";
+	public final static String BIRTH_DATE = "PERSON*1[BIRTHDATE*5][2782]";
+	public final static String SEX = "PERSON*1[SEX*6][2783]";
+	public final static String SNILS = "PERSON*1[SNILS*7][3649]";
+	public final static String INN = "PERSON*1[INN*8][12803]";
+	public final static String PHONE = "PERSON*1[TELEPHONE*9][10612]";
+	public final static String EMAIL = "PERSON*1[EMAIL*10][7199]";
+	public final static String CERT_TYPE = "CERT*11[TYPE*12][12812]";
+	public final static String CERT_SER = "CERT*11[SER*13][12808]";
+	public final static String CERT_NUMBER = "CERT*11[NUMBER*14][12810]";
+	public final static String CERT_ISSUER = "CERT*11[ISSUER*15][17150]";
+	public final static String CERT_DATE = "CERT*11[DATE*16][17152]";
+	public final static String RUSSIA_SUBJECT = "REGISTRATION*17[RUSSIA_SUBJECT*18][12797]";
+	public final static String ZIPCODE = "REGISTRATION*17[ZIPCODE*19][12801]";
+	public final static String REGION = "REGISTRATION*17[REGION*20][12818]";
+	public final static String ADDRESS = "REGISTRATION*17[ADDRESS*21][12820]";
+	public final static String STREET = "REGISTRATION*17[STREET*22][12823]";
+	public final static String STREET2 = "REGISTRATION*17[STREET*22][12824]";
+	public final static String HOUSE = "REGISTRATION*17[HOUSE*23][12825]";
+	public final static String BUILDING = "REGISTRATION*17[BUILDING*24][12827]";
+	public final static String FLAT = "REGISTRATION*17[FLAT*25][12829]";
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -213,12 +251,14 @@ public class PrivateOfficeActivity extends FragmentActivity implements ActionBar
 
 			Map<String, String> personalMap = new HashMap<String, String>();
 
-			List<String> key = Arrays.asList("Имя", "Фамилия", "Отчество", "Дата Рождения", "Пол", "СНИЛС", "Телефон",
-					"Электронный адрес", "ИНН", "Субъект РФ", "Индекс");
+			List<String> key = Arrays.asList("Фамилия", "Имя", "Отчество", "Дата рождения", "Пол", "Снилс", "ИНН",
+					"Телефон", "Email", "Тип Документа", "Серия", "Номер", "Кем выдан", "Срок выдачи", "Субъект РФ",
+					"Почтовый индекс", "Регион", "Адресс", "Улица", "Строение", "Дом", "Подъезд", "Квартира");
 
-			List<String> values = Arrays.asList("Валерий", "Попов", "Александрович", "23.09.1992", "мужской",
-					"178-12-321-123 56", "+7 916 053 24 73", "complexityclass@gmail.com", "77777-77777-77777", "",
-					"141700");
+			List<String> values = Arrays.asList("Валерий", "Попов", "Сергеевич", "23.09.1992", "21",
+					"168 - 216 - 427 76", "", "+7(916)053 - 24 - 73", "complexityclass@gmail.com", "6173", "141700",
+					"345700", "уап", "10.07.2013", "6185", "141707", "Московская область", "Долгопрудный", "5219",
+					"Молодежная", "19", "33", "156");
 
 			cont = new PersonalRow[Math.min(key.size(), values.size())];
 
@@ -239,36 +279,155 @@ public class PrivateOfficeActivity extends FragmentActivity implements ActionBar
 
 					Log.d("CHECKED", pdataAdapter.getData(position));
 
-					AlertDialog.Builder editAlert = new AlertDialog.Builder(globalcontext);
-					editAlert.setTitle("");
-					editAlert.setMessage("Изменить " + pdataAdapter.getData(position).split("::")[0]);
+					if (pdataAdapter.getName(view).equals("Пол")) {
 
-					final EditText input = new EditText(getActivity());
+						AlertDialog.Builder b = new AlertDialog.Builder(globalcontext);
+						b.setTitle("Выберите пол");
+						String[] types = { "Мужской", "Женский" };
 
-					LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-							LinearLayout.LayoutParams.FILL_PARENT);
+						b.setItems(types, new DialogInterface.OnClickListener() {
 
-					input.setLayoutParams(lp);
-					editAlert.setView(input);
+							public void onClick(DialogInterface dialog, int which) {
 
-					editAlert.setPositiveButton(" Сохранить изменение ", new DialogInterface.OnClickListener() {
+								dialog.dismiss();
 
-						public void onClick(DialogInterface dialog, int which) {
-							String newValue = input.getText().toString();
-							Log.d("BUTTON CLICK NEW VALUE: ", newValue);
-							pdataAdapter.change(view, newValue, position);
-							System.out.println(pdataAdapter.getPersonalData());
+								switch (which) {
+								case 0:
+									pdataAdapter.change(view, "23", position);
+									break;
+								case 1:
+									pdataAdapter.change(view, "22", position);
 
-						}
-					});
+								default:
+									pdataAdapter.change(view, "24", position);
+									break;
+								}
 
-					editAlert.show();
+							}
+						});
+
+						b.show();
+
+					} else if (pdataAdapter.getName(view).equals("Дата рождения")
+							|| pdataAdapter.getName(view).equals("Срок выдачи")) {
+
+						AlertDialog.Builder datePickerAlert = new AlertDialog.Builder(globalcontext);
+						datePickerAlert.setTitle("");
+						datePickerAlert.setMessage("Измените дату");
+
+						final DatePicker datePicker = new DatePicker(getActivity());
+
+						LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+								LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+
+						datePicker.setLayoutParams(lp);
+						datePickerAlert.setView(datePicker);
+
+						datePickerAlert.setPositiveButton("Сохранить изменения", new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int which) {
+
+								String day = (String) ((datePicker.getDayOfMonth() < 10) ? "0"
+										+ datePicker.getDayOfMonth() : datePicker.getDayOfMonth());
+								String month = (String) ((datePicker.getMonth() < 10) ? "0" + datePicker.getMonth()
+										: datePicker.getMonth());
+
+								String date = day + "." + month + "." + datePicker.getYear();
+								pdataAdapter.change(view, date, position);
+							}
+						});
+
+						datePickerAlert.show();
+
+					} else {
+
+						AlertDialog.Builder editAlert = new AlertDialog.Builder(globalcontext);
+						editAlert.setTitle("");
+						editAlert.setMessage("Изменить " + pdataAdapter.getData(position).split("::")[0]);
+
+						final EditText input = new EditText(getActivity());
+
+						LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+								LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+
+						input.setLayoutParams(lp);
+						editAlert.setView(input);
+
+						editAlert.setPositiveButton(" Сохранить изменение ", new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int which) {
+								String newValue = input.getText().toString();
+								Log.d("BUTTON CLICK NEW VALUE: ", newValue);
+								pdataAdapter.change(view, newValue, position);
+							}
+						});
+
+						editAlert.show();
+					}
+
+				}
+
+			});
+
+			Button saveButton = (Button) rootView.findViewById(R.id.buttonpData);
+
+			saveButton.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View v) {
+
+					final List<String> valuesToPost = Arrays.asList(pdataAdapter.getPersonalData().split("&&&"));
+
+					for (String str : valuesToPost) {
+						Log.d("POST : ", str);
+					}
+
+					NetworkThreadToPost netThreadToPost = new NetworkThreadToPost();
+					netThreadToPost.execute(valuesToPost);
+
+					System.out.println("Result : ");
+					String res = "nullable";
+					try {
+						res = netThreadToPost.get();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						e.printStackTrace();
+					}
+
+					System.out.println(res);
 
 				}
 
 			});
 
 			return rootView;
+		}
+
+		private class NetworkThreadToPost extends AsyncTask<List<String>, Integer, String> {
+
+			@Override
+			protected String doInBackground(List<String>... params) {
+				String result = "";
+				Connect connect = new Connect();
+				List<String> values = params[0];
+				List<String> names = Arrays.asList(SURNAME, NAME, SECOND_NAME, BIRTH_DATE, SEX, SNILS, INN, PHONE,
+						EMAIL, CERT_TYPE, CERT_SER, CERT_NUMBER, CERT_ISSUER, CERT_DATE, RUSSIA_SUBJECT, ZIPCODE,
+						REGION, ADDRESS, STREET, STREET2, HOUSE, BUILDING, FLAT);
+				List<NameValuePair> par = new ArrayList<NameValuePair>();
+
+				for (int i = 0; i < Math.min(values.size(), names.size()); i++) {
+
+					par.add(new BasicNameValuePair(names.get(i), values.get(i)));
+
+				}
+
+				result = connect.doMultipartPost("https://pgu.khv.gov.ru/?a=PCSD", par,
+						"e3afc34b88ee2fbcd0902dc3f488f223");
+
+				return result;
+
+			}
+
 		}
 
 	}

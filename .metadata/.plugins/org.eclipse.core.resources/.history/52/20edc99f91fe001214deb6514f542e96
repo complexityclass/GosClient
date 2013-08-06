@@ -1,0 +1,480 @@
+package com.example.client;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.impl.cookie.DateParseException;
+import org.apache.http.message.BasicNameValuePair;
+
+import com.example.adapters.PersonalDataAdapter;
+import com.example.adapters.PersonalRow;
+import com.example.http.Connect;
+
+import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.ViewPager;
+import android.text.Editable;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class PrivateOfficeActivity extends FragmentActivity implements ActionBar.TabListener {
+
+	public final static String SURNAME = "PERSON*1[F*2][2664]";
+	public final static String NAME = "PERSON*1[I*3][2776]";
+	public final static String SECOND_NAME = "PERSON*1[O*4][2778]";
+	public final static String BIRTH_DATE = "PERSON*1[BIRTHDATE*5][2782]";
+	public final static String SEX = "PERSON*1[SEX*6][2783]";
+	public final static String SNILS = "PERSON*1[SNILS*7][3649]";
+	public final static String INN = "PERSON*1[INN*8][12803]";
+	public final static String PHONE = "PERSON*1[TELEPHONE*9][10612]";
+	public final static String EMAIL = "PERSON*1[EMAIL*10][7199]";
+	public final static String CERT_TYPE = "CERT*11[TYPE*12][12812]";
+	public final static String CERT_SER = "CERT*11[SER*13][12808]";
+	public final static String CERT_NUMBER = "CERT*11[NUMBER*14][12810]";
+	public final static String CERT_ISSUER = "CERT*11[ISSUER*15][17150]";
+	public final static String CERT_DATE = "CERT*11[DATE*16][17152]";
+	public final static String RUSSIA_SUBJECT = "REGISTRATION*17[RUSSIA_SUBJECT*18][12797]";
+	public final static String ZIPCODE = "REGISTRATION*17[ZIPCODE*19][12801]";
+	public final static String REGION = "REGISTRATION*17[REGION*20][12818]";
+	public final static String ADDRESS = "REGISTRATION*17[ADDRESS*21][12820]";
+	public final static String STREET = "REGISTRATION*17[STREET*22][12823]";
+	public final static String STREET2 = "REGISTRATION*17[STREET*22][12824]";
+	public final static String HOUSE = "REGISTRATION*17[HOUSE*23][12825]";
+	public final static String BUILDING = "REGISTRATION*17[BUILDING*24][12827]";
+	public final static String FLAT = "REGISTRATION*17[FLAT*25][12829]";
+
+	/**
+	 * The {@link android.support.v4.view.PagerAdapter} that will provide
+	 * fragments for each of the sections. We use a
+	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
+	 * will keep every loaded fragment in memory. If this becomes too memory
+	 * intensive, it may be best to switch to a
+	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+	 */
+	SectionsPagerAdapter mSectionsPagerAdapter;
+
+	/**
+	 * The {@link ViewPager} that will host the section contents.
+	 */
+	ViewPager mViewPager;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_private_office);
+
+		// Set up the action bar.
+		final ActionBar actionBar = getActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		// Create the adapter that will return a fragment for each of the three
+		// primary sections of the app.
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+		// Set up the ViewPager with the sections adapter.
+		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager.setAdapter(mSectionsPagerAdapter);
+
+		// When swiping between different sections, select the corresponding
+		// tab. We can also use ActionBar.Tab#select() to do this if we have
+		// a reference to the Tab.
+		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
+
+		// For each of the sections in the app, add a tab to the action bar.
+		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+			// Create a tab with text corresponding to the page title defined by
+			// the adapter. Also specify this Activity object, which implements
+			// the TabListener interface, as the callback (listener) for when
+			// this tab is selected.
+			actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
+		}
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.private_office, menu);
+		return true;
+	}
+
+	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+		// When the given tab is selected, switch to the corresponding page in
+		// the ViewPager.
+		mViewPager.setCurrentItem(tab.getPosition());
+	}
+
+	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+	}
+
+	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+	}
+
+	/**
+	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+	 * one of the sections/tabs/pages.
+	 */
+	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+		public SectionsPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		Fragment fragment;
+
+		@Override
+		public Fragment getItem(int position) {
+			// getItem is called to instantiate the fragment for the given page.
+			// Return a DummySectionFragment (defined as a static inner class
+			// below) with the page number as its lone argument.
+
+			fragment = new PersonalDataFragment();
+
+			Bundle args = new Bundle();
+			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		@Override
+		public int getCount() {
+			// Show 3 total pages.
+			return 2;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			Locale l = Locale.getDefault();
+			switch (position) {
+			case 0:
+				return getString(R.string.personal_data).toUpperCase(l);
+			case 1:
+				return getString(R.string.required_services).toUpperCase(l);
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * A dummy fragment representing a section of the app, but that simply
+	 * displays dummy text.
+	 */
+	public static class DummySectionFragment extends Fragment {
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		public static final String ARG_SECTION_NUMBER = "section_number";
+
+		public DummySectionFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_private_office_dummy, container, false);
+			TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
+			dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+			return rootView;
+		}
+	}
+
+	public static class PersonalDataFragment extends Fragment {
+
+		ListView listview;
+
+		Context globalcontext;
+
+		PersonalRow[] cont;
+
+		public static final String ARG_SECTION_NUMBER = "section_number";
+
+		public PersonalDataFragment() {
+
+		}
+
+		public void setArray(Map<String, String> map) {
+			cont = new PersonalRow[map.size()];
+		}
+
+		public void changeArrayItem(int position, String value) {
+			cont[position].setValue(value);
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.p_data_view, container, false);
+
+			globalcontext = this.getActivity();
+
+			Map<String, String> personalMap = new HashMap<String, String>();
+
+			List<String> key = Arrays.asList("Фамилия", "Имя", "Отчество", "Дата рождения", "Пол", "Снилс", "ИНН",
+					"Телефон", "Email", "Тип Документа", "Серия", "Номер", "Кем выдан", "Срок выдачи", "Субъект РФ",
+					"Почтовый индекс", "Регион", "Адресс", "Улица", "Строение", "Дом", "Подъезд", "Квартира");
+
+			List<String> values = Arrays.asList("Валерий", "Попов", "Сергеевич", "23.09.1992", "21",
+					"168 - 216 - 427 76", "", "+7(916)053 - 24 - 73", "complexityclass@gmail.com", "6173", "141700",
+					"345700", "уап", "10.07.2013", "6185", "141707", "Московская область", "Долгопрудный", "5219",
+					"Молодежная", "19", "33", "156");
+
+			cont = new PersonalRow[Math.min(key.size(), values.size())];
+
+			for (int i = 0; i < Math.min(key.size(), values.size()); i++) {
+
+				cont[i] = new PersonalRow(key.get(i), values.get(i));
+
+			}
+
+			listview = (ListView) rootView.findViewById(R.id.listViewpData);
+
+			final PersonalDataAdapter pdataAdapter = new PersonalDataAdapter(getActivity(), R.layout.per_data_row, cont);
+			listview.setAdapter(pdataAdapter);
+
+			listview.setOnItemClickListener(new OnItemClickListener() {
+
+				public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
+
+					Log.d("CHECKED", pdataAdapter.getData(position));
+
+					if (pdataAdapter.getName(view).equals("Пол")) {
+
+						AlertDialog.Builder b = new AlertDialog.Builder(globalcontext);
+						b.setTitle("Выберите пол");
+						String[] types = { "Мужской", "Женский" };
+
+						b.setItems(types, new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int which) {
+
+								dialog.dismiss();
+
+								switch (which) {
+								case 0:
+									pdataAdapter.change(view, "23", position);
+									break;
+								case 1:
+									pdataAdapter.change(view, "22", position);
+
+								default:
+									pdataAdapter.change(view, "24", position);
+									break;
+								}
+
+							}
+						});
+
+						b.show();
+
+					} else if (pdataAdapter.getName(view).equals("Дата рождения")) {
+
+						AlertDialog.Builder datePickerAlert = new AlertDialog.Builder(globalcontext);
+						datePickerAlert.setTitle("");
+						datePickerAlert.setMessage("Измените дату");
+
+						final DatePicker datePicker = new DatePicker(getActivity());
+
+						LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+								LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+
+						datePicker.setLayoutParams(lp);
+						datePickerAlert.setView(datePicker);
+
+						datePickerAlert.setPositiveButton("Сохранить изменения", new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int which) {
+								System.out.println("OK!");
+							}
+						});
+
+						datePickerAlert.show();
+
+					} else {
+
+						AlertDialog.Builder editAlert = new AlertDialog.Builder(globalcontext);
+						editAlert.setTitle("");
+						editAlert.setMessage("Изменить " + pdataAdapter.getData(position).split("::")[0]);
+
+						final EditText input = new EditText(getActivity());
+
+						LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+								LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+
+						input.setLayoutParams(lp);
+						editAlert.setView(input);
+
+						editAlert.setPositiveButton(" Сохранить изменение ", new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int which) {
+								String newValue = input.getText().toString();
+								Log.d("BUTTON CLICK NEW VALUE: ", newValue);
+								pdataAdapter.change(view, newValue, position);
+							}
+						});
+
+						editAlert.show();
+					}
+
+				}
+
+			});
+
+			Button saveButton = (Button) rootView.findViewById(R.id.buttonpData);
+
+			saveButton.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View v) {
+
+					final List<String> valuesToPost = Arrays.asList(pdataAdapter.getPersonalData().split("&&&"));
+
+					for (String str : valuesToPost) {
+						Log.d("POST : ", str);
+					}
+
+					NetworkThreadToPost netThreadToPost = new NetworkThreadToPost();
+					netThreadToPost.execute(valuesToPost);
+
+					System.out.println("Result : ");
+					String res = "nullable";
+					try {
+						res = netThreadToPost.get();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						e.printStackTrace();
+					}
+
+					System.out.println(res);
+
+				}
+
+			});
+
+			return rootView;
+		}
+
+		private class NetworkThreadToPost extends AsyncTask<List<String>, Integer, String> {
+
+			@Override
+			protected String doInBackground(List<String>... params) {
+				String result = "";
+				Connect connect = new Connect();
+				List<String> values = params[0];
+				List<String> names = Arrays.asList(SURNAME, NAME, SECOND_NAME, BIRTH_DATE, SEX, SNILS, INN, PHONE,
+						EMAIL, CERT_TYPE, CERT_SER, CERT_NUMBER, CERT_ISSUER, CERT_DATE, RUSSIA_SUBJECT, ZIPCODE,
+						REGION, ADDRESS, STREET, STREET2, HOUSE, BUILDING, FLAT);
+				List<NameValuePair> par = new ArrayList<NameValuePair>();
+
+				for (int i = 0; i < Math.min(values.size(), names.size()); i++) {
+
+					par.add(new BasicNameValuePair(names.get(i), values.get(i)));
+
+				}
+
+				result = connect.doMultipartPost("https://pgu.khv.gov.ru/?a=PCSD", par,
+						"e3afc34b88ee2fbcd0902dc3f488f223");
+
+				return result;
+
+			}
+
+		}
+
+	}
+
+	public static class PersonalServicesFragment extends Fragment {
+
+		ListView listview;
+		PersonalRow[] cont;
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.p_data_view, container, false);
+
+			cont = new PersonalRow[3];
+
+			cont[0] = new PersonalRow("Question", "Answer");
+
+			listview = (ListView) rootView.findViewById(R.id.listViewpData);
+
+			final PersonalDataAdapter pdataAdapter = new PersonalDataAdapter(getActivity(), R.layout.per_data_row, cont);
+			listview.setAdapter(pdataAdapter);
+
+			NetworkThread netThread = new NetworkThread();
+
+			netThread.execute("start");
+
+			try {
+				String s = netThread.get();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+
+			return rootView;
+		}
+
+		private class NetworkThread extends AsyncTask<String, Integer, String> {
+
+			@Override
+			protected String doInBackground(String... params) {
+
+				String result = "";
+
+				Connect connect = new Connect();
+
+				result = connect.doGetwithSession("https://pgu.khv.gov.ru/?a=PersonCab&category=Details",
+						"dimlcjjlb19vd09ou2hfu78cj7");
+
+				return result;
+
+			}
+
+		}
+
+	}
+
+}
